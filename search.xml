@@ -1,0 +1,1691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>JavaScript基础</title>
+    <url>/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="为什么要学JavaScript"><a href="#为什么要学JavaScript" class="headerlink" title="为什么要学JavaScript?"></a>为什么要学JavaScript?</h1><ol>
+<li>表单验证－减轻服务器端压力</li>
+<li>页面动态效果</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="什么是JavaScript"><a href="#什么是JavaScript" class="headerlink" title="什么是JavaScript"></a>什么是JavaScript</h1><ol>
+<li><strong>JavaScript</strong>是一种基于对象和事件驱动的、并具有安全性能的<strong>脚本语言</strong></li>
+</ol>
+<h1 id="JavaScript特点"><a href="#JavaScript特点" class="headerlink" title="JavaScript特点"></a>JavaScript特点</h1><ol>
+<li>向HTML页面中添加交互行为</li>
+<li>脚本语言，语法和Java类似</li>
+<li>解释性语言，边执行边解释</li>
+</ol>
+<h1 id="JavaScript组成"><a href="#JavaScript组成" class="headerlink" title="JavaScript组成"></a>JavaScript组成</h1><p><img src="/lin428/hexo/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%801.png" alt="JavaScript组成"></p>
+<h1 id="JavaScript的基本结构"><a href="#JavaScript的基本结构" class="headerlink" title="JavaScript的基本结构"></a>JavaScript的基本结构</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    &lt;!—</span><br><span class="line">          JavaScript 语句;</span><br><span class="line">    —&gt;</span><br><span class="line">&lt;/script &gt;</span><br></pre></td></tr></table></figure>
+
+<script>…</script>可以包含在文档中的任何地方，只要保证这些代码在被使用前已读取并加载到内存即可
+
+<h1 id="网页中引用JavaScript的方式"><a href="#网页中引用JavaScript的方式" class="headerlink" title="网页中引用JavaScript的方式"></a>网页中引用JavaScript的方式</h1><ol>
+<li><p>行内：使用  script&gt;标签</p>
+</li>
+<li><p>外部：外部JS文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;export.js&quot;</span>  type=<span class="string">&quot;text/javascript&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="comment">//记住这是导入js和直接写不一样</span></span><br></pre></td></tr></table></figure></li>
+<li><p>内部: 直接在HTML标签中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;input name=<span class="string">&quot;btn&quot;</span> type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;弹出消息框&quot;</span>   </span><br><span class="line">   onclick=<span class="string">&quot;javascript:alert(&#x27;欢迎你&#x27;);&quot;</span>/&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="JavaScript核心语法"><a href="#JavaScript核心语法" class="headerlink" title="JavaScript核心语法"></a>JavaScript核心语法</h1><p><img src="/lin428/hexo/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%802.png" alt="JavaScript核心语法"></p>
+<h2 id="核心语法—变量"><a href="#核心语法—变量" class="headerlink" title="核心语法—变量"></a>核心语法—变量</h2><ol>
+<li><h3 id="先声明变量再赋值"><a href="#先声明变量再赋值" class="headerlink" title="先声明变量再赋值"></a>先声明变量再赋值</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span>   width;	<span class="comment">//var －  用于声明变量的关键字</span></span><br><span class="line">width = <span class="number">5</span>;		<span class="comment">//width － 变量名</span></span><br></pre></td></tr></table></figure></li>
+<li><h3 id="同时声明和赋值变量"><a href="#同时声明和赋值变量" class="headerlink" title="同时声明和赋值变量"></a>同时声明和赋值变量</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> catName= <span class="string">&quot;皮皮&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> x, y, z = <span class="number">10</span>;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="不声明直接赋值"><a href="#不声明直接赋值" class="headerlink" title="不声明直接赋值"></a>不声明直接赋值</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">width=<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>变量可以不经声明而直接使用，但这种方法很容易出错，也很难查找排错，不推荐使用</strong></p>
+</li>
+<li><h3 id="核心语法—数据类型"><a href="#核心语法—数据类型" class="headerlink" title="核心语法—数据类型"></a>核心语法—数据类型</h3><ol>
+<li><strong>undefined</strong><ul>
+<li><strong>var width;</strong>  变量width没有初始值，将被赋予值<strong>undefined</strong></li>
+</ul>
+</li>
+<li><strong>null</strong><ul>
+<li>表示一个空值，与<strong>undefined</strong>值相等</li>
+</ul>
+</li>
+<li><strong>number</strong><ul>
+<li><strong>var</strong> <strong>iNum</strong>**=23;  //整数</li>
+<li>var** <strong>iNum</strong><strong>=23.0;  //浮点数</strong></li>
+</ul>
+</li>
+<li><strong>boolean</strong><ul>
+<li><strong>true</strong>和<strong>false</strong></li>
+</ul>
+</li>
+<li><strong>string</strong><ul>
+<li><strong>一组被引号（单引号或双引号）括起来的文本</strong></li>
+<li><em>var</em>* <strong>string1=”This is a string”;</strong></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h3 id="核心语法—-typeof运算符"><a href="#核心语法—-typeof运算符" class="headerlink" title="核心语法— typeof运算符"></a>核心语法— typeof运算符</h3><ul>
+<li><strong>typeof</strong>检测变量的返回值</li>
+<li><strong>typeof</strong>：运算符返回值如下<ul>
+<li><strong>undefined</strong>：变量被声明后，但未被赋值</li>
+<li><strong>string</strong>：用单引号或双引号来声明的字符串</li>
+<li><strong>boolean</strong>：<strong>true</strong>或<strong>false</strong></li>
+<li><strong>number</strong>：整数或浮点数**</li>
+<li><strong>object****：</strong>javascript**中的对象、数组和null</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="核心语法—String对象"><a href="#核心语法—String对象" class="headerlink" title="核心语法—String对象"></a>核心语法—String对象</h3><ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>字符串对象**.length**</li>
+<li><strong>方法</strong></li>
+<li>字符串对象.方法名();</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;this is JavaScript&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> strLength=str.length;    <span class="comment">//长度是18</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>charAt(index)</td>
+<td>返回在指定位置的字符</td>
+</tr>
+<tr>
+<td>indexOf(str，index)</td>
+<td>查找某个指定的字符串在字符串中首次出现的位置</td>
+</tr>
+<tr>
+<td>substring(index1，index2)</td>
+<td>返回位于指定索引index1和index2之间的字符串，并且包括索引index1对应的字符，不包括索引index2对应的字符</td>
+</tr>
+<tr>
+<td>split(str)</td>
+<td>将字符串分割为字符串数组</td>
+</tr>
+</tbody></table>
+</li>
+<li><h3 id="核心语法—数组"><a href="#核心语法—数组" class="headerlink" title="核心语法—数组"></a>核心语法—数组</h3><ol>
+<li><p>创建数组</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span>  数组名称 = <span class="keyword">new</span> <span class="built_in">Array</span>(size);</span><br><span class="line"><span class="comment">//new 表示数组的关键字</span></span><br><span class="line"><span class="comment">//size表示数组中可存放的元素总数</span></span><br></pre></td></tr></table></figure></li>
+<li><p>为数组元素赋值</p>
+</li>
+<li><p>访问数组</p>
+</li>
+<li><p>数组的常用属性和方法</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性</td>
+<td><strong>length</strong></td>
+<td>设置或返回数组中元素的数目</td>
+</tr>
+<tr>
+<td>方法</td>
+<td><strong>join( )</strong></td>
+<td>把数组的所有元素放入一个字符串，通过一个的分隔符进行分隔</td>
+</tr>
+<tr>
+<td>方法</td>
+<td><strong>sort()</strong></td>
+<td>对数组排序</td>
+</tr>
+<tr>
+<td>方法</td>
+<td><strong>push()</strong></td>
+<td>向数组末尾添加一个或更多 元素，并返回新的长度</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><h3 id="核心语法—运算符号-和Java类似"><a href="#核心语法—运算符号-和Java类似" class="headerlink" title="核心语法—运算符号-和Java类似"></a>核心语法—运算符号-和Java类似</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>算术运算符</strong></td>
+<td><strong>+</strong>  <strong>-</strong>  *****  <strong>/</strong>  <strong>%</strong>  <strong>++</strong>  <strong>—</strong></td>
+</tr>
+<tr>
+<td><strong>赋值运算符</strong></td>
+<td><strong>=</strong>  <strong>+=</strong>  <strong>-=</strong></td>
+</tr>
+<tr>
+<td><strong>比较运算符</strong></td>
+<td><strong>&gt;</strong>  <strong>&lt;**   **&gt;=</strong>   <strong>&lt;=</strong>   <strong>==</strong>  <strong>!=  ===</strong>  <strong>!==</strong></td>
+</tr>
+<tr>
+<td><strong>逻辑运算符</strong></td>
+<td><strong>&amp;&amp;</strong>    <strong>||</strong>   <strong>!</strong></td>
+</tr>
+</tbody></table>
+</li>
+<li><h3 id="核心语法—逻辑控制语句"><a href="#核心语法—逻辑控制语句" class="headerlink" title="核心语法—逻辑控制语句"></a>核心语法—逻辑控制语句</h3><ol>
+<li><p><strong>if</strong>条件语句-和Java一样</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//JavaScript代码;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//JavaScript代码;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>switch</strong>多分支语句-和Java一样</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> (表达式)</span><br><span class="line">&#123;    <span class="keyword">case</span> 常量<span class="number">1</span> : </span><br><span class="line">              JavaScript语句<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> 常量<span class="number">2</span> : </span><br><span class="line"> 	JavaScript语句<span class="number">2</span>;</span><br><span class="line"> 	<span class="keyword">break</span>;</span><br><span class="line">         ...</span><br><span class="line">        <span class="attr">default</span> : </span><br><span class="line">             JavaScript语句<span class="number">3</span>;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>for、while</strong>循环语句-和Java一样</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化;  条件;  增量)</span><br><span class="line"> &#123;</span><br><span class="line">      JavaScript代码; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(条件)</span><br><span class="line"> &#123;</span><br><span class="line">      JavaScript代码;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>for-in</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruit=[ <span class="string">&quot;apple&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;peach&quot;</span>,<span class="string">&quot;banana&quot;</span>]; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> fruit)&#123;<span class="comment">//循环的是下标 i是下标</span></span><br><span class="line">       <span class="built_in">document</span>.write(fruit[i]+<span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="核心语法—循环中断-和Java一样"><a href="#核心语法—循环中断-和Java一样" class="headerlink" title="核心语法—循环中断-和Java一样"></a>核心语法—循环中断-和Java一样</h3><ol>
+<li><p><strong>break</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">3</span>)&#123;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">  <span class="built_in">document</span>.write(<span class="string">&quot;这个数字是：&quot;</span>+i+<span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>continue</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">3</span>)&#123;</span><br><span class="line">                   <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">  <span class="built_in">document</span>.write(<span class="string">&quot;这个数字是：&quot;</span>+i+<span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="核心语法—注释-和Java一样"><a href="#核心语法—注释-和Java一样" class="headerlink" title="核心语法—注释-和Java一样"></a>核心语法—注释-和Java一样</h3><ol>
+<li><p>单行注释以 // 开始，以行末结束</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">alert(<span class="string">&quot;恭喜你！注册会员成功&quot;</span>); <span class="comment">//在页同上弹出注册会员成功的提示框</span></span><br></pre></td></tr></table></figure></li>
+<li><p>多行注释以 /* 开始，以 */ 结束，符号 /*…… */ 指示中间的语句是该程序中的注释</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">使用for循环运行“document.write(&quot;&lt;h3&gt;Hello World&lt;/h3&gt;&quot;);”5次</span></span><br><span class="line"><span class="comment">使用document.write在页面上输出“Hello World” </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="核心语法—常用的输入-输出"><a href="#核心语法—常用的输入-输出" class="headerlink" title="核心语法—常用的输入/输出"></a>核心语法—常用的输入/输出</h3><ol>
+<li><p><strong>alert()</strong></p>
+<ul>
+<li>alert()方法是显示一条弹出提示消息和确认按钮的警告框。</li>
+<li>需要注意的是 ：alert()是一个阻塞的函数，如果我们不点确认按钮，后面的内容就不会加载出来。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">alert(<span class="string">&quot;想要提示的文本内容&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>confirm()</strong></p>
+<ul>
+<li><strong>confirm()方法是显示一个含有指定消息和确认和取消按钮的确认框。</strong></li>
+<li><strong>如果点击”确定”返回true，否则返回false。</strong></li>
+</ul>
+<p>不接收返回值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">confirm(<span class="string">&quot;这样写可以直接显示,不接收返回值。&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>接收返回值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; </span><br><span class="line"><span class="keyword">var</span> r=confirm(<span class="string">&quot;请按下按钮!&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (r==<span class="literal">true</span>)&#123;</span><br><span class="line">	x=<span class="string">&quot;你按下的是\&quot;确定\&quot;按钮。&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	x=<span class="string">&quot;你按下的是\&quot;取消\&quot;按钮。&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.write(x)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>prompt ()</strong></p>
+<ul>
+<li><strong>prompt()方法是显示提示用户进行输入的对话框。</strong></li>
+<li><strong>这个方法返回的是用户输入的字符串。</strong></li>
+</ul>
+<p>不显示默认文本：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">prompt(<span class="string">&quot;开心吗?&quot;</span>); <span class="comment">// 这个显示内容也可以不写，但就没有交互的意义了。</span></span><br></pre></td></tr></table></figure>
+
+<p>显示默认文本：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; </span><br><span class="line"><span class="keyword">var</span> name=prompt(<span class="string">&quot;请输入你的名字&quot;</span>,<span class="string">&quot;Keafmd&quot;</span>); </span><br><span class="line"><span class="keyword">if</span> (name!=<span class="literal">null</span> &amp;&amp; person!=<span class="string">&quot;&quot;</span>)&#123; </span><br><span class="line"> x=<span class="string">&quot;你好! &quot;</span> + name + <span class="string">&quot;。&quot;</span>;</span><br><span class="line"> <span class="built_in">document</span>.write(x)</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="核心语法—语法约定-和Java一样"><a href="#核心语法—语法约定-和Java一样" class="headerlink" title="核心语法—语法约定-和Java一样"></a>核心语法—语法约定-和Java一样</h3><ol>
+<li><strong>代码区分大小写</strong></li>
+<li><strong>变量、对象和函数的名称</strong></li>
+<li><strong>分号</strong></li>
+</ol>
+</li>
+</ol>
+<h1 id="常用系统函数"><a href="#常用系统函数" class="headerlink" title="常用系统函数"></a><strong>常用系统函数</strong></h1><ol>
+<li><h3 id="parseInt-“字符串”"><a href="#parseInt-“字符串”" class="headerlink" title="parseInt (“字符串”)"></a>parseInt (“字符串”)</h3><ul>
+<li><p>将字符串转换为整型数字 </p>
+<p>如: parseInt (“86”)将字符串“86“转换为整型值86</p>
+</li>
+<li><p>parseInt()函数首先查看位置0处的字符,判断它是否为一个有效数字,如果不是则返回NaN,不在继续执行其他操作.但如果该字符是有效数字,则该函数讲查看位置1处的字符,进行同样的测试,这一过程将持续到发现非有效数字的字符为止,此时parseInt()将该字符之前的字符串转换成数字例如:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1=<span class="built_in">parseInt</span>(<span class="string">&quot;78.89&quot;</span>);			<span class="comment">//返回值为78</span></span><br><span class="line"><span class="keyword">var</span> num2=<span class="built_in">parseInt</span>(<span class="string">&quot;4567color&quot;</span>);		<span class="comment">//返回值为4567</span></span><br><span class="line"><span class="keyword">var</span> num3=<span class="built_in">parseInt</span>(<span class="string">&quot;this36&quot;</span>);		<span class="comment">//返回值为NaN</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h3 id="parseFloat-“字符串”"><a href="#parseFloat-“字符串”" class="headerlink" title="parseFloat(“字符串”)"></a>parseFloat(“字符串”)</h3><ul>
+<li><p>将字符串转换为浮点型数字<br>如: parseFloat(“34.45”)将字符串“34.45“转换为浮点值34.45]</p>
+</li>
+<li><p>parseFloat()函数和parseInt ()函数的处理方式相似,从位置为0开始查看每个字符,直到找到第一个非有效数字为止,然后把该字符之前的字符串转换成浮点数.</p>
+</li>
+<li><p>对于这个函数来说,第一个出现的小数点是有效字符,如果有两个小数点,那么第二个小数点被看做无效.例如:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1=<span class="built_in">parseFloat</span>(<span class="string">&quot;4567color&quot;</span>);		<span class="comment">//返回值为4567</span></span><br><span class="line"><span class="keyword">var</span> num2=<span class="built_in">parseFloat</span>(<span class="string">&quot;45.58&quot;</span>);			<span class="comment">//返回值为45.58</span></span><br><span class="line"><span class="keyword">var</span> num3=<span class="built_in">parseFloat</span>(<span class="string">&quot;45.58.25&quot;</span>);		<span class="comment">//返回值为45.58</span></span><br><span class="line"><span class="keyword">var</span> num4=<span class="built_in">parseFloat</span>(<span class="string">&quot;color4567&quot;</span>);		<span class="comment">//返回值为NaN</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h3 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN()"></a>isNaN()</h3><p>用于检查其参数是否是非数字 如果是非数字值,返回true 如果是非数值,返回flase 例如</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> flag1=<span class="built_in">isNaN</span>(<span class="string">&quot;12.5&quot;</span>);		<span class="comment">//返回值false</span></span><br><span class="line"><span class="keyword">var</span> flag2=<span class="built_in">isNaN</span>(<span class="string">&quot;12.5s&quot;</span>);		<span class="comment">//返回值true</span></span><br><span class="line"><span class="keyword">var</span> flag3=<span class="built_in">isNaN</span>(<span class="string">&quot;45.8&quot;</span>);		<span class="comment">//返回值false</span></span><br></pre></td></tr></table></figure>
+
+<p>isNaN()函数通常用于监测parseFloat()和parseInt ()的结果,以判断它们表示的是否合法的数字.也可以用isNaN()函数来检测算数是否错误,如用0作为除数的情况.</p>
+</li>
+</ol>
+<h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2><p>同java一样,JavaScript需要先定义函数,然后才能调用函数.</p>
+<ol>
+<li><h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>在JavaScript中,自定义函数由关键字<strong>function</strong>,函数名,一组参数及置于括号中的待执行的JavaScript语句组成,语法格式如下.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">参数<span class="number">1</span>,参数<span class="number">2</span>,参数<span class="number">3</span>, … </span>)</span>&#123;</span><br><span class="line">     <span class="comment">//JavaScript语句</span></span><br><span class="line">     [<span class="keyword">return</span> 返回值]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>function是定义函数的关键字,必须有</p>
+</li>
+<li><p>参数1,参数2,等是函数的参数.因为JavaScript本身是弱类型,所以他的参数也没有类型检查和类型限定.函数中的参数是可选的,根据函数是否可带参数,可分为不带参数的无参函数和有参函数.例如,有参函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//JavaScript 语句;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>“{“和”}”定义了函数的开始和结束</p>
+</li>
+<li><p>return语句来规定函数返回的值.</p>
+</li>
+</ul>
+</li>
+<li><h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><p>要执行一个函数,必须先调用这个函数,当调用函数时,必须制定函数名及其后面的参数(如果有参数).函数的调用一般和元素的事件结合使用.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">事件名=<span class="string">&quot;函数名()&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="常用事件"><a href="#常用事件" class="headerlink" title="常用事件"></a>常用事件</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onload</td>
+<td>一个页面或一幅图像完成加载</td>
+</tr>
+<tr>
+<td>onlick</td>
+<td>鼠标单击某个对象</td>
+</tr>
+<tr>
+<td>onmouseover</td>
+<td>鼠标指导移到某元素上</td>
+</tr>
+<tr>
+<td>onkeydown</td>
+<td>某个键盘按键被按下</td>
+</tr>
+<tr>
+<td>onchange</td>
+<td>域的内容被改变</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/lin428/hexo/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/image-20210711093243759.png" alt="JavaScript基础总结"></p>
+]]></content>
+      <categories>
+        <category>使用jQuery快速高效制作网页交互特效</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JavaScript操作BOM对象</title>
+    <url>/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h1 id="BOM模型"><a href="#BOM模型" class="headerlink" title="BOM模型"></a>BOM模型</h1><ol>
+<li><p>BOM：浏览器对象模型（Browser Object Model）</p>
+</li>
+<li><p>BOM提供了独立于内容的、可以与浏览器窗口进行互动的对象结构</p>
+<span id="more"></span></li>
+</ol>
+<p><img src="/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
+<ol start="3">
+<li>BOM可实现功能<ol>
+<li>弹出新的浏览器窗口</li>
+<li>移动、关闭浏览器窗口以及调整窗口的大小</li>
+<li>页面的前进、后退</li>
+</ol>
+</li>
+</ol>
+<h1 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h1><ol>
+<li><h2 id="常用的属性"><a href="#常用的属性" class="headerlink" title="常用的属性"></a>常用的属性</h2><table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>history</strong></td>
+<td>有关客户访问过的URL的信息</td>
+</tr>
+<tr>
+<td><strong>location</strong></td>
+<td>有关当前 URL 的信息</td>
+</tr>
+</tbody></table>
+<p>​    语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.属性名= <span class="string">&quot;属性值&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p>​    示例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.location=<span class="string">&quot;http://www.bdqn.cn&quot;</span> ;      <span class="comment">//表示跳转到北大青鸟首页</span></span><br></pre></td></tr></table></figure></li>
+<li><h2 id="常用的方法"><a href="#常用的方法" class="headerlink" title="常用的方法"></a>常用的方法</h2><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>prompt( )</strong></td>
+<td>显示可提示用户输入的对话框</td>
+</tr>
+<tr>
+<td><strong>alert( )</strong></td>
+<td>显示带有一个提示信息和一个确定按钮的警示框</td>
+</tr>
+<tr>
+<td><strong>confirm( )</strong></td>
+<td>显示一个带有提示信息、确定和取消按钮的对话框</td>
+</tr>
+<tr>
+<td><strong>close( )</strong></td>
+<td>关闭浏览器窗口</td>
+</tr>
+<tr>
+<td><strong>open( )</strong></td>
+<td>打开一个新的浏览器窗口，加载给定 URL 所指定的文档</td>
+</tr>
+<tr>
+<td><strong>setTimeout( )</strong></td>
+<td>在指定的毫秒数后调用函数或计算表达式</td>
+</tr>
+<tr>
+<td><strong>setInterval()</strong></td>
+<td>按照指定的周期（以毫秒计）来调用函数或表达式</td>
+</tr>
+</tbody></table>
+<ol>
+<li><h3 id="confirm-方法"><a href="#confirm-方法" class="headerlink" title="confirm()方法"></a>confirm()方法</h3><ol>
+<li>confirm()：将弹出一个确认对话框</li>
+<li>confirm()与alert ()、 prompt()区别<ol>
+<li>alert( )：一个参数，仅显示警告对话框的消息，无返回值，不能对脚本产生任何改变</li>
+<li>prompt( )：两个参数，输入对话框，用来提示用户输入一些信息，单击“取消”按钮则返回null，击“确定”按钮则返回用户输入的值，常用于收集用户关于特定问题而反馈的信息</li>
+<li>confirm( )：一个参数，确认对话框，显示提示对话框的消息、“确定”按钮和“取消”按钮，单击“定”按钮返回true，单击“取消”按钮返回false，因此与if-else语句搭配使用</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//示例</span></span><br><span class="line">confirm(<span class="string">&quot;对话框中显示的纯文本&quot;</span>)</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">   <span class="keyword">var</span> flag=confirm(<span class="string">&quot;确认要删除此条信息吗？&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(flag==<span class="literal">true</span>)</span><br><span class="line">	      alert(<span class="string">&quot;删除成功！&quot;</span>);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">	       alert(<span class="string">&quot;你取消了删除&quot;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><h3 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h3><ol>
+<li><p>窗口特征</p>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>说   明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>height、width</td>
+<td>窗口文档显示区的高度、宽度。以像素计</td>
+</tr>
+<tr>
+<td>left、top</td>
+<td>窗口的x坐标、y坐标。以像素计</td>
+</tr>
+<tr>
+<td>toolbar=yes |no |1 |0</td>
+<td>是否显示浏览器的工具栏。黙认是yes</td>
+</tr>
+<tr>
+<td>scrollbars=yes |no |1 |0</td>
+<td>是否显示滚动条。黙认是yes</td>
+</tr>
+<tr>
+<td>location=yes |no |1 |0</td>
+<td>是否显示地址地段。黙认是yes</td>
+</tr>
+<tr>
+<td>status=yes |no |1 |0</td>
+<td>是否添加状态栏。黙认是yes</td>
+</tr>
+<tr>
+<td>menubar=yes |no |1 |0</td>
+<td>是否显示菜单栏。黙认是yes</td>
+</tr>
+<tr>
+<td>resizable=yes |no |1 |0</td>
+<td>窗口是否可调节尺寸。黙认是yes</td>
+</tr>
+<tr>
+<td>titlebar=yes |no |1 |0</td>
+<td>是否显示标题栏。黙认是yes</td>
+</tr>
+<tr>
+<td>fullscreen=yes |no |1 |0</td>
+<td>是否使用全屏模式显示浏览器。黙认是no。<br>处于全屏模式的窗口必须同时处于剧院模式</td>
+</tr>
+</tbody></table>
+<p>语法:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.open(<span class="string">&quot;弹出窗口的url&quot;</span>,<span class="string">&quot;窗口名称&quot;</span>,<span class="string">&quot;窗口特征”)</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h2><ol>
+<li><p>常用方法</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>back()</td>
+<td>加载 history 对象列表中的前一个URL</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>加载 history 对象列表中的下一个URL</td>
+</tr>
+<tr>
+<td>go()</td>
+<td>加载 history 对象列表中的某个具体URL</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">history.back()		<span class="comment">/*等价于*/</span>		history.go(-<span class="number">1</span>)	<span class="comment">//浏览器中的后退</span></span><br><span class="line">history.forward()	<span class="comment">/*等价于*/</span>		history.go(<span class="number">1</span>)	<span class="comment">//浏览器中的后退</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h2 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h2><ol>
+<li><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>host</td>
+<td>设置或返回主机名和当前URL的端口号</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>设置或返回当前URL的主机名</td>
+</tr>
+<tr>
+<td>href</td>
+<td>设置或返回完整的URL</td>
+</tr>
+</tbody></table>
+</li>
+<li><h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><table>
+<thead>
+<tr>
+<th>常用方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>reload()</td>
+<td>重新加载当前文档</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>用新的文档替换当前文档</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><h2 id="location和history对象的应用"><a href="#location和history对象的应用" class="headerlink" title="location和history对象的应用"></a>location和history对象的应用</h2><ol>
+<li><p>主页面使用href实现跳转和刷新本页</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;javascript:location.href=&#x27;flower.html&#x27;&quot;</span>&gt;查看鲜花详情&lt;/a&gt;  </span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:location.reload()&quot;</span>&gt;</span>刷新本页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:history.back()&quot;</span>&gt;</span>返回主页面<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h2 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h2><ol>
+<li><h3 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>referrer</strong></td>
+<td>返回载入当前文档的URL</td>
+</tr>
+<tr>
+<td><strong>URL</strong></td>
+<td>返回当前文档的URL</td>
+</tr>
+</tbody></table>
+<p>语法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.referrer</span><br><span class="line"><span class="built_in">document</span>.URL</span><br></pre></td></tr></table></figure>
+
+<p><img src="/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
+</li>
+<li><h3 id="Document对象应用"><a href="#Document对象应用" class="headerlink" title="Document对象应用"></a>Document对象应用</h3><ol>
+<li><p>判断页面是否是链接进入</p>
+</li>
+<li><p>自动跳转到登录页面</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> preUrl=<span class="built_in">document</span>.referrer;  <span class="comment">//载入本页面文档的地址</span></span><br><span class="line"><span class="keyword">if</span>(preUrl==<span class="string">&quot;&quot;</span>)&#123;	</span><br><span class="line">      <span class="built_in">document</span>.write(<span class="string">&quot;&lt;h2&gt;您不是从领奖页面进入，5秒后将自动 </span></span><br><span class="line"><span class="string">                         跳转到登录页面&lt;/h2&gt;&quot;</span>);</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="string">&quot;javascript:location.href=&#x27;login.html&#x27;&quot;</span>,<span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="Document对象的常用方法"><a href="#Document对象的常用方法" class="headerlink" title="Document对象的常用方法"></a>Document对象的常用方法</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getElementById()</td>
+<td>返回对拥有指定id的第一个对象的引用</td>
+<td><strong>对象的id唯一</strong></td>
+</tr>
+<tr>
+<td>getElementsByName()</td>
+<td>返回带有指定名称的对象的集合</td>
+<td>相同name属性</td>
+</tr>
+<tr>
+<td>getElementsByTagName()</td>
+<td>返回带有指定标签名的对象的集合</td>
+<td><strong>相同的元素</strong></td>
+</tr>
+<tr>
+<td>write()</td>
+<td>向文档写文本、HTML表达式或JavaScript代码</td>
+<td></td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>动态改变层、标签中的内容</p>
+</li>
+<li><p>访问相同name的元素</p>
+</li>
+<li><p>访问相同标签的元素</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&quot;book&quot;</span>).innerHTML=<span class="string">&quot;现象级全球畅销书&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aInput=<span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;input&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> sStr=<span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;aInput.length;i++)&#123;</span><br><span class="line">       sStr+=aInput[i].value+<span class="string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">&quot;replace&quot;</span>).innerHTML=sStr;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ppt28页"><a href="#ppt28页" class="headerlink" title="ppt28页"></a>ppt28页</h1></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>使用jQuery快速高效制作网页交互特效</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Windows系统使用技巧</title>
+    <url>/lin428/hexo/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>虽然用了好久的电脑，但是对很多系统的常用技巧都不熟悉，也不曾总结，这一次借看书的机会总结一下。 </p>
+<span id="more"></span>
+
+<h1 id="开启超级管理员账户Administrotor"><a href="#开启超级管理员账户Administrotor" class="headerlink" title="开启超级管理员账户Administrotor"></a><strong>开启超级管理员账户Administrotor</strong></h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user administrator /active:yes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user administrator /active:no </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>教程类</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/lin428/hexo/2021/07/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo语法合集</title>
+    <url>/lin428/hexo/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="写在前头："><a href="#写在前头：" class="headerlink" title="写在前头："></a>写在前头：</h2><p><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html"><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">使用hexo+github搭建免费个人博客详细教程</a></a></p>
+<span id="more"></span>
+
+<h2 id="新建分类"><a href="#新建分类" class="headerlink" title="新建分类"></a>新建分类</h2><p>修改主题的配置文件themes/next/_config.yml，生效分类和标签：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">home</span>: <span class="string">/ || home</span></span><br><span class="line"><span class="comment">  #about: /about/ || user</span></span><br><span class="line">  <span class="attr">tags</span>: <span class="string">/tags/ || tags</span></span><br><span class="line">  <span class="attr">categories</span>: <span class="string">/categories/ || th</span></span><br><span class="line">  <span class="attr">archives</span>: <span class="string">/archives/ || archive</span></span><br><span class="line"><span class="comment">  #schedule: /schedule/ || calendar</span></span><br><span class="line"><span class="comment">  # sitemap: /sitemap.xml || sitemap</span></span><br><span class="line"><span class="comment">  #commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
+
+<p>新创建的hexo博客没有分类和标签，点击分类或标签会提示”Cannot GET /categories/“和”Cannot GET /tags/”。</p>
+<ol>
+<li><p>分类：</p>
+<p>进入hexo博客所在的根目录，输入如下命令：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> page categories</span><br></pre></td></tr></table></figure>
+
+<p>成功后提示：</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">INFO  Created: HEXO_ROOT\source\categories\index.md</span><br></pre></td></tr></table></figure>
+
+<p>index.md的内容如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: <span class="number">2019</span><span class="number">-07</span><span class="number">-14</span> <span class="number">17</span>:<span class="number">51</span>:<span class="number">10</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这个index.md可以认为是存放分类的一个文档，只是type不同。修改为如下内容：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: <span class="number">2019</span><span class="number">-07</span><span class="number">-14</span> <span class="number">17</span>:<span class="number">51</span>:<span class="number">10</span></span><br><span class="line">type: <span class="string">&quot;categories&quot;</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>找到source/_posts路径下的markdown文章，并修改其categories属性。以hexo自带的hexo-world.md为例，文件头修改为：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: <span class="number">2019</span><span class="number">-06</span><span class="number">-28</span> <span class="number">22</span>:<span class="number">36</span>:<span class="number">00</span></span><br><span class="line">categories: hexo</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>此时，点击菜单栏中的“分类”，即可看到新建的“hexo”分类。</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>标签创建与分类类似，在控制台中输入如下命令：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> page tags</span><br><span class="line">INFO  Created: HEXO_ROOT\source\tags\index.md</span><br></pre></td></tr></table></figure>
+
+<p>tags/index.md内容与分类类似，修改为如下内容：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: <span class="number">2019</span><span class="number">-07</span><span class="number">-14</span> <span class="number">18</span>:<span class="number">19</span>:<span class="number">31</span></span><br><span class="line">type: <span class="string">&quot;tags&quot;</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>同样在hello-world.md增加标签内容：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: <span class="number">2019</span><span class="number">-06</span><span class="number">-28</span> <span class="number">22</span>:<span class="number">36</span>:<span class="number">00</span></span><br><span class="line">categories: hexo</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - others</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hexo-NexT主题添加点击爱心效果"><a href="#Hexo-NexT主题添加点击爱心效果" class="headerlink" title="Hexo NexT主题添加点击爱心效果"></a>Hexo NexT主题添加点击爱心效果</h2><ol>
+<li><p>创建js文件</p>
+<p>在<code>/themes/next/source/js/src</code>下新建文件<code>clicklove.js</code>，接着把该代码拷贝粘贴到<code>clicklove.js</code>文件中。<br>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">e,t,a</span>)</span>&#123;<span class="function"><span class="keyword">function</span> <span class="title">n</span>(<span class="params"></span>)</span>&#123;c(<span class="string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),o(),r()&#125;<span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params"></span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> e=<span class="number">0</span>;e&lt;d.length;e++)d[e].alpha&lt;=<span class="number">0</span>?(t.body.removeChild(d[e].el),d.splice(e,<span class="number">1</span>)):(d[e].y--,d[e].scale+=<span class="number">.004</span>,d[e].alpha-=<span class="number">.013</span>,d[e].el.style.cssText=<span class="string">&quot;left:&quot;</span>+d[e].x+<span class="string">&quot;px;top:&quot;</span>+d[e].y+<span class="string">&quot;px;opacity:&quot;</span>+d[e].alpha+<span class="string">&quot;;transform:scale(&quot;</span>+d[e].scale+<span class="string">&quot;,&quot;</span>+d[e].scale+<span class="string">&quot;) rotate(45deg);background:&quot;</span>+d[e].color+<span class="string">&quot;;z-index:99999&quot;</span>);requestAnimationFrame(r)&#125;<span class="function"><span class="keyword">function</span> <span class="title">o</span>(<span class="params"></span>)</span>&#123;<span class="keyword">var</span> t=<span class="string">&quot;function&quot;</span>==<span class="keyword">typeof</span> e.onclick&amp;&amp;e.onclick;e.onclick=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;t&amp;&amp;t(),i(e)&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">i</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> a=t.createElement(<span class="string">&quot;div&quot;</span>);a.className=<span class="string">&quot;heart&quot;</span>,d.push(&#123;<span class="attr">el</span>:a,<span class="attr">x</span>:e.clientX-<span class="number">5</span>,<span class="attr">y</span>:e.clientY-<span class="number">5</span>,<span class="attr">scale</span>:<span class="number">1</span>,<span class="attr">alpha</span>:<span class="number">1</span>,<span class="attr">color</span>:s()&#125;),t.body.appendChild(a)&#125;<span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> a=t.createElement(<span class="string">&quot;style&quot;</span>);a.type=<span class="string">&quot;text/css&quot;</span>;<span class="keyword">try</span>&#123;a.appendChild(t.createTextNode(e))&#125;<span class="keyword">catch</span>(t)&#123;a.styleSheet.cssText=e&#125;t.getElementsByTagName(<span class="string">&quot;head&quot;</span>)[<span class="number">0</span>].appendChild(a)&#125;<span class="function"><span class="keyword">function</span> <span class="title">s</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span><span class="string">&quot;rgb(&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;,&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;,&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;)&quot;</span>&#125;<span class="keyword">var</span> d=[];e.requestAnimationFrame=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">setTimeout</span>(e,<span class="number">1e3</span>/<span class="number">60</span>)&#125;&#125;(),n()&#125;(<span class="built_in">window</span>,<span class="built_in">document</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>修改_layout.swig</p>
+</li>
+</ol>
+<p>在<code>\themes\next\layout\_layout.swig</code>文件末尾添加：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 页面点击小红心 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/src/clicklove.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="hexo常用命令"><a href="#hexo常用命令" class="headerlink" title="hexo常用命令"></a>hexo常用命令</h2><ol>
+<li><p>新建</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;my blog&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>新建的文件在 hexo/source/_posts/my-blog.md</p>
+</li>
+<li><p>生成静态页面</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>一般部署上去的时候都需要编译一下，编译后，会出现一个 public 文件夹，将所有的md文件编译成html文件</p>
+</li>
+<li><p>开启本地服务</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></li>
+<li><p>部署</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>部署到git上的时候，需要用这个命令，下一篇中，我们会使用到这个命令</p>
+</li>
+<li><p>清除 public</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>当 source 文件夹中的部分资源更改过之后，特别是对文件进行了删除或者路径的改变之后，需要执行这个命令，然后重新编译。</p>
+</li>
+</ol>
+<h2 id="添加阅读全文按钮"><a href="#添加阅读全文按钮" class="headerlink" title="添加阅读全文按钮"></a>添加阅读全文按钮</h2><!--more-->
+
+]]></content>
+      <categories>
+        <category>教程类</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第一章 对象和封装</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="一、为什么使用面向对象"><a href="#一、为什么使用面向对象" class="headerlink" title="一、为什么使用面向对象"></a>一、为什么使用面向对象</h1><h2 id="1、软件出现的目的"><a href="#1、软件出现的目的" class="headerlink" title="1、软件出现的目的"></a>1、软件出现的目的</h2><p>用计算机的语言描述现实世界</p>
+<p>用计算机解决现实世界的问题</p>
+<h2 id="2、面向对象设计和开发程序的好处"><a href="#2、面向对象设计和开发程序的好处" class="headerlink" title="2、面向对象设计和开发程序的好处"></a>2、面向对象设计和开发程序的好处</h2><p>交流更加流畅</p>
+<p>提高设计和开发效率</p>
+<span id="more"></span>
+
+<h2 id="3、然后从现实中抽出类分三步"><a href="#3、然后从现实中抽出类分三步" class="headerlink" title="3、然后从现实中抽出类分三步"></a>3、然后从现实中抽出类分三步</h2><h3 id="1-找出它的种类"><a href="#1-找出它的种类" class="headerlink" title="1.找出它的种类"></a>1.找出它的种类</h3><p>面向对象的思想描述世界</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-找出它的属性"><a href="#2-找出它的属性" class="headerlink" title="2.找出它的属性"></a>2.找出它的属性</h3><h3 id="3-找出它的行为"><a href="#3-找出它的行为" class="headerlink" title="3.找出它的行为"></a>3.找出它的行为</h3><h1 id="二、构造方法"><a href="#二、构造方法" class="headerlink" title="二、构造方法"></a>二、构造方法</h1><p>在完成构造方法同时完成了属性的赋值   <strong>什么时候用：new的时候用</strong></p>
+<h2 id="1、构造方法语法"><a href="#1、构造方法语法" class="headerlink" title="1、构造方法语法"></a>1、构造方法语法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符   构造方法名 ( ) &#123; </span><br><span class="line">       <span class="comment">//初始化代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造方法：无返回值类型       </p>
+<p>构造方法名：  与类名相同</p>
+<p>括号里可以指定参数</p>
+<h2 id="2、注意"><a href="#2、注意" class="headerlink" title="2、注意"></a>2、注意</h2><p>系统会默认提供无参构造方法</p>
+<p>如果写构造方法，系统就不自动提供无参构造方法</p>
+<h2 id="3、构造方法的重载"><a href="#3、构造方法的重载" class="headerlink" title="3、构造方法的重载"></a>3、构造方法的重载</h2><p>this 关键字是对应该对象的默认引用，这里用以区分同名成员变量</p>
+<p>如何用调用构造方法的重载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">pgn = <span class="keyword">new</span> Penguin();</span><br><span class="line">pgn.print();</span><br><span class="line">pgn = <span class="keyword">new</span> Penguin(<span class="string">&quot;美美&quot;</span>, <span class="number">80</span>, <span class="number">20</span>, <span class="string">&quot;Q仔&quot;</span>);</span><br><span class="line">pgn.print();</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、static关键字"><a href="#4、static关键字" class="headerlink" title="4、static关键字"></a>4、static关键字</h2><h3 id="1、为什么要用static关键字"><a href="#1、为什么要用static关键字" class="headerlink" title="1、为什么要用static关键字"></a>1、为什么要用static关键字</h3><p>直接用类名.变量名 类似：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">类名.变量名</span><br></pre></td></tr></table></figure>
+
+<p>2、final修饰词<br>用fianl修饰的变量称为常量，其值固定不变</p>
+<p>被final修饰的变量通常称为常量</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>static、非private修饰</strong></th>
+<th><strong>非static、prvate修饰</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>属性</strong></td>
+<td>类属性、类变量</td>
+<td>实例属性、实例变量</td>
+</tr>
+<tr>
+<td><strong>方法</strong></td>
+<td>类方法</td>
+<td>实例方法</td>
+</tr>
+<tr>
+<td><strong>调用方法</strong></td>
+<td>类名.属性</td>
+<td>对象.属性,对象.方法（）</td>
+</tr>
+<tr>
+<td><strong>调用方法</strong></td>
+<td>类名.方法（）</td>
+<td>对象.属性,对象.方法（）</td>
+</tr>
+<tr>
+<td><strong>调用方法</strong></td>
+<td>对象，属性</td>
+<td>对象.属性,对象.方法（）</td>
+</tr>
+<tr>
+<td><strong>调用方法</strong></td>
+<td>对象.方法（）</td>
+<td>对象.属性,对象.方法（）</td>
+</tr>
+<tr>
+<td><strong>归属</strong></td>
+<td>类</td>
+<td>单个对象</td>
+</tr>
+</tbody></table>
+<p>注意：</p>
+<p>切记不可定义为static变量</p>
+<h1 id="三、什么是封装"><a href="#三、什么是封装" class="headerlink" title="三、什么是封装"></a>三、什么是封装</h1><h2 id="1、面想对象三大特征之一——封装"><a href="#1、面想对象三大特征之一——封装" class="headerlink" title="1、面想对象三大特征之一——封装"></a>1、面想对象三大特征之一——封装</h2><h3 id="（1）封装的概念"><a href="#（1）封装的概念" class="headerlink" title="（1）封装的概念"></a>（1）封装的概念</h3><p>封装：将类的某些信息隐藏的类的内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对隐藏信息的操作和访问</p>
+<h3 id="（2）封装的好处"><a href="#（2）封装的好处" class="headerlink" title="（2）封装的好处"></a>（2）封装的好处</h3><p>1.隐藏类的实现细节</p>
+<p>2.方便加入控制语句</p>
+<p>3.方便修改实现</p>
+<p>4.只能通过规定的方法访问数据</p>
+<h3 id="（3）封装的步骤"><a href="#（3）封装的步骤" class="headerlink" title="（3）封装的步骤"></a>（3）封装的步骤</h3><p>1.修改属性的可见性——设置为private</p>
+<p>2.创建共有的getter/setter方法——用于属性的读写</p>
+<p>3.在getter/setter方法说中加入属性控制的语句——对属性值的合法性进行判断</p>
+<h2 id="2、this关键词的用法"><a href="#2、this关键词的用法" class="headerlink" title="2、this关键词的用法"></a>2、this关键词的用法</h2><h3 id="（1）调用属性"><a href="#（1）调用属性" class="headerlink" title="（1）调用属性"></a>（1）调用属性</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.health=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">this</span>.name=<span class="string">&quot;大黄&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）调用方法"><a href="#（2）调用方法" class="headerlink" title="（2）调用方法"></a>（2）调用方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.print();</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）调用构造方法"><a href="#（3）调用构造方法" class="headerlink" title="（3）调用构造方法"></a>（3）调用构造方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>();</span><br><span class="line"><span class="keyword">this</span>(<span class="string">&quot;小黑&quot;</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="string">&quot;雄&quot;</span>);<span class="comment">//如果使用，必须是构造方法 中的第一条语句</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p> ![第一章 对象和封装](第一章 对象和封装\第一章对象和封装.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第七章 多线程</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="一、进程"><a href="#一、进程" class="headerlink" title="一、进程"></a>一、进程</h2><h3 id="1-什么是进程："><a href="#1-什么是进程：" class="headerlink" title="1.什么是进程："></a>1.什么是进程：</h3><p>​    继承是程序的一次动态执行过程，他对应了从代码加载、执行至完成的一个完整过程，这个过程也是程序本身从产生、发展至消亡的过程。</p>
+<p>​    操作系统同时管理一个计算机系统中的多个进程，让计算机系统中的多个进程轮流使用CPU资源，或者共享操作系统的其他资源。</p>
+<span id="more"></span>
+
+<h3 id="2-进程的特点："><a href="#2-进程的特点：" class="headerlink" title="2.进程的特点："></a>2.进程的特点：</h3><ul>
+<li><p> 继承是系统运行程序的基本单位。</p>
+</li>
+<li><p>每一个进程都有自己独立的一块内存空间，一组系统资源。</p>
+</li>
+<li><p>每一个进程的内部数据和状态都是完全独立的。</p>
+</li>
+</ul>
+<h2 id="二、线程"><a href="#二、线程" class="headerlink" title="二、线程"></a>二、线程</h2><h3 id="1-什么是线程："><a href="#1-什么是线程：" class="headerlink" title="1.什么是线程："></a>1.什么是线程：</h3><p>​    线程是进程中执行运算的最小单位，可完成一个独立的顺序控制流程。每个进程中，必须至少建立一个线程（这个线程成为主线程）来作为这个程序的入口点。</p>
+<p>​    如果在一个进程中同时运行多个线程来完成不同的工作，称之为“多线程”。    是多个线程共享相同的地址空间并且共同分享同一个进程    ，这些进程可以在操作系统的管理下并发执行。</p>
+<h2 id="三、多线程"><a href="#三、多线程" class="headerlink" title="三、多线程"></a>三、多线程</h2><h3 id="1-什么是多线程"><a href="#1-什么是多线程" class="headerlink" title="1.什么是多线程"></a>1.什么是多线程</h3><ul>
+<li>充分利用CPU资源：执行单线程程序时，若程序发生阻塞，CPU可能会处于空闲状态，这将会造成计算机资源浪费，而使用多线程可以在某个线程处理休眠或阻塞状态时运行其他线程，这样大大提高了资源利用率。</li>
+<li>简化编程模型：一个即长又复杂的进程可以分为多个线程，成为几个独立的运行部分，如果写成单线程程序可能需要多重循环判断，而如果使用多线程控制，每个线程仅需要实现简单的流程，简化了程序逻辑。</li>
+<li>带来良好的用户体验：由于多个线程可以交替执行，减少避免了因程序阻塞或意外情况造成的响应过慢现象。</li>
+</ul>
+<h3 id="2-如何实现多线程"><a href="#2-如何实现多线程" class="headerlink" title="2.如何实现多线程"></a>2.如何实现多线程</h3><p> 用 <strong>Thread</strong> 类      <strong>Thread</strong> 类支持多线程</p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Thread（）</strong></td>
+<td>分配新的 <strong>Thread（）</strong> 对象</td>
+</tr>
+<tr>
+<td><strong>Thread（Runnable targe）</strong></td>
+<td>分配新的 <strong>Thread（）</strong> 对象， <strong>target</strong> 为 <strong>run（）</strong> 方法被调用的对象</td>
+</tr>
+<tr>
+<td><strong>Thread（Runnable targe，String name）</strong></td>
+<td>分配新的 <strong>Thread（）</strong> 对象， <strong>target</strong> 为 <strong>run（）</strong> 方法被调用的对象，<strong>name</strong> 作为新线程的名称</td>
+</tr>
+<tr>
+<td><strong>void run（）</strong></td>
+<td>执行任务操作的方法</td>
+</tr>
+<tr>
+<td><strong>void start（）</strong></td>
+<td>使线程开始执行，Java虚拟机代用该线程的 <strong>run（）</strong> 方法</td>
+</tr>
+<tr>
+<td><strong>void sleep(long millis)</strong></td>
+<td>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行）</td>
+</tr>
+<tr>
+<td><strong>String getName（）</strong></td>
+<td>返回线程的名称</td>
+</tr>
+<tr>
+<td><strong>int getPriorty（）</strong></td>
+<td>返回线程的优先级</td>
+</tr>
+<tr>
+<td><strong>void setPriority（int newPriority）</strong></td>
+<td>更改线程的优先级</td>
+</tr>
+<tr>
+<td><strong>static Thread currentThread（）</strong></td>
+<td>返回当前正在执行的线程对象的引用</td>
+</tr>
+<tr>
+<td><strong>boolean isAlive（）</strong></td>
+<td>测速线程是否属于活动状态</td>
+</tr>
+<tr>
+<td><strong>void join（）</strong></td>
+<td>等待该线程终止</td>
+</tr>
+<tr>
+<td><strong>void interrupt</strong></td>
+<td>中断线程</td>
+</tr>
+<tr>
+<td><strong>void yield（）</strong></td>
+<td>暂停当前正在执行的线程对象，并执行其他线程</td>
+</tr>
+</tbody></table>
+<h3 id="3-主线程"><a href="#3-主线程" class="headerlink" title="3.主线程"></a>3.主线程</h3><p>​    每个进程至少有一个主线程。他是从程序开始的时候开始执行的。</p>
+<ol>
+<li><h4 id="主线程的重要性主要体现在以下两个方面"><a href="#主线程的重要性主要体现在以下两个方面" class="headerlink" title="主线程的重要性主要体现在以下两个方面"></a>主线程的重要性主要体现在以下两个方面</h4></li>
+</ol>
+<ul>
+<li>他是产生其他子线程的线程</li>
+<li>通常它必须最后完成执行，因为它执行各种关闭动作</li>
+</ul>
+<ol start="2">
+<li><h4 id="如何使用线程"><a href="#如何使用线程" class="headerlink" title="如何使用线程"></a>如何使用线程</h4><ol>
+<li><h5 id="定义一个线程，同时指明这个线程所要执行的代码，即期望完成的功能"><a href="#定义一个线程，同时指明这个线程所要执行的代码，即期望完成的功能" class="headerlink" title="定义一个线程，同时指明这个线程所要执行的代码，即期望完成的功能"></a>定义一个线程，同时指明这个线程所要执行的代码，即期望完成的功能</h5></li>
+<li><h5 id="创建线程对象"><a href="#创建线程对象" class="headerlink" title="创建线程对象"></a>创建线程对象</h5><p>创建线程类两种方法，一种是继承 <strong>Thread</strong> 类，另一种是实现 <strong>Runnable</strong> 接口。</p>
+<ol>
+<li> 继承 <strong>Thread</strong> 类创建线程</li>
+<li>需要重写 <strong>Thread</strong> 类并重写 <strong>Thread</strong> 类的 <strong>run（）</strong> 方法。因为 <strong>Thread</strong> 类的 <strong>run（）</strong> 方法是线程要执行操作任务，所以线程要执行的操作代码都要写在 <strong>run（）</strong> 方法中，并通过调用 <strong>start（）</strong> 方法启动线程后调用。</li>
+<li>实现 <strong>Runnable</strong> 接口创建线程<ol>
+<li>  <strong>Runnable</strong> 接口定义在 <strong>java.lang</strong> 包中，其中声明了一个抽象方法 <strong>run（）</strong> ，即 <strong>public void run（）</strong> ，一个类可以同实现 <strong>Runnable</strong> 接口并实现其 <strong>run（）</strong> 方法完成线程的活动，已实现的 <strong>run（）</strong> 方法成为该线程的线程体。任何实现 <strong>Runnable</strong> 接口的对象都可以作为一个线程的目标对象。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h5></li>
+<li><h5 id="终止线程"><a href="#终止线程" class="headerlink" title="终止线程"></a>终止线程</h5></li>
+</ol>
+</li>
+<li><h4 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h4><p>如何线程都具有五种状态，即创建，就绪，运行，阻塞，死亡状态。</p>
+<p>![线程的状态](第七章 多线程\第七章多线程1.png)</p>
+<ol>
+<li><p>创建状态</p>
+<pre><code>     - 在程序中用构造方法创建了一个线程对象后，新的线程对象就处于创建状态，此时，他已经获取了相应的资源，但还没有处于可运行的状态，这时可以通过 **Thread** 类的方法来设置线程对象的属性。如线程名，设置线程的优先级等。
+</code></pre>
+</li>
+<li><p>就绪状态</p>
+<ul>
+<li>线程创建玩之后，就可以通过调用 <strong>start（）</strong> 方法启动线程，即进入就绪状态，此时，线程将进入线程队列排队，等待CPU资源，这表明他已经具备了运行条件，在未获得CPU资源时，仍然不能真正执行。</li>
+</ul>
+</li>
+<li><p>运行状态</p>
+<ul>
+<li>当就绪状态的线程获得CPU资源时，即可转入运行状态，执行 <strong>run（）</strong> 方法。对只有一个CPU的计算机而言，任何时空只能有一个处于运行状态的线程占用CPU，即获得CPU资源。</li>
+</ul>
+</li>
+<li><p>阻塞状态</p>
+<ul>
+<li><p>一个正在运行的线程因某种原因不能继续运行时，进入阻塞庄园。阻塞状态时一种“不可运行”的状态，而处于这种状态的线程在得到一个特定的事件后转回可运行状态。</p>
+</li>
+<li><p>可能使线程暂停执行的条件如下：</p>
+<ul>
+<li>由于线程的优先级比较低，因此他不能获得CPU资源。</li>
+<li>使用 <strong>slept（）</strong> 方法使线程休眠</li>
+<li>通过调用 <strong>wait（）</strong> 方法，使线程等待</li>
+<li>通过调用 <strong>yield（）</strong> 线程显式让出CPU控制权。</li>
+<li>线程由于等待一个文件，I/O事件被阻塞</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>死亡状态<ul>
+<li>一个线程的 <strong>run（）</strong> 方法运行完毕，线程则进入死亡状态，处于死亡状态的线程不具有继续运行的能力。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="4-线程的优先级"><a href="#4-线程的优先级" class="headerlink" title="4.线程的优先级"></a>4.线程的优先级</h4><p>​    懂同一时刻有一个或得个线程处于可运行状态时，他们需要排队等待CPU资源，每个线程会自动获得一个线程的优先级，优先级的高低反映线程的重要或紧急程度。</p>
+<p>​    线程的优先级用1~10表示，1表示优先级最低，10表示优先级最高，默认值是5。</p>
+<h4 id="5-线程的休眠"><a href="#5-线程的休眠" class="headerlink" title="5. 线程的休眠"></a>5. 线程的休眠</h4><p>​    在程序程序组允许一个线程进行短暂休眠，直接调用 <strong>Thread.sleep()</strong> 方法即可实现线程的休眠</p>
+<p>​    <strong>sleep（）</strong> 方法会让当前线程休眠（停止执行）mills毫秒，线程由运行中的状态进入不可运行状态，睡眠时间过后会再次进入就绪状态，需要判断他是否死亡 需要处理 <strong>InterruptedException</strong> 异常。</p>
+<h4 id="6-线程的强制运行"><a href="#6-线程的强制运行" class="headerlink" title="6. 线程的强制运行"></a>6. 线程的强制运行</h4><p>​    <strong>join()</strong> 方法使当前的线程暂停执行，等待调用该方法的线程结束后再继续执行本线程。它有三个重载方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">join</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> mills)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">long</span> mills,<span class="keyword">int</span> nanos)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>需要判断他是否死亡 需要处理 <strong>InterruptedException</strong> 异常。</p>
+<h4 id="7-线程的礼让"><a href="#7-线程的礼让" class="headerlink" title="7.线程的礼让"></a>7.线程的礼让</h4><p>​    <strong>yield（）</strong> 方法可以暂停当前的线程执行，允许其他线程具有相同优先级的线程获得运行机会，该线程仍处于就绪状态，不转为阻塞状态，此时相同现在其他相同或更高优先级的线程执行，如无其他相同或更高优先级的线程，则该线程继续执行。</p>
+<h4 id="8-线程的同步"><a href="#8-线程的同步" class="headerlink" title="8.线程的同步"></a>8.线程的同步</h4><p>​    有一些同时运行的线程需要共享数据，此时就需要考虑其他线程的状态和行为，否则不能保证程序运行结果的准确性。</p>
+<p>​    如何实现：</p>
+<p>​    一个线程类如果是通过实现 <strong>Runnable</strong> 接口实现的，那么类中的属性有可能被多个该类的线程对象共享，就有可能引发线程不同步的问题。</p>
+<p>采用线程同步有两种方式 </p>
+<ol>
+<li><p>同步方法<br> 使用 <strong>synchronized</strong> 修饰的方法控制对类成员的访问。每个类实例对应一把锁，方法一旦执行，就独占该锁。直到从该方法返回时才将锁释放，从此以后被阻塞的线程方能获得该锁，重新进入可执行状态。</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通过哎方法声明中加入synchronized关键字来声明同步方法</span></span><br><span class="line">	访问修饰符 <span class="keyword">synchronized</span> 返回值类型 方法名 （参数列表）&#123;<span class="comment">//省略方法体。。。。。。&#125;</span></span><br><span class="line">或者</span><br><span class="line">    <span class="keyword">synchronized</span> 访问修饰符 返回值类型 方法名 （参数列表）&#123;<span class="comment">//省略方法体。。。。。。&#125;</span></span><br></pre></td></tr></table></figure>
+<p> 在语法中：</p>
+<p> ​    <strong>synchronized</strong> 是同步关键词。</p>
+<p> ​    访问修饰符是指 <strong>public</strong> ， <strong>private</strong> 等。</p>
+</li>
+<li><p>同步代码块</p>
+<p> 代码块即使用{}括起来的一段代码，使用 <strong>synchronized</strong> 关键字修饰的代码块，成为同步代码块。</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> （syncObject）&#123;</span><br><span class="line">	<span class="comment">//需要同步的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  <strong>synchronized</strong> 块中的代码必须获得对象 <strong>syncObject</strong> 的锁才能执行，具体机制和代码同步一致。可以制定上锁的对象。</p>
+</li>
+<li><p>常见类型对比</p>
+<ol>
+<li><p><strong>Hashtable &amp;&amp; HashMap</strong></p>
+<ul>
+<li><p><strong>Hashtable</strong></p>
+<p>​    1. 继承 关系</p>
+<p>​        实现了<strong>Map</strong>接口，<strong>Hashtable</strong>继承<strong>Dictionary</strong>类</p>
+<p>​    2. 线程安全，效率较低</p>
+<p>​    3. 键和值都不允许为<strong>null</strong></p>
+</li>
+<li><p><strong>HashMap</strong></p>
+<ol>
+<li>继承关系</li>
+</ol>
+<p>​        实现了<strong>Map</strong>接口，继承<strong>AbstractMap</strong>类</p>
+<ol start="2">
+<li><p>非线程安全，效率较高</p>
+</li>
+<li><p>键和值都允许为<strong>null</strong></p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>StringBuffer</strong> <strong>&amp;&amp;</strong> <strong>StringBuilder</strong></p>
+<p> 前者线程安全，后者非线程安全</p>
+</li>
+</ol>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2></li>
+</ol>
+<p>![第七章多线程2](第七章 多线程\第七章多线程2.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第三章 多态</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[<h2 id="1-什么是多态"><a href="#1-什么是多态" class="headerlink" title="1.什么是多态"></a>1.什么是多态</h2><p>​    多态是具有表现多种形态的能力的特征</p>
+<p>​    同一种操作，由于条件不同，产生的结果也不同</p>
+<p>​    多态：同一个引用类型，使用不同的实例而执行不同操作 </p>
+<p>​    多态就是子类转换成父类    父类类型new子类对象</p>
+<span id="more"></span>
+
+<h2 id="2-如何实现多态"><a href="#2-如何实现多态" class="headerlink" title="2.如何实现多态"></a>2.如何实现多态</h2><h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>​    编写具有继承关系的父类和子类<br>​    子类方法重写父类方法</p>
+<h3 id="两种形式"><a href="#两种形式" class="headerlink" title="两种形式"></a>两种形式</h3><h4 id="使用父类作为方法形参实现多态"><a href="#使用父类作为方法形参实现多态" class="headerlink" title="使用父类作为方法形参实现多态"></a>使用父类作为方法形参实现多态</h4><ul>
+<li><p>将一个父类的引用指向一个子类对象，称为向上转型（upcasting），自动进行类型转换</p>
+</li>
+<li><p>此时通过父类引用变量调用的是子类覆盖或继承父类的方法，不是父类的方法</p>
+</li>
+<li><p>此时通过父类引用变量无法调用子类特有的方法</p>
+</li>
+</ul>
+<h4 id="使用父类作为方法返回值实现多态"><a href="#使用父类作为方法返回值实现多态" class="headerlink" title="使用父类作为方法返回值实现多态"></a>使用父类作为方法返回值实现多态</h4><h3 id="父类到子类的转换"><a href="#父类到子类的转换" class="headerlink" title="父类到子类的转换"></a>父类到子类的转换</h3><p><strong>定义</strong><br>该运算符用于判断一个对象是否属于属于一个类或者实现了一个接口，结果为true或false。在强制类型转换之前通过<strong>instanceof</strong>运算符检查对象的真实类型，在进行相应的强制类型转换，这样就可以避免类型转换异常，从而提高代码的健壮性。</p>
+<p><strong>用 instanceof 运算符</strong>： instanceof 通常和强制类型转换结合使用   判断对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">对象  <span class="keyword">instanceof</span>  类或接口	</span><br></pre></td></tr></table></figure>
+
+<p>在进行强制引用类型转换时，先通过<strong>instanceof</strong>运算符进行类型判断，再进行相应的强制类型转换，这样可以有效地避免出现类型转换异常。</p>
+<h2 id="3-实现多态的3个条件"><a href="#3-实现多态的3个条件" class="headerlink" title="3.实现多态的3个条件"></a>3.实现多态的3个条件</h2><ul>
+<li>继承的存在（继承是多态的基础，没有继承就没有多态）。</li>
+<li>子类重写父类的方法（多态下调用子类重写后的方法）。</li>
+<li>父类引用变量指向子类对象（子类到父类的类型转换）。</li>
+</ul>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>![第三章 多态](第三章 多态\第三章多态.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第二章 继承</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[<h1>一 继承的一些定义</h1>
+<h2>1.为什么使用继承</h2>
+将重复代码抽取到父类中<br>
+<h2>2.使用继承有什么优点</h2>
+1)方便修改代码<br>
+2)减少代码量<br>
+子类和父类是is-a关系<br>
+
+<span id="more"></span>
+
+<h2>二 如何使用继承</h2>
+<h3>编写父类</h3>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父类</span>&#123;</span><br><span class="line">	<span class="comment">//父类的属性和方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>编写子类，继承父类<h3>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 子类 <span class="keyword">extends</span> 父类</span>&#123;<span class="comment">//只能继承一个父类</span></span><br><span class="line">	<span class="comment">//子类特有的属性和方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>java继承关键字  extends<br>C#继承关键字 ：</p>
+<h3>1.子类访问父类成员<h3>
+
+<p>使用super关键字，super代表父类对象<br><br>在子类构造方法中调用且必须是及第一句</p>
+<ul>
+<li>访问父类构造方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">super</span>();</span><br><span class="line"><span class="keyword">super</span>(name);</span><br></pre></td></tr></table></figure></li>
+<li>访问父类属性</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">super</span>.name;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>访问父类方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">super</span>.print();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3>2.子类可以继承父类的所有资源 ?<h3>
+
+<ol>
+<li>private成员</li>
+<li>子类与父类不在同包</li>
+<li>构造方法<h3>3.访问修饰符<h3></h3></h3></li>
+</ol>
+<ul>
+<li>可以修饰属性和方法</li>
+<li>本类、同包、子类可以访问<br><b>访问修饰符总结<b></b></b></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>本类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>prvate</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>默认（triendly）</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<h3>4.多重继承的关系初始化顺是怎样的？<h3>
+
+<p>父类属性→ 父类构造方法→ 子类属性→ 子类构造方法</p>
+<h3>5.何时使用继承<h3>
+
+<ul>
+<li><p>符合is-a关系的设计使用继承</p>
+</li>
+<li><p>将子类共有的属性和新闻哥放到父类中<br><b>继承是代码重用的一种方式<b></b></b></p>
+<h1>三 方法重写<h1>
+<h2>1.方法重写的规则<h2></h2></h2></h1></h1></li>
+<li><p>方法名相同</p>
+</li>
+<li><p>参数列表相同</p>
+</li>
+<li><p>返回值类型相同或者是其子类</p>
+</li>
+<li><p>访问权限不能严与父类</p>
+</li>
+</ul>
+<blockquote>
+<p>同类 同名 不同参<br></p>
+</blockquote>
+<p><strong>方法重载和方法重写的异同</strong><br>||位置|方法名|参数表|返回值|访问修饰符|<br>|-|-|-|-|-|-|<br>|方法重写|子类|相同|相同|相同或是其子类|不能比父类更严格|<br>|方法重载|同类|相同|不相同|无关|无关|</p>
+<h1>四 抽象类<h1>
+<h2>语法<h2>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 抽象类</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 方法名();<span class="comment">//没有方法体</span></span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><b>abstract也可以用于方法-抽象方法<b></b></b></p>
+<ul>
+<li>抽象方法没有方法体</li>
+<li>抽象方法必须在抽象类中</li>
+<li>抽象必须在子类中被实现,除非子类是抽象类</li>
+</ul>
+<h1>五 总结<h1>
+
+<p>![继承知识汇总](第二章 继承\第二章继承.png)</p>
+</h1></h1></h2></h2></h1></h1></h3></h3></h3></h3></h3></h3></h3></h3></h3></h3>]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第五章 异常</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<h2 id="一、什么是异常"><a href="#一、什么是异常" class="headerlink" title="一、什么是异常"></a>一、什么是异常</h2><p>​    异常就是在程序的允许过程中所发生的不正常的事件。</p>
+<h2 id="二、异常处理"><a href="#二、异常处理" class="headerlink" title="二、异常处理"></a>二、异常处理</h2><p>​    Java的异常处理是通过五个关键词来实现的： **try、catch、finally、throw和throws ** </p>
+<span id="more"></span>
+
+<h3 id="1-try-catch"><a href="#1-try-catch" class="headerlink" title="1.try-catch"></a>1.try-catch</h3><ul>
+<li>如果 <strong>try</strong> 块中所有语句正常执行完毕，不会发生异常，那么 <strong>catch</strong> 快中的所有语句都将会被忽略。</li>
+<li>如果 <strong>try</strong> 语句快在执行的过程中遇到异常，并且这个异常与 <strong>catch</strong> 中声明的异常类型相匹配。那么 <strong>try</strong> 快中其余剩下的代码被忽略，而相应的 <strong>catch</strong> 快将会被执行。匹配是指catch所处理的异常类型与所生存的异常类型完全一致或是它的父类。</li>
+<li>如果 <strong>try</strong> 语句块中在执行过程中遇到异常，而抛出的异常在 <strong>catch</strong> 块里面没有被声明，那么程序立即退出。<ul>
+<li>报异常的方法有以下两种<ul>
+<li> <strong>void printStackTrace</strong> ：输出异常的信息。信息包括程序运行到当前类的执行流程，他讲输出从方法调用到异常抛出处的方法调用序列。</li>
+<li> **String getMessage ( ) ** ：返回异常信息描述字符串。该字符描述异常产生的类型，是 <strong>printStackTrace（ ）</strong> 方法输出信息的一部分。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-try-catch-finally"><a href="#2-try-catch-finally" class="headerlink" title="2.try-catch-finally"></a>2.try-catch-finally</h3><ul>
+<li>在 <strong>try-catch</strong>  语句后加入 <strong>finally</strong> 快，把该语句放入 <strong>finally</strong> 块。无论是否发生异常， <strong>finally</strong> 块中的代码总能被执行。</li>
+<li> <strong>try-catch-finally</strong> 程序块的执行的流程大致分为两种</li>
+<li>如果 <strong>try</strong> 块中所有的语句正常执行完毕，那么 <strong>finally</strong> 块就会被执行。</li>
+<li>如果 <strong>try</strong> 语句块在执行过程中碰到异常，无论这种异常能否被catch块捕获到，都将执行 <strong>finally</strong> 块中的代码</li>
+<li><strong>try-catch-finally</strong> 结构中的 <strong>try</strong> 块是必需的， <strong>catch</strong> 和 <strong>fina</strong> 块为可选，但两者至少必须出现其中之一。</li>
+<li>需要注意的是，即使在 <strong>try</strong> 块和 <strong>catch</strong> 块中存在 <strong>return</strong> 语句， <strong>finally</strong> 块中语句也会被执行。发生异常时的执行顺序：执行 <strong>try</strong> 块或 <strong>catch</strong> 中 <strong>return</strong> 之前的语句，执行 <strong>finally</strong> 块中的语句，执行 <strong>try</strong> 块或 <strong>catch</strong> 中的 <strong>return</strong> 语句退出。</li>
+<li> <strong>finally</strong> 块中语句不被执行的唯一情况：在异常处理代码中执行 <strong>System.exit(1)</strong> ，直接退出。</li>
+</ul>
+<h3 id="3-多重catch块"><a href="#3-多重catch块" class="headerlink" title="3.多重catch块"></a>3.多重catch块</h3><ul>
+<li><p>系统从上到下分别对每个catch语句块处理的异常类型进行检查，并执行第一个与异常类型匹配的catch语句。执行其中一条catch语句之后，其后的catch语句都将被忽略。</p>
+</li>
+<li><p>在使用多重 <strong>catch</strong> 块中， <strong>catch</strong> 块的排列顺序必须是从子类到父类，最后一个一般都是 <strong>Exception</strong> 父类。</p>
+<h3 id="4-声明异常——throws"><a href="#4-声明异常——throws" class="headerlink" title="4.声明异常——throws"></a>4.声明异常——throws</h3></li>
+<li><p>在java中用关键字 <strong>throws</strong> 声明摸个方法可能抛出的各种异常。 <strong>throws</strong> 可以同时声明多个异常，之间用逗号隔开。<strong>被声明异常之后调用必须处理异常</strong></p>
+</li>
+</ul>
+<p>处理异常的<strong>两种</strong>方式</p>
+<ul>
+<li>通过 <strong>try-catch</strong> 捕获</li>
+<li>通过 <strong>throws</strong> 继续声明异常。如果调用者不打算处理异常，则可以继续通过 <strong>throws</strong> 声明异常，让下一个调用者处理异常。 <strong>main()</strong> 方法声明的异常将由Java虚拟机来处理。</li>
+</ul>
+<p><strong>语法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> 方法名 <span class="keyword">throws</span> 异常，异常（）&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-抛出异常——throw"><a href="#5-抛出异常——throw" class="headerlink" title="5.抛出异常——throw"></a>5.抛出异常——throw</h3><p>手动抛出异常</p>
+<p>语法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;错误语句&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-throw和throws的区别表现在以下三个方面"><a href="#6-throw和throws的区别表现在以下三个方面" class="headerlink" title="6.throw和throws的区别表现在以下三个方面"></a>6.throw和throws的区别表现在以下三个方面</h3><p><strong>作用不同</strong> ：<strong>throw</strong> 用于在程序中抛出异常；<strong>throws</strong> 用于声明在该方法内抛出了异常。</p>
+<p><strong>使用的位置不同</strong> ：<strong>throw</strong> 位于方法体内部，都可以作为单独语句使用；<strong>throws</strong> 必须跟在方法参数列表的后面，不能单独使用。</p>
+<p><strong>内容不同</strong>： <strong>throw</strong> 抛出一个异常对象，而且只能是一个；throws后面跟异常类，而且可以跟多个异常类。</p>
+<h3 id="7-常见的异常类型"><a href="#7-常见的异常类型" class="headerlink" title="7.常见的异常类型"></a>7.常见的异常类型</h3><table>
+<thead>
+<tr>
+<th>异常</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Exception</strong></td>
+<td>异常层次结构的跟类</td>
+</tr>
+<tr>
+<td><strong>ArithmeticException</strong></td>
+<td>算术错误情形，如以零作除数</td>
+</tr>
+<tr>
+<td><strong>ArrayIndexOutOfBoundsException</strong></td>
+<td>数组下标越界</td>
+</tr>
+<tr>
+<td><strong>NullPointerException</strong></td>
+<td>尝试访问 null 对象成员</td>
+</tr>
+<tr>
+<td><strong>ClassNotFoundException</strong></td>
+<td>不能加载所需的类</td>
+</tr>
+<tr>
+<td><strong>IllegalArgumentException</strong></td>
+<td>方法接收到非法参数</td>
+</tr>
+<tr>
+<td><strong>ClassCastException</strong></td>
+<td>对象强制类型转换出错</td>
+</tr>
+<tr>
+<td><strong>NumberFormatException</strong></td>
+<td>数字格式转换异常，如把”abc”转换成数字</td>
+</tr>
+</tbody></table>
+<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/lin428/hexo/lin428/hexo/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
+<p><strong>Throwable</strong> 类：所有异常都是 <strong>Throwable</strong> 类的子类，他派生两个子类，即 <strong>Error</strong> 和 <strong>Exception</strong> 。</p>
+<p><strong>Error</strong> 类：表示仅靠程序本身无法恢复的严重错误，如内存溢出动态链接失败，虚拟机错误。应用程序不应该抛出这种类型的对象（一般是由虚拟机抛出的）。加入出现这种错误，除了尽力使程序安全退出为，在其他方面是无能为力的。使用在进行程序设计时，应该更关注 <strong>Exception</strong> 类。</p>
+<p><strong>Exception</strong> 类：由java应用程序抛出和处理的非严重错误，如所需文件找不到、网络连接不通或终端、算书运算出错（如被零除）、数字（下标越界）、数组下标越界、装在了一个不存在的类、对null对象操作、类型转换异常等。它的各种不同的子类分半对应不同类型的异常。</p>
+<p><strong>运行时异常</strong>：包括 <strong>RuntimeException</strong> 及其使用子类，不要求程序必须对题目做出处理。</p>
+<p><strong>Checked</strong> 异常：（非运行时异常）除了运行时异常外的其他由Exception继承来的继承类。程序必须捕获或者声明抛出这种异常，否则会出现编译错误，无法通过编译。处理方式包括两种：通过 <strong>try-catch</strong> 捕获；通过 <strong>throws</strong> 继续声明异常，交给上一级调用方法处理。</p>
+<h2 id="三、Log4j——开源日志记录工具"><a href="#三、Log4j——开源日志记录工具" class="headerlink" title="三、Log4j——开源日志记录工具"></a>三、Log4j——开源日志记录工具</h2><h3 id="1-记录的内容分为以下三种："><a href="#1-记录的内容分为以下三种：" class="headerlink" title="1.记录的内容分为以下三种："></a>1.记录的内容分为以下三种：</h3><ul>
+<li>SQL日志：记录系统执行的SQL语句。</li>
+<li>异常日志：记录系统运行中发生的异常事件</li>
+<li>业务日志：记录系统运行过程，如用户登录，操作记录</li>
+</ul>
+<h3 id="2-如何使用log4j记录日志"><a href="#2-如何使用log4j记录日志" class="headerlink" title="2.如何使用log4j记录日志"></a>2.如何使用log4j记录日志</h3><p>​    （1）在项目中加入log4j的 <strong>JAR</strong> 文件 直接在项目上 Ctrl+C-Ctrl+V</p>
+<p>​    （2）创建 <strong>log4j.properties</strong> 文件。</p>
+<p>​    （3）编写 <strong>log4j.properties</strong> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">### 设置Logger输出级别和输出目的地 ###</span><br><span class="line">log4j.rootLogger=debug, stdout,logfile</span><br><span class="line"></span><br><span class="line">### 把日志信息输出到控制台 ###</span><br><span class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.stdout.Target=System.err</span><br><span class="line">log4j.appender.stdout.layout=org.apache.log4j.SimpleLayout</span><br><span class="line"></span><br><span class="line">### 把日志信息输出到文件：jbit.log ###</span><br><span class="line">log4j.appender.logfile=org.apache.log4j.FileAppender</span><br><span class="line">log4j.appender.logfile.File=jbit.log</span><br><span class="line">log4j.appender.logfile.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.logfile.layout.ConversionPattern=%d&#123;yyyy-MM-dd HH:mm:ss&#125; %l %F %p %m%n</span><br></pre></td></tr></table></figure>
+
+<p>​    （4）使用 <strong>log4j</strong> 记录日志信息</p>
+<p>声明一个成员变量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Logger logger=Logger.getLogger(类名.class.getName());</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-log4j-配置文件"><a href="#3-log4j-配置文件" class="headerlink" title="3.log4j 配置文件"></a>3.log4j 配置文件</h3><p>（1）输出级别<br>$$<br>日志记录器输出级别：fatal &gt; error &gt; warn &gt; info &gt;debug<br>$$<br><strong>fatal</strong>：指出验证的错误事件将会导致应用程序的退出</p>
+<p><strong>error</strong>:指出虽然发生错误事件，但仍然不影响系统的继续运行</p>
+<p><strong>warn</strong>：表明会出现潜在错误的情形</p>
+<p><strong>info</strong>：在粗粒度级别上指明消息，强调应用程序的运行过程。</p>
+<p><strong>debug</strong>：指出细粒度信息事件，对调试应用程序是非常有帮助的。</p>
+<p>![log4j 配置文件](第五章 异常\第五章异常1.png)</p>
+<h2 id="四、总结："><a href="#四、总结：" class="headerlink" title="四、总结："></a>四、总结：</h2><p>![第五章 异常总结](第五章 异常\第五章异常2.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第八章 File I/O</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
+    <content><![CDATA[<h1 id="第八章-File-I-O"><a href="#第八章-File-I-O" class="headerlink" title="第八章 File I/O"></a>第八章 File I/O</h1><h2 id="1-File类"><a href="#1-File类" class="headerlink" title="1.File类"></a>1.File类</h2><p>操作文件和文件夹</p>
+<h2 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h2><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>boolean exists( )</strong></td>
+<td>判断文件或目录是否存在</td>
+</tr>
+<tr>
+<td><strong>boolean isFile( )</strong></td>
+<td>判断是否是文件</td>
+</tr>
+<tr>
+<td><strong>boolean isDirectory( )</strong></td>
+<td>判断是否是目录</td>
+</tr>
+<tr>
+<td><strong>String getPath( )</strong></td>
+<td>返回此对象表示的文件的相对路径名</td>
+</tr>
+<tr>
+<td><strong>String getAbsolutePath( )</strong></td>
+<td>返回此对象表示的文件的绝对路径名</td>
+</tr>
+<tr>
+<td><strong>String getName( )</strong></td>
+<td>返回此对象表示的文件或目录的名称</td>
+</tr>
+<tr>
+<td><strong>boolean delete( )</strong></td>
+<td>删除此对象指定的文件或目录</td>
+</tr>
+<tr>
+<td><strong>boolean createNewFile( )</strong></td>
+<td>创建名称的空文件，不创建文件夹</td>
+</tr>
+<tr>
+<td><strong>long length()</strong></td>
+<td>返回文件的长度，单位为字节, 如果文件不存在，则返回 0L</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h2 id="2-FileInputStream-字节流的写入-不能用于中文"><a href="#2-FileInputStream-字节流的写入-不能用于中文" class="headerlink" title="2. FileInputStream 字节流的写入    不能用于中文"></a>2. FileInputStream 字节流的写入    不能用于中文</h2><h3 id="InputStream-常用方法"><a href="#InputStream-常用方法" class="headerlink" title="InputStream 常用方法"></a>InputStream 常用方法</h3><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>int reader()</strong></td>
+<td>读取一个字节数据</td>
+</tr>
+<tr>
+<td><strong>int reader( byte [] b)</strong></td>
+<td>将数据读取到字节数组中</td>
+</tr>
+<tr>
+<td><strong>int reader( byte [] b , int off . int len)</strong></td>
+<td>从输入刘中读取最多 <strong>len</strong> 长度的字节，保存到字节数组 <strong>b</strong> 中，保存的位置从 <strong>off</strong> 开始</td>
+</tr>
+<tr>
+<td><strong>void close()</strong></td>
+<td>关闭输入流</td>
+</tr>
+<tr>
+<td><strong>int available()</strong></td>
+<td>返回输入流读取的估计字节数</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		fis = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;写入的路径&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;文件的大小&quot;</span> + fis.available());</span><br><span class="line">		<span class="keyword">int</span> date;</span><br><span class="line">		<span class="keyword">while</span> ((date = fis.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">			System.out.println((<span class="keyword">char</span>) date); <span class="comment">//循环打印</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			fis.close();<span class="comment">//关闭处理报错</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">			e2.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-FileOutputStream-字节流的读取-不能用于中文"><a href="#3-FileOutputStream-字节流的读取-不能用于中文" class="headerlink" title="3. FileOutputStream 字节流的读取    不能用于中文"></a>3. FileOutputStream 字节流的读取    不能用于中文</h2><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>void write(int c)</strong></td>
+<td>写入一个字节数据</td>
+</tr>
+<tr>
+<td><strong>void write(byte[] buf)</strong></td>
+<td>写入数组 <strong>buf</strong> 的所有字节</td>
+</tr>
+<tr>
+<td><strong>void write(byte[] buf，int off ，int len)</strong></td>
+<td>将字节数组中从 <strong>off</strong> 位置开始，长度为 <strong>len</strong> 的字节数据输出到输出流中</td>
+</tr>
+<tr>
+<td><strong>void close()</strong></td>
+<td>关闭输出流</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileOutputStream fos=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		fos=<span class="keyword">new</span> FileOutputStream(<span class="string">&quot;读取的路径&quot;</span>);</span><br><span class="line">		String s=<span class="string">&quot;需要写入的字符串&quot;</span>;</span><br><span class="line">		<span class="keyword">byte</span>[] bs=s.getBytes();<span class="comment">//转成byte</span></span><br><span class="line">		fos.write(bs); <span class="comment">//写入文件</span></span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			fos.close();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">			e2.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-FileReader-字符流的读取-可以用于中文"><a href="#4-FileReader-字符流的读取-可以用于中文" class="headerlink" title="4. FileReader 字符流的读取  可以用于中文"></a>4. FileReader 字符流的读取  可以用于中文</h2><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>int read()</strong></td>
+<td>从输入流中读取单个字符</td>
+</tr>
+<tr>
+<td><strong>int read( byte[] c )</strong></td>
+<td>从输入流中读取 <strong>c.length</strong> 长度的字符，保存到字符数组 <strong>c</strong> 中，返回实际读取的字符数</td>
+</tr>
+<tr>
+<td><strong>int read(cahr[] c , int off , int len)</strong></td>
+<td>从输入流中读取最多 <strong>len</strong> 的长度字符，保存到字符数组 <strong>c</strong> 中，保存的位置从 <strong>off</strong> 位置开始，返回时间读取的字符长度</td>
+</tr>
+<tr>
+<td><strong>void close()</strong></td>
+<td>关闭流</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileReader fr=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		fr=<span class="keyword">new</span> FileReader(<span class="string">&quot;读取路径&quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> temp;</span><br><span class="line">		<span class="keyword">while</span> ((temp=fr.read())!=-<span class="number">1</span>) &#123;</span><br><span class="line">			System.out.println((<span class="keyword">char</span>)temp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">	fr.close();		</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">			e2.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-FileWrite-字符流的写入-可以用于中文"><a href="#5-FileWrite-字符流的写入-可以用于中文" class="headerlink" title="5.FileWrite 字符流的写入  可以用于中文"></a>5.FileWrite 字符流的写入  可以用于中文</h2><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>write(String str)</strong></td>
+<td>将 <strong>str</strong> 字符串里包含的字符输出到制定的输出流</td>
+</tr>
+<tr>
+<td><strong>write(String str , int off ,int len)</strong></td>
+<td>将 <strong>str</strong> 字符串里从 <strong>off</strong> 位置开始长度为<strong>len</strong> 的字符输出到输入流中</td>
+</tr>
+<tr>
+<td><strong>void close()</strong></td>
+<td>关闭输出流</td>
+</tr>
+<tr>
+<td><strong>void flush()</strong></td>
+<td>刷新输出流</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileWriter fw=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			fw=<span class="keyword">new</span> FileWriter(<span class="string">&quot;写入的路径&quot;</span>);</span><br><span class="line">			fw.write(<span class="string">&quot;需要输出的文章&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">		fw.close();		</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">				e2.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-DataOutputStream-amp-amp-DataInputStream-数据缓存"><a href="#6-DataOutputStream-amp-amp-DataInputStream-数据缓存" class="headerlink" title="6.DataOutputStream &amp;&amp; DataInputStream 数据缓存"></a>6.DataOutputStream &amp;&amp; DataInputStream 数据缓存</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">		DataInputStream dis = <span class="keyword">null</span>;</span><br><span class="line">		FileOutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">		DataOutputStream dos = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			fis = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;读取文件&quot;</span>);</span><br><span class="line">			dis = <span class="keyword">new</span> DataInputStream(fis);</span><br><span class="line">			fos = <span class="keyword">new</span> FileOutputStream(<span class="string">&quot;写入的文件&quot;</span>);</span><br><span class="line">			dos = <span class="keyword">new</span> DataOutputStream(fos);</span><br><span class="line">			<span class="keyword">int</span> date;</span><br><span class="line">			<span class="keyword">while</span> ((date = dis.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">				dos.write(date);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				fis.close();</span><br><span class="line">				dis.close();</span><br><span class="line">				fos.close();</span><br><span class="line">				dos.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">				e2.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p>![第八章 File IO总结](第八章 File IO/第八章FileIO.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第六章 集合框架</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<h2 id="1-为什么使用集合框架"><a href="#1-为什么使用集合框架" class="headerlink" title="1.为什么使用集合框架"></a>1.为什么使用集合框架</h2><ul>
+<li>数组长度固定不变，不能很好地适应元素数量动态变化的情况。</li>
+<li>课通过数组名**.length**获取数组的长度，取无法直接获取数组中真实存储的个数。</li>
+<li>数组采用在内存中分配连续空间的存储方式，根据下标可以快速获取对应的信息，但根据信息查找时效率低下，需要多次比较。在进行频繁插入、删除操作时同样效率低下<span id="more"></span></li>
+</ul>
+<h2 id="2-Java集合框架包含的内容"><a href="#2-Java集合框架包含的内容" class="headerlink" title="2.Java集合框架包含的内容"></a>2.Java集合框架包含的内容</h2><p>集合框架是为表示和操作借还而规定的一种统一的标准结构体系。集合框架都包含三大块内容：对外的接口，接口的实现和对集合运算的算法。</p>
+<ul>
+<li>接口：表示集合的抽象类数据类型。</li>
+<li>实现：集合框架中接口的具体实现。</li>
+<li>算法：在一个实现了某个集合框架中的接口的对象身上完成某种有用的计算的方法</li>
+</ul>
+<p>Java集合框架中的两大类的接口：<strong>Collection</strong> 和 <strong>Map</strong> 。</p>
+<ul>
+<li><strong>Collection</strong> 接口可以存储一组不唯一，无序的对象<ul>
+<li> <strong>Set</strong> 接口继承 <strong>Collection</strong> 接口，存储一组唯一、无序的对象。</li>
+<li> <strong>List</strong> 接口继承 <strong>Collection</strong> 接口，存储一组不唯一、有序的对象</li>
+</ul>
+</li>
+<li> <strong>Map</strong> 接口存储一组成对的键-值对象，提供 <strong>key（键）</strong> 到 <strong>value（值）</strong> 的映射。<strong>Map</strong> 中的 <strong>key</strong> 不要求有序，不允许重复。 <strong>value</strong> 同样不要求有序，但运行重复。</li>
+<li> <strong>lterator</strong> 接口负责定义访问和遍历元素的接口。</li>
+</ul>
+<p><img src="/lin428/hexo/lin428/hexo/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/img%5Cimage-20210528165408509.png" alt="image-20210528165408509"></p>
+<h2 id="3-List接口"><a href="#3-List接口" class="headerlink" title="3.List接口"></a>3.List接口</h2><ul>
+<li>实现List接口的常用类有 <strong>ArrayList</strong> 和 <strong>LinkedList</strong> 。他们都可以容纳所有类型的对象，包括null，允许重复，并且都包子元素的存储顺序。</li>
+</ul>
+<p>（1）LinkedList采用链表存储方式，有点在与插入，删除元素是效率比较高。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void addFirst(Object o)</td>
+<td>在列表的首部添加元素</td>
+</tr>
+<tr>
+<td>void addLast(Object o)</td>
+<td>在列表的末尾添加元素</td>
+</tr>
+<tr>
+<td>Object getFirst()</td>
+<td>返回列表中的第一个元素</td>
+</tr>
+<tr>
+<td>Object getLast()</td>
+<td>返回列表中的最后一个元素</td>
+</tr>
+<tr>
+<td>Object removeFirst()</td>
+<td>删除并返回列表中的第一个元素</td>
+</tr>
+<tr>
+<td>Object removeLast()</td>
+<td>删除并返回列表中的最后一个元素</td>
+</tr>
+</tbody></table>
+<p>（2）ArrayList集合类</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>boolean</strong> <strong>add(Object o)</strong></td>
+<td>在列表的末尾顺序添加元素，起始索引位置从0开始</td>
+</tr>
+<tr>
+<td><strong>void add(int index,Object o)</strong></td>
+<td>在指定的索引位置添加元素。索引位置必须介于0和列表中元素个数之间</td>
+</tr>
+<tr>
+<td><strong>int size()</strong></td>
+<td>返回列表中的元素个数</td>
+</tr>
+<tr>
+<td><strong>Object get(int index)</strong></td>
+<td>返回指定索引位置处的元素。取出的元素是Object类型，使用前需要进行强制类型转换</td>
+</tr>
+<tr>
+<td><strong>boolean contains(Object o)</strong></td>
+<td>判断列表中是否存在指定元素</td>
+</tr>
+<tr>
+<td><strong>boolean remove(Object o)</strong></td>
+<td>从列表中删除元素</td>
+</tr>
+<tr>
+<td><strong>Object remove(int index)</strong></td>
+<td>从列表中删除指定位置元素，起始索引位置从0开始</td>
+</tr>
+</tbody></table>
+<p>List接口的 <strong>add(Object o)</strong> 方法的参数类型是 <strong>Object</strong> ，即使在调用时形参是插入时的类型，但系统认为是 <strong>Object</strong> ，所以在 <strong>get()</strong> 获取必需强转。</p>
+<h3 id="4-Map接口"><a href="#4-Map接口" class="headerlink" title="4.Map接口"></a>4.Map接口</h3><h4 id="1-Map接口常用方法"><a href="#1-Map接口常用方法" class="headerlink" title="1.Map接口常用方法"></a>1.Map接口常用方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Object put(Object key, Object val)</strong></td>
+<td>以“键-值对”的方式进行存储</td>
+</tr>
+<tr>
+<td><strong>Object get (Object key)</strong></td>
+<td>根据键返回相关联的值，如果不存在指定的键，返回null</td>
+</tr>
+<tr>
+<td><strong>Object remove (Object key)</strong></td>
+<td>删除由指定的键映射的“键-值对”</td>
+</tr>
+<tr>
+<td><strong>int size()</strong></td>
+<td>返回元素个数</td>
+</tr>
+<tr>
+<td><strong>Set keySet ()</strong></td>
+<td>返回键的集合</td>
+</tr>
+<tr>
+<td><strong>Collection values ()</strong></td>
+<td>返回值的集合</td>
+</tr>
+<tr>
+<td><strong>boolean containsKey (Object key)</strong></td>
+<td>如果存在由指定的键映射的“键-值对”，返回true</td>
+</tr>
+</tbody></table>
+<h4 id="2-迭代器Iterator"><a href="#2-迭代器Iterator" class="headerlink" title="2.迭代器Iterator"></a>2.迭代器Iterator</h4><p><strong>Collection</strong> 接口的iterator()方法返回一个 <strong>Iterator</strong> ，然后通过 <strong>Iterator</strong> 接口的两个方法即可方便的实现遍历</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>; <span class="comment">//判断是否存在另一个可访问的元素</span></span><br><span class="line"><span class="function">Object <span class="title">next</span><span class="params">()</span></span>;	   <span class="comment">//返回要访问的下一个元素</span></span><br></pre></td></tr></table></figure>
+
+<p>增强for循环</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(元素类型t  元素变量x : 数组或集合对象)&#123;</span><br><span class="line">         引用了x的java语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-泛型集合"><a href="#5-泛型集合" class="headerlink" title="5.泛型集合"></a>5.泛型集合</h4><p>如何解决以下强制类型转换时容易出现的异常问题?</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">List <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span>方法获取元素</span></span><br><span class="line"><span class="function">Map <span class="title">get</span><span class="params">(Object key)</span>方法获取元素</span></span><br><span class="line"><span class="function">Iterator <span class="title">next</span><span class="params">()</span>方法获取元素</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>![第六章 集合框架](第六章 集合框架/第六章集合框架.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>第四章 接口</title>
+    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<h2 id="一、什么是接口？"><a href="#一、什么是接口？" class="headerlink" title="一、什么是接口？"></a>一、什么是接口？</h2><p>接口同样是哟中规范和标准，题目可以约束类的行为，是一些方法特征的集合，但是没有方法的实现。</p>
+<p>接口可以看做一种特殊的“抽象类”，但是差异与抽象类万千不同的语法来表示，两者的设计观念也是不同的，抽象类利用与代码复用，接口利于代码的扩展和维护</p>
+<span id="more"></span>
+
+<h2 id="二、接口的语法"><a href="#二、接口的语法" class="headerlink" title="二、接口的语法"></a>二、接口的语法</h2><p>​    <strong>定义接口</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 父接口1，父接口2，·········</span>&#123;</span><br><span class="line">    	<span class="comment">//常量定义</span></span><br><span class="line">    	<span class="comment">//方法定义</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    类实现接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类名 <span class="keyword">implements</span> 接口1，接口2，······</span>&#123;</span><br><span class="line">    	<span class="comment">//类成员</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口定义的规则："><a href="#接口定义的规则：" class="headerlink" title="接口定义的规则："></a>接口定义的规则：</h4><ul>
+<li><p>接口的命名规则与类相同。如果修饰符是public，则该接口在整个项目中可见；如果是省略修饰符，则该接口只在当前包可见。</p>
+</li>
+<li><p>接口中可以定义常量，不能定义变量。接口中的属性都会自动用 <strong>public static final</strong> 修饰，即接口中的属性都是全局静态常量。接口中的常量必须在定义时制定初始值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PI=<span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> PI=<span class="number">3.14</span>;	<span class="comment">//在接口中，这两个定义语句效果完全相同</span></span><br><span class="line"><span class="keyword">int</span> PI;			<span class="comment">//错误！在接口中必须制定初始值，在类中会有默认值</span></span><br></pre></td></tr></table></figure></li>
+<li><p>接口中所有的方法都是抽象方法。接口中的方法都会自动用 <strong>public abstract</strong> 修饰，即接口中只有全局抽象方法。</p>
+</li>
+<li><p>和抽象类一样，接口也不能实例化，接口不中不能有构造方法。</p>
+</li>
+<li><p>接口之间可以通过 <strong>extends</strong> 实现继承关系，一个接口可以继承多个接口，但接口不能继承类。</p>
+</li>
+<li><p>接口的实际类必须实现接口的全部方法，否则必须定义为抽象类。</p>
+</li>
+</ul>
+<h2 id="三、接口表示一种能力：体现在接口的方法上"><a href="#三、接口表示一种能力：体现在接口的方法上" class="headerlink" title="三、接口表示一种能力：体现在接口的方法上"></a>三、接口表示一种能力：体现在接口的方法上</h2><p>关心实现类有何能力，而不关心实现细节<br>面向接口的约定而不考虑接口的具体实现</p>
+<h2 id="四、面向接口编程"><a href="#四、面向接口编程" class="headerlink" title="四、面向接口编程"></a>四、面向接口编程</h2><p>​    在面向对象编程中提倡面向接口编程，而不是面向实现编程。</p>
+<p>​    接口体现了约定和实现相分离的原则，通过面向接口编程，可以降低代码间的耦合性，提高代码的可扩展性，面向接口编程就意味着开发系统时，主题结构使用接口，接口构成系统的股价，这样就可以通过更换实现接口的类来实现更换系统</p>
+<p>​    面向接口编程可以实现接口和实现的分离，这样做最大的好处就是能够在客户端位置的情况下进行修改代码。</p>
+<p>​    良好的接口定义一定是来自于需求的，它绝对不是程序员绞尽脑汁想出来的</p>
+<h2 id="五、在C-中使用接口"><a href="#五、在C-中使用接口" class="headerlink" title="五、在C#中使用接口"></a>五、在C#中使用接口</h2><p>​    C#的接口语法和java相似</p>
+<p>​    <strong>定义接口</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[修饰符] interface 接口名： 父接口 1，父接口 2，······&#123;</span><br><span class="line">    属性定义</span><br><span class="line">    方法定义</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现接口</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class 类名：父类名，接口1，接口2······&#123;		&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口区别"><a href="#接口区别" class="headerlink" title="接口区别"></a>接口区别</h4><ul>
+<li>java中接口通过 <strong>extends</strong> 来继承接口，类通过 <strong>implements</strong> 来实现接口；C#中通过冒号 “ ： ” 来实现这两个功能</li>
+<li>java接口中的成员变量（属性）都是常量，自动用 <strong>public static final</strong> 修饰；C#接口中不允许存在成员变量，但可以有属性。</li>
+<li>java接口中的属性和方法都可以使用 <strong>public</strong> 修饰；C#中默认用 <strong>public</strong> ，但不允许显式使用 <strong>public</strong> 修饰</li>
+<li>java接口中可以定义静态常量和方法，C#接口中不允许包括任何静态成员</li>
+</ul>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>![第四章 接口](第四章 接口\第四章接口.png)</p>
+]]></content>
+      <categories>
+        <category>使用Java实现面向对象编程整理</category>
+      </categories>
+  </entry>
+</search>
