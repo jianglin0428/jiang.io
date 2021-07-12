@@ -8,40 +8,40 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/lin428/hexo/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/lin428/hexo/images/favicon-32x32-bbt.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/lin428/hexo/images/favicon-16x16-bbt.png">
-  <link rel="mask-icon" href="/lin428/hexo/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/lin428/hexo/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"gitee.com","root":"/lin428/hexo/","images":"/lin428/hexo/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/lin428/hexo/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/lin428/hexo/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"localhost","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta name="description" content="BOM模型 BOM：浏览器对象模型（Browser Object Model）  BOM提供了独立于内容的、可以与浏览器窗口进行互动的对象结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript操作BOM对象">
-<meta property="og:url" content="https://gitee.com/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:url" content="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="阿霖的博客">
 <meta property="og:description" content="BOM模型 BOM：浏览器对象模型（Browser Object Model）  BOM提供了独立于内容的、可以与浏览器窗口进行互动的对象结构">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png">
-<meta property="og:image" content="https://gitee.com/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png">
+<meta property="og:image" content="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png">
+<meta property="og:image" content="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png">
 <meta property="article:published_time" content="2021-07-11T01:47:10.000Z">
 <meta property="article:modified_time" content="2021-07-11T03:51:00.465Z">
 <meta property="article:author" content="姜霖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png">
+<meta name="twitter:image" content="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png">
 
 
-<link rel="canonical" href="https://gitee.com/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/">
+<link rel="canonical" href="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gitee.com/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/","path":"2021/07/11/JavaScript操作BOM对象/","title":"JavaScript操作BOM对象"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/","path":"2021/07/11/JavaScript操作BOM对象/","title":"JavaScript操作BOM对象"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>JavaScript操作BOM对象 | 阿霖的博客</title>
@@ -51,7 +51,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/lin428/hexo/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -74,13 +74,13 @@
 
   <div class="site-meta">
 
-    <a href="/lin428/hexo/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">阿霖的博客</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">雨林</p>
-      <img class="custom-logo-image" src="/lin428/hexo/images/logo.jpg" alt="阿霖的博客">
+      <img class="custom-logo-image" src="/images/logo.jpg" alt="阿霖的博客">
   </div>
 
   <div class="site-nav-right">
@@ -94,8 +94,8 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/lin428/hexo/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/lin428/hexo/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -160,20 +160,20 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="姜霖"
-      src="/lin428/hexo/images/avatar.jpg">
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">姜霖</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/lin428/hexo/archives">
+          <a href="/archives">
           <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/lin428/hexo/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
@@ -226,10 +226,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gitee.com/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/lin428/hexo/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="姜霖">
       <meta itemprop="description" content="">
     </span>
@@ -259,7 +259,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/lin428/hexo/categories/%E4%BD%BF%E7%94%A8jQuery%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%88%B6%E4%BD%9C%E7%BD%91%E9%A1%B5%E4%BA%A4%E4%BA%92%E7%89%B9%E6%95%88/" itemprop="url" rel="index"><span itemprop="name">使用jQuery快速高效制作网页交互特效</span></a>
+          <a href="/categories/%E4%BD%BF%E7%94%A8jQuery%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%88%B6%E4%BD%9C%E7%BD%91%E9%A1%B5%E4%BA%A4%E4%BA%92%E7%89%B9%E6%95%88/" itemprop="url" rel="index"><span itemprop="name">使用jQuery快速高效制作网页交互特效</span></a>
         </span>
     </span>
 
@@ -295,7 +295,7 @@
 <li><p>BOM提供了独立于内容的、可以与浏览器窗口进行互动的对象结构</p>
 <span id="more"></span></li>
 </ol>
-<p><img src="/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
+<p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
 <ol start="3">
 <li>BOM可实现功能<ol>
 <li>弹出新的浏览器窗口</li>
@@ -526,7 +526,7 @@
 <p>语法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.referrer</span><br><span class="line"><span class="built_in">document</span>.URL</span><br></pre></td></tr></table></figure>
 
-<p><img src="/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
+<p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
 </li>
 <li><h3 id="Document对象应用"><a href="#Document对象应用" class="headerlink" title="Document对象应用"></a>Document对象应用</h3><ol>
 <li><p>判断页面是否是链接进入</p>
@@ -599,7 +599,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://gitee.com/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/" title="JavaScript操作BOM对象">https://gitee.com/lin428/hexo/2021/07/11/JavaScript操作BOM对象/</a>
+      <a href="http://localhost:4000/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/" title="JavaScript操作BOM对象">http://localhost:4000/2021/07/11/JavaScript操作BOM对象/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -612,7 +612,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/lin428/hexo/2021/07/09/hello-world/" rel="prev" title="Hello World">
+                <a href="/2021/07/09/hello-world/" rel="prev" title="Hello World">
                   <i class="fa fa-chevron-left"></i> Hello World
                 </a>
             </div>
@@ -675,10 +675,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/lin428/hexo/js/comments.js"></script><script src="/lin428/hexo/js/utils.js"></script><script src="/lin428/hexo/js/motion.js"></script><script src="/lin428/hexo/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="/lin428/hexo/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 

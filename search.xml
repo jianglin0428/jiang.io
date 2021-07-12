@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>JavaScript基础</title>
-    <url>/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
+    <url>/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="为什么要学JavaScript"><a href="#为什么要学JavaScript" class="headerlink" title="为什么要学JavaScript?"></a>为什么要学JavaScript?</h1><ol>
 <li>表单验证－减轻服务器端压力</li>
 <li>页面动态效果</li>
@@ -17,7 +17,7 @@
 <li>脚本语言，语法和Java类似</li>
 <li>解释性语言，边执行边解释</li>
 </ol>
-<h1 id="JavaScript组成"><a href="#JavaScript组成" class="headerlink" title="JavaScript组成"></a>JavaScript组成</h1><p><img src="/lin428/hexo/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%801.png" alt="JavaScript组成"></p>
+<h1 id="JavaScript组成"><a href="#JavaScript组成" class="headerlink" title="JavaScript组成"></a>JavaScript组成</h1><p><img src="/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%801.png" alt="JavaScript组成"></p>
 <h1 id="JavaScript的基本结构"><a href="#JavaScript的基本结构" class="headerlink" title="JavaScript的基本结构"></a>JavaScript的基本结构</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    &lt;!—</span><br><span class="line">          JavaScript 语句;</span><br><span class="line">    —&gt;</span><br><span class="line">&lt;/script &gt;</span><br></pre></td></tr></table></figure>
 
 <script>…</script>可以包含在文档中的任何地方，只要保证这些代码在被使用前已读取并加载到内存即可
@@ -30,7 +30,7 @@
 <li><p>内部: 直接在HTML标签中</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;input name=<span class="string">&quot;btn&quot;</span> type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;弹出消息框&quot;</span>   </span><br><span class="line">   onclick=<span class="string">&quot;javascript:alert(&#x27;欢迎你&#x27;);&quot;</span>/&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="JavaScript核心语法"><a href="#JavaScript核心语法" class="headerlink" title="JavaScript核心语法"></a>JavaScript核心语法</h1><p><img src="/lin428/hexo/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%802.png" alt="JavaScript核心语法"></p>
+<h1 id="JavaScript核心语法"><a href="#JavaScript核心语法" class="headerlink" title="JavaScript核心语法"></a>JavaScript核心语法</h1><p><img src="/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%802.png" alt="JavaScript核心语法"></p>
 <h2 id="核心语法—变量"><a href="#核心语法—变量" class="headerlink" title="核心语法—变量"></a>核心语法—变量</h2><ol>
 <li><h3 id="先声明变量再赋值"><a href="#先声明变量再赋值" class="headerlink" title="先声明变量再赋值"></a>先声明变量再赋值</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span>   width;	<span class="comment">//var －  用于声明变量的关键字</span></span><br><span class="line">width = <span class="number">5</span>;		<span class="comment">//width － 变量名</span></span><br></pre></td></tr></table></figure></li>
 <li><h3 id="同时声明和赋值变量"><a href="#同时声明和赋值变量" class="headerlink" title="同时声明和赋值变量"></a>同时声明和赋值变量</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> catName= <span class="string">&quot;皮皮&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> x, y, z = <span class="number">10</span>;</span><br></pre></td></tr></table></figure></li>
@@ -307,7 +307,7 @@
 <td>域的内容被改变</td>
 </tr>
 </tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/lin428/hexo/lin428/hexo/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/image-20210711093243759.png" alt="JavaScript基础总结"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/image-20210711093243759.png" alt="JavaScript基础总结"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -315,14 +315,14 @@
   </entry>
   <entry>
     <title>JavaScript操作BOM对象</title>
-    <url>/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
+    <url>/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h1 id="BOM模型"><a href="#BOM模型" class="headerlink" title="BOM模型"></a>BOM模型</h1><ol>
 <li><p>BOM：浏览器对象模型（Browser Object Model）</p>
 </li>
 <li><p>BOM提供了独立于内容的、可以与浏览器窗口进行互动的对象结构</p>
 <span id="more"></span></li>
 </ol>
-<p><img src="/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
+<p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
 <ol start="3">
 <li>BOM可实现功能<ol>
 <li>弹出新的浏览器窗口</li>
@@ -553,7 +553,7 @@
 <p>语法</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.referrer</span><br><span class="line"><span class="built_in">document</span>.URL</span><br></pre></td></tr></table></figure>
 
-<p><img src="/lin428/hexo/lin428/hexo/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
+<p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
 </li>
 <li><h3 id="Document对象应用"><a href="#Document对象应用" class="headerlink" title="Document对象应用"></a>Document对象应用</h3><ol>
 <li><p>判断页面是否是链接进入</p>
@@ -616,7 +616,7 @@
   </entry>
   <entry>
     <title>Windows系统使用技巧</title>
-    <url>/lin428/hexo/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+    <url>/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<p>虽然用了好久的电脑，但是对很多系统的常用技巧都不熟悉，也不曾总结，这一次借看书的机会总结一下。 </p>
 <span id="more"></span>
 
@@ -631,7 +631,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/lin428/hexo/2021/07/09/hello-world/</url>
+    <url>/2021/07/09/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
@@ -651,7 +651,7 @@
   </entry>
   <entry>
     <title>hexo语法合集</title>
-    <url>/lin428/hexo/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
+    <url>/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
     <content><![CDATA[<h2 id="写在前头："><a href="#写在前头：" class="headerlink" title="写在前头："></a>写在前头：</h2><p><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html"><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">使用hexo+github搭建免费个人博客详细教程</a></a></p>
 <span id="more"></span>
 
@@ -731,7 +731,7 @@
   </entry>
   <entry>
     <title>第一章 对象和封装</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<h1 id="一、为什么使用面向对象"><a href="#一、为什么使用面向对象" class="headerlink" title="一、为什么使用面向对象"></a>一、为什么使用面向对象</h1><h2 id="1、软件出现的目的"><a href="#1、软件出现的目的" class="headerlink" title="1、软件出现的目的"></a>1、软件出现的目的</h2><p>用计算机的语言描述现实世界</p>
 <p>用计算机解决现实世界的问题</p>
 <h2 id="2、面向对象设计和开发程序的好处"><a href="#2、面向对象设计和开发程序的好处" class="headerlink" title="2、面向对象设计和开发程序的好处"></a>2、面向对象设计和开发程序的好处</h2><p>交流更加流畅</p>
@@ -826,7 +826,7 @@
   </entry>
   <entry>
     <title>第七章 多线程</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、进程"><a href="#一、进程" class="headerlink" title="一、进程"></a>一、进程</h2><h3 id="1-什么是进程："><a href="#1-什么是进程：" class="headerlink" title="1.什么是进程："></a>1.什么是进程：</h3><p>​    继承是程序的一次动态执行过程，他对应了从代码加载、执行至完成的一个完整过程，这个过程也是程序本身从产生、发展至消亡的过程。</p>
 <p>​    操作系统同时管理一个计算机系统中的多个进程，让计算机系统中的多个进程轮流使用CPU资源，或者共享操作系统的其他资源。</p>
 <span id="more"></span>
@@ -1040,7 +1040,7 @@
   </entry>
   <entry>
     <title>第三章 多态</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
     <content><![CDATA[<h2 id="1-什么是多态"><a href="#1-什么是多态" class="headerlink" title="1.什么是多态"></a>1.什么是多态</h2><p>​    多态是具有表现多种形态的能力的特征</p>
 <p>​    同一种操作，由于条件不同，产生的结果也不同</p>
 <p>​    多态：同一个引用类型，使用不同的实例而执行不同操作 </p>
@@ -1074,7 +1074,7 @@
   </entry>
   <entry>
     <title>第二章 继承</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<h1>一 继承的一些定义</h1>
 <h2>1.为什么使用继承</h2>
 将重复代码抽取到父类中<br>
@@ -1198,7 +1198,7 @@
   </entry>
   <entry>
     <title>第五章 异常</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h2 id="一、什么是异常"><a href="#一、什么是异常" class="headerlink" title="一、什么是异常"></a>一、什么是异常</h2><p>​    异常就是在程序的允许过程中所发生的不正常的事件。</p>
 <h2 id="二、异常处理"><a href="#二、异常处理" class="headerlink" title="二、异常处理"></a>二、异常处理</h2><p>​    Java的异常处理是通过五个关键词来实现的： **try、catch、finally、throw和throws ** </p>
 <span id="more"></span>
@@ -1287,7 +1287,7 @@
 <td>数字格式转换异常，如把”abc”转换成数字</td>
 </tr>
 </tbody></table>
-<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/lin428/hexo/lin428/hexo/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
+<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
 <p><strong>Throwable</strong> 类：所有异常都是 <strong>Throwable</strong> 类的子类，他派生两个子类，即 <strong>Error</strong> 和 <strong>Exception</strong> 。</p>
 <p><strong>Error</strong> 类：表示仅靠程序本身无法恢复的严重错误，如内存溢出动态链接失败，虚拟机错误。应用程序不应该抛出这种类型的对象（一般是由虚拟机抛出的）。加入出现这种错误，除了尽力使程序安全退出为，在其他方面是无能为力的。使用在进行程序设计时，应该更关注 <strong>Exception</strong> 类。</p>
 <p><strong>Exception</strong> 类：由java应用程序抛出和处理的非严重错误，如所需文件找不到、网络连接不通或终端、算书运算出错（如被零除）、数字（下标越界）、数组下标越界、装在了一个不存在的类、对null对象操作、类型转换异常等。它的各种不同的子类分半对应不同类型的异常。</p>
@@ -1321,7 +1321,7 @@
   </entry>
   <entry>
     <title>第八章 File I/O</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
+    <url>/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
     <content><![CDATA[<h1 id="第八章-File-I-O"><a href="#第八章-File-I-O" class="headerlink" title="第八章 File I/O"></a>第八章 File I/O</h1><h2 id="1-File类"><a href="#1-File类" class="headerlink" title="1.File类"></a>1.File类</h2><p>操作文件和文件夹</p>
 <h2 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h2><table>
 <thead>
@@ -1489,7 +1489,7 @@
   </entry>
   <entry>
     <title>第六章 集合框架</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
+    <url>/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<h2 id="1-为什么使用集合框架"><a href="#1-为什么使用集合框架" class="headerlink" title="1.为什么使用集合框架"></a>1.为什么使用集合框架</h2><ul>
 <li>数组长度固定不变，不能很好地适应元素数量动态变化的情况。</li>
 <li>课通过数组名**.length**获取数组的长度，取无法直接获取数组中真实存储的个数。</li>
@@ -1511,7 +1511,7 @@
 <li> <strong>Map</strong> 接口存储一组成对的键-值对象，提供 <strong>key（键）</strong> 到 <strong>value（值）</strong> 的映射。<strong>Map</strong> 中的 <strong>key</strong> 不要求有序，不允许重复。 <strong>value</strong> 同样不要求有序，但运行重复。</li>
 <li> <strong>lterator</strong> 接口负责定义访问和遍历元素的接口。</li>
 </ul>
-<p><img src="/lin428/hexo/lin428/hexo/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/img%5Cimage-20210528165408509.png" alt="image-20210528165408509"></p>
+<p><img src="/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/img%5Cimage-20210528165408509.png" alt="image-20210528165408509"></p>
 <h2 id="3-List接口"><a href="#3-List接口" class="headerlink" title="3.List接口"></a>3.List接口</h2><ul>
 <li>实现List接口的常用类有 <strong>ArrayList</strong> 和 <strong>LinkedList</strong> 。他们都可以容纳所有类型的对象，包括null，允许重复，并且都包子元素的存储顺序。</li>
 </ul>
@@ -1639,7 +1639,7 @@
   </entry>
   <entry>
     <title>第四章 接口</title>
-    <url>/lin428/hexo/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
+    <url>/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<h2 id="一、什么是接口？"><a href="#一、什么是接口？" class="headerlink" title="一、什么是接口？"></a>一、什么是接口？</h2><p>接口同样是哟中规范和标准，题目可以约束类的行为，是一些方法特征的集合，但是没有方法的实现。</p>
 <p>接口可以看做一种特殊的“抽象类”，但是差异与抽象类万千不同的语法来表示，两者的设计观念也是不同的，抽象类利用与代码复用，接口利于代码的扩展和维护</p>
 <span id="more"></span>
