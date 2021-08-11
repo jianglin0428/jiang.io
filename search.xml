@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>JSP数据交互(一)</title>
-    <url>/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/</url>
     <content><![CDATA[<h1 id="什么是JSP内置对象"><a href="#什么是JSP内置对象" class="headerlink" title="什么是JSP内置对象"></a>什么是JSP内置对象</h1><p>JSP内置对象是 Web 容器创建的一组对象</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">        int[ ] value = &#123; <span class="number">60</span>, <span class="number">70</span>, <span class="number">80</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span>  (int i : value) &#123;</span><br><span class="line">                out.println(i);</span><br><span class="line">        &#125; </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 
@@ -18,7 +18,7 @@
 <span id="more"></span>
 
 <h1 id="JSP内置对象request"><a href="#JSP内置对象request" class="headerlink" title="JSP内置对象request"></a>JSP内置对象request</h1><p>request对象主要用于处理客户端请求</p>
-<p><img src="/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811152755101.png" alt="image-20210811152755101"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811152755101.png" alt="image-20210811152755101"></p>
 <h4 id="request对象常用方法"><a href="#request对象常用方法" class="headerlink" title="request对象常用方法"></a>request对象常用方法</h4><table>
 <thead>
 <tr>
@@ -50,13 +50,13 @@
 <h4 id="提交方式-GET方式2"><a href="#提交方式-GET方式2" class="headerlink" title="提交方式:GET方式2"></a>提交方式:GET方式2</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">在Tomcat目录结构\conf\server.xml中设置字符集</span><br><span class="line">&lt;Connector  port=<span class="string">&quot;8080&quot;</span>  protocol=<span class="string">&quot;HTTP/1.1&quot;</span></span><br><span class="line">connectionTimeout=<span class="string">&quot;20000&quot;</span></span><br><span class="line">redirectPort=<span class="string">&quot;8443&quot;</span>  URIEncoding=<span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
 
 <h1 id="JSP内置对象response"><a href="#JSP内置对象response" class="headerlink" title="JSP内置对象response"></a>JSP内置对象response</h1><p><strong>response对象用于响应客户请求并向客户端输出信息</strong> </p>
-<p><img src="/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153122215.png" alt="image-20210811153122215"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153122215.png" alt="image-20210811153122215"></p>
 <h2 id="页面重定向"><a href="#页面重定向" class="headerlink" title="页面重定向"></a>页面重定向</h2><ul>
 <li>void sendRedirect(String location)</li>
 <li>客户端将重新发送请求到指定的URL</li>
 </ul>
 <p>实现登录验证，并在验证成功后跳转至欢迎页面</p>
-<p><img src="/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153215604.png" alt="image-20210811153215604"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153215604.png" alt="image-20210811153215604"></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line"><span class="built_in">String</span> name = request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line"><span class="built_in">String</span> pwd = request.getParameter(<span class="string">&quot;pwd&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;sa&quot;</span>.equals(name) &amp;&amp; <span class="string">&quot;sa&quot;</span>.equals(pwd))       	</span><br><span class="line">    response.sendRedirect(<span class="string">&quot;welcome.jsp&quot;</span>);<span class="comment">//跳转至欢迎页面</span></span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="页面实现跳转了，请求的信息是不会转移"><a href="#页面实现跳转了，请求的信息是不会转移" class="headerlink" title="页面实现跳转了，请求的信息是不会转移"></a>页面实现跳转了，请求的信息是不会转移</h4><h3 id="使用转发取代重定向实现页面跳转"><a href="#使用转发取代重定向实现页面跳转" class="headerlink" title="使用转发取代重定向实现页面跳转"></a>使用转发取代重定向实现页面跳转</h3><p>如何才能实现页面跳转后，请求信息不丢失呢？</p>
@@ -74,7 +74,7 @@
 <li>在地址栏中可以显示转向后的地址</li>
 </ul>
 <h1 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h1><p><strong>一个会话就是在一段时间内，一个客户端与Web服务器的一连串相关的交互过程</strong></p>
-<p><img src="/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153646306.png" alt="image-20210811153646306"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153646306.png" alt="image-20210811153646306"></p>
 <h1 id="JSP内置对象session"><a href="#JSP内置对象session" class="headerlink" title="JSP内置对象session"></a>JSP内置对象session</h1><h4 id="session对象常用方法："><a href="#session对象常用方法：" class="headerlink" title="session对象常用方法："></a>session对象常用方法：</h4><table>
 <thead>
 <tr>
@@ -150,7 +150,7 @@
 <li><p>在后台首页面中使用include指令引用登录验证文件</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;%@  include file=<span class="string">&quot;loginControl.jsp&quot;</span> %&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811154315974.png" alt="image-20210811154315974"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811154315974.png" alt="image-20210811154315974"></p>
 <h1 id="老郑的课堂笔记"><a href="#老郑的课堂笔记" class="headerlink" title="老郑的课堂笔记"></a>老郑的课堂笔记</h1><p><strong>登录页-&gt;业务处理页面(不需要展示任何内容)-&gt;(登录成功)首页</strong><br>                                                             <strong>-&gt;(登录失败)登录页</strong></p>
 <h3 id="页面间跳转"><a href="#页面间跳转" class="headerlink" title="页面间跳转"></a><strong>页面间跳转</strong></h3><h4 id="转发-1"><a href="#转发-1" class="headerlink" title="转发"></a><strong>转发</strong></h4><p>​        <strong>request.getRequestDispatcher(“新地址”).forward(request, response);</strong><br>​        <strong>网页url地址显示的是原地址</strong><br>​        <strong>保留了原请求里的数据</strong><br>​        <strong>在服务器端把老请求转给了新地址</strong><br>​        <strong>发生在服务器端</strong></p>
 <h4 id="重定向-1"><a href="#重定向-1" class="headerlink" title="重定向"></a><strong>重定向</strong></h4><p>​        <strong>response.sendRedirect(“新地址”);</strong><br>​        <strong>网页url地址显示的是最终的地址</strong><br>​        <strong>让客户端再次发送一个新请求去新地址</strong><br>​        <strong>发生在客户端</strong></p>
@@ -164,7 +164,7 @@
   </entry>
   <entry>
     <title>JavaScript基础</title>
-    <url>/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="为什么要学JavaScript"><a href="#为什么要学JavaScript" class="headerlink" title="为什么要学JavaScript?"></a>为什么要学JavaScript?</h1><ol>
 <li>表单验证－减轻服务器端压力</li>
 <li>页面动态效果</li>
@@ -179,7 +179,7 @@
 <li>脚本语言，语法和Java类似</li>
 <li>解释性语言，边执行边解释</li>
 </ol>
-<h1 id="JavaScript组成"><a href="#JavaScript组成" class="headerlink" title="JavaScript组成"></a>JavaScript组成</h1><p><img src="/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%801.png" alt="JavaScript组成"></p>
+<h1 id="JavaScript组成"><a href="#JavaScript组成" class="headerlink" title="JavaScript组成"></a>JavaScript组成</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%801.png" alt="JavaScript组成"></p>
 <h1 id="JavaScript的基本结构"><a href="#JavaScript的基本结构" class="headerlink" title="JavaScript的基本结构"></a>JavaScript的基本结构</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">    &lt;!—</span><br><span class="line">          JavaScript 语句;</span><br><span class="line">    —&gt;</span><br><span class="line">&lt;/script &gt;</span><br></pre></td></tr></table></figure>
 
 <script>…</script>可以包含在文档中的任何地方，只要保证这些代码在被使用前已读取并加载到内存即可
@@ -192,7 +192,7 @@
 <li><p>内部: 直接在HTML标签中</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;input name=<span class="string">&quot;btn&quot;</span> type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;弹出消息框&quot;</span>   </span><br><span class="line">   onclick=<span class="string">&quot;javascript:alert(&#x27;欢迎你&#x27;);&quot;</span>/&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="JavaScript核心语法"><a href="#JavaScript核心语法" class="headerlink" title="JavaScript核心语法"></a>JavaScript核心语法</h1><p><img src="/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%802.png" alt="JavaScript核心语法"></p>
+<h1 id="JavaScript核心语法"><a href="#JavaScript核心语法" class="headerlink" title="JavaScript核心语法"></a>JavaScript核心语法</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/JavaScript%E5%9F%BA%E7%A1%802.png" alt="JavaScript核心语法"></p>
 <h2 id="核心语法—变量"><a href="#核心语法—变量" class="headerlink" title="核心语法—变量"></a>核心语法—变量</h2><ol>
 <li><h3 id="先声明变量再赋值"><a href="#先声明变量再赋值" class="headerlink" title="先声明变量再赋值"></a>先声明变量再赋值</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span>   width;	<span class="comment">//var －  用于声明变量的关键字</span></span><br><span class="line">width = <span class="number">5</span>;		<span class="comment">//width － 变量名</span></span><br></pre></td></tr></table></figure></li>
 <li><h3 id="同时声明和赋值变量"><a href="#同时声明和赋值变量" class="headerlink" title="同时声明和赋值变量"></a>同时声明和赋值变量</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> catName= <span class="string">&quot;皮皮&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> x, y, z = <span class="number">10</span>;</span><br></pre></td></tr></table></figure></li>
@@ -469,7 +469,7 @@
 <td>域的内容被改变</td>
 </tr>
 </tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/image-20210711093243759.png" alt="JavaScript基础总结"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/image-20210711093243759.png" alt="JavaScript基础总结"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -477,7 +477,7 @@
   </entry>
   <entry>
     <title>JavaScript对象及初始面向对象</title>
-    <url>/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>在JavaScript中，所有的事物都是对象，如字符串，数值，数组，函数，所以本章在讲解之间先回顾一下，学习过的JavaScript数据类型。</p>
 <span id="more"></span>
 
@@ -576,7 +576,7 @@
 <li><p>prototype就是通过调用构造函数而创建的那个对象实例的原型对象，使用原型对象的好处就是可以让所有对象实例共享它所有的属性和方法，也就是说不必再构造函数中定义对象实例的信息，可以将这些信息直接添加到原型对象中。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Flower</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    Flower.prototype.name=<span class="string">&quot;曼陀罗花&quot;</span>;</span><br><span class="line">    Flower.prototype.genera=<span class="string">&quot;茄科 曼陀罗属&quot;</span>;</span><br><span class="line">    Flower.prototype.area=<span class="string">&quot;印度、中国北部&quot;</span>;</span><br><span class="line">    Flower.prototype.uses=<span class="string">&quot;观赏或药用&quot;</span>;</span><br><span class="line">    Flower.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> flower1=<span class="keyword">new</span> Flower();</span><br><span class="line">    flower1.showName();</span><br><span class="line">    <span class="keyword">var</span> flower2=<span class="keyword">new</span> Flower();</span><br><span class="line">    flower2.showName();</span><br><span class="line">    alert(flower1.showName==flower2.showName);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png" alt="image-20210718111954605"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png" alt="image-20210718111954605"></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">对象._ _proto_ _指向原型对象</span><br><span class="line">原型对象用<span class="title">constructor</span>属性指向构造函数</span><br><span class="line">类用<span class="title">prototype</span>执行原型对象</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
@@ -602,7 +602,7 @@
 <li><p>一个原型对象是另一个原型对象的实例<br>相关的原型对象层层递进，就构成了实例与原型的链条，就是原型链</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Humans</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.foot=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Humans.prototype.getFoot=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">this</span>.foot;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.head=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Man.prototype=<span class="keyword">new</span> Humans();          <span class="comment">//继承了Humans</span></span><br><span class="line">    Man.prototype.getHead=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> man1=<span class="keyword">new</span> Man();</span><br><span class="line">    alert(man1.getFoot());                          <span class="comment">//2</span></span><br><span class="line">    alert(man1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>);          <span class="comment">//true     </span></span><br><span class="line">    alert(man1 <span class="keyword">instanceof</span> Humans);        <span class="comment">//true</span></span><br><span class="line">    alert(man1 <span class="keyword">instanceof</span> Man);          <span class="comment">//true</span></span><br></pre></td></tr></table></figure></li>
 <li><p>构造函数和原型之间的关系</p>
-<p><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718112801650.png" alt="image-20210718112801650"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718112801650.png" alt="image-20210718112801650"></p>
 </li>
 <li><p>实际上就是重写圆形对象，赋值于一个新类型的实例，也就是说，原来存于新实例中的所有属性和方法，现在也存在与新的原型对象中了</p>
 </li>
@@ -617,7 +617,7 @@
 </li>
 <li>最后一步才会找到该方法，在找不到属性或方法的情况下，搜索过程总要一环一环地前行到原型链的末端才会停下来。</li>
 <li>上面示例展示的原型链还少一环,大家知道，所有的引用类型默认都继承了Object，而这个继承也是通过原型链实现的。所有函数都默认原型都是Object 的实例，因此默认原型都会包含一个内部指针，指向Object.prototype，这也正是所有自定义类型都会继承toString( ). valueOf()等默认方法的根本原因，所以上面示例展示的原型链中还应该包括另外一个继承层次,此示例的完整原型链如图4.8所示。</li>
-<li><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718113518713.png" alt="image-20210718113518713"></li>
+<li><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718113518713.png" alt="image-20210718113518713"></li>
 </ol>
 </li>
 </ol>
@@ -656,7 +656,7 @@
 </ol>
 </li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718114438758.png" alt="image-20210718114438758"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718114438758.png" alt="image-20210718114438758"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -664,14 +664,14 @@
   </entry>
   <entry>
     <title>JavaScript操作BOM对象</title>
-    <url>/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h1 id="BOM模型"><a href="#BOM模型" class="headerlink" title="BOM模型"></a>BOM模型</h1><ol>
 <li><p>BOM：浏览器对象模型（Browser Object Model）</p>
 </li>
 <li><p>BOM提供了独立于内容的、可以与浏览器窗口进行互动的对象结构</p>
 <span id="more"></span></li>
 </ol>
-<p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711112651203.png" alt="image-20210711112651203"></p>
 <ol start="3">
 <li>BOM可实现功能<ol>
 <li>弹出新的浏览器窗口</li>
@@ -903,7 +903,7 @@
 <p>语法</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.referrer</span><br><span class="line"><span class="built_in">document</span>.URL</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210711114644954.png" alt="image-20210711114644954"></p>
 </li>
 <li><h3 id="Document对象应用"><a href="#Document对象应用" class="headerlink" title="Document对象应用"></a>Document对象应用</h3><ol>
 <li><p>判断页面是否是链接进入</p>
@@ -1078,7 +1078,7 @@
 <h3 id="制作12进制的时钟特效"><a href="#制作12进制的时钟特效" class="headerlink" title="制作12进制的时钟特效"></a>制作12进制的时钟特效</h3><p>代码:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;time&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">showTime</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> timefinly = <span class="keyword">new</span> <span class="built_in">Date</span>();</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> year = timefinly.getFullYear(); <span class="comment">//年</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> month = timefinly.getMonth() + <span class="number">1</span>; <span class="comment">//月</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> day = timefinly.getDate(); <span class="comment">//日</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> hour = timefinly.getHours(); <span class="comment">//时</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> APM = <span class="string">&quot;AM&quot;</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (hour &gt; <span class="number">12</span>) &#123;</span></span><br><span class="line"><span class="javascript">			APM = <span class="string">&quot;PM&quot;</span>;</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> min = timefinly.getMinutes(); <span class="comment">//分</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> sec = timefinly.getSeconds(); <span class="comment">//秒</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> weekNum = timefinly.getDay(); <span class="comment">//周</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span> (weekNum == <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="javascript">			weekNum = <span class="number">7</span>;</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> week=<span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">switch</span> (weekNum) &#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">1</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;一&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">2</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;二&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">3</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;三&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">4</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;四&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">5</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;五&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">6</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;六&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">case</span> <span class="number">7</span>:</span></span><br><span class="line"><span class="javascript">			week=<span class="string">&quot;日&quot;</span>;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">break</span>;</span></span><br><span class="line"><span class="javascript">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> content = year + <span class="string">&quot;年&quot;</span> + month + <span class="string">&quot;月&quot;</span> + day + <span class="string">&quot;日     &quot;</span> + hour + <span class="string">&quot;:&quot;</span> + min + <span class="string">&quot;:&quot;</span> + sec + <span class="string">&quot;     &quot;</span> + APM +</span></span><br><span class="line"><span class="javascript">			<span class="string">&quot;    星期&quot;</span> + week</span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;time&quot;</span>).innerText = content;</span></span><br><span class="line"><span class="javascript">	&#125;</span></span><br><span class="line"><span class="javascript">	showTime();</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> atime = <span class="built_in">setInterval</span>(<span class="string">&quot;showTime()&quot;</span>, <span class="number">1000</span>);</span></span><br><span class="line"><span class="javascript">	<span class="comment">//clearInterval(atime);</span></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210714100816234.png" alt="image-20210714100816234"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/image-20210714100816234.png" alt="image-20210714100816234"></p>
 </li>
 </ol>
 ]]></content>
@@ -1088,16 +1088,16 @@
   </entry>
   <entry>
     <title>JavaScript操作DOM对象</title>
-    <url>/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>DOM是Document Object Model的缩写，即文档对象模型,是基于文档编程的一套API接口。</p>
 <p>使用JavaScript操作DOM分为三个方面：DOM Core (核心) ，HTML-DOM和CSS-DOM。通过这些标准开发人员可以让网页真正动起来，动态得增加，修好，删除数据，使用户与计算机的交互更加便捷，交互也更加丰富，那么下面，大家就一起学习JavaScript操作DOM吧。</p>
 <span id="more"></span>
 
-<p><img src="/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/image-20210716105304043.png" alt="image-20210716105304043"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/image-20210716105304043.png" alt="image-20210716105304043"></p>
 <ol>
 <li><h1 id="节点和节点的关系"><a href="#节点和节点的关系" class="headerlink" title="节点和节点的关系"></a>节点和节点的关系</h1></li>
 </ol>
-<p><img src="/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/image-20210716105352860.png" alt="image-20210716105352860"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/image-20210716105352860.png" alt="image-20210716105352860"></p>
 <p>HTML中的每个标签和元素都是一个节点,在DOM中是这样规定的.</p>
 <ul>
 <li>整个文档是一个文档节点</li>
@@ -1460,30 +1460,15 @@
 </li>
 <li><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></li>
 </ol>
-<p><img src="/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1%5Cimage-20210716155346308.png" alt="image-20210716155346308"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1%5Cimage-20210716155346308.png" alt="image-20210716155346308"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
       </categories>
   </entry>
   <entry>
-    <title>Windows系统使用技巧</title>
-    <url>/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>虽然用了好久的电脑，但是对很多系统的常用技巧都不熟悉，也不曾总结，这一次借看书的机会总结一下。 </p>
-<span id="more"></span>
-
-<h1 id="开启超级管理员账户Administrotor"><a href="#开启超级管理员账户Administrotor" class="headerlink" title="开启超级管理员账户Administrotor"></a><strong>开启超级管理员账户Administrotor</strong></h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user administrator /active:yes</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user administrator /active:no </span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>教程类</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hello World</title>
-    <url>/2021/08/08/hello-world/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/08/08/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
@@ -1502,8 +1487,23 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Windows系统使用技巧</title>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>虽然用了好久的电脑，但是对很多系统的常用技巧都不熟悉，也不曾总结，这一次借看书的机会总结一下。 </p>
+<span id="more"></span>
+
+<h1 id="开启超级管理员账户Administrotor"><a href="#开启超级管理员账户Administrotor" class="headerlink" title="开启超级管理员账户Administrotor"></a><strong>开启超级管理员账户Administrotor</strong></h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user administrator /active:yes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user administrator /active:no </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>教程类</category>
+      </categories>
+  </entry>
+  <entry>
     <title>hexo语法合集</title>
-    <url>/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
     <content><![CDATA[<h2 id="写在前头："><a href="#写在前头：" class="headerlink" title="写在前头："></a>写在前头：</h2><p><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html"><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">使用hexo+github搭建免费个人博客详细教程</a></a></p>
 <span id="more"></span>
 
@@ -1583,7 +1583,7 @@
   </entry>
   <entry>
     <title>jQuery中的事件与动画</title>
-    <url>/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
     <content><![CDATA[<h1 id="网页中的事件"><a href="#网页中的事件" class="headerlink" title="网页中的事件"></a>网页中的事件</h1><p>和WinForm一样，在网页中的交互也是需要事件来实现的，例如tab切换效果，可以通过鼠标单击事件来实现</p>
 <span id="more"></span>
 
@@ -1697,7 +1697,7 @@
 <li><p>绑定单个事件</p>
 <ul>
 <li><p>使用绑定实现鼠标移至“我的当当”显示二级菜单</p>
-<p><img src="/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723152859749.png" alt="image-20210723152859749"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723152859749.png" alt="image-20210723152859749"></p>
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	$(<span class="string">&quot;.on&quot;</span>).bind(<span class="string">&quot;mouseover&quot;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		$(<span class="string">&quot;.topDown&quot;</span>).show();</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
@@ -1711,7 +1711,7 @@
 
 <p>​    当unbind()不带参数时，表示移除所绑定的全部事件</p>
 <p><strong>Tab切换页面</strong></p>
-<p><img src="/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723153124287.png" alt="image-20210723153124287"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723153124287.png" alt="image-20210723153124287"></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#del&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">&quot;#nav li:first&quot;</span>).unbind(<span class="string">&quot;click&quot;</span>, content1)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -1765,10 +1765,10 @@
 </li>
 <li><h3 id="自定义动画"><a href="#自定义动画" class="headerlink" title="自定义动画"></a>自定义动画</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(selector). animate(&#123;params&#125;,speed,callback)</span><br><span class="line">	<span class="comment">//params  必须，定义形成动画的CSS属性</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723153828540.png" alt="image-20210723153828540"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723153828540.png" alt="image-20210723153828540"></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">moveMan</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> stickW = $(<span class="string">&quot;.stick&quot;</span>).width();<span class="comment">//获取倒下棍子的长度</span></span><br><span class="line">   <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       $(<span class="string">&quot;.man&quot;</span>).find(<span class="string">&quot;img&quot;</span>).attr(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;images/stick.gif&quot;</span>);</span><br><span class="line">       $(<span class="string">&quot;.man&quot;</span>).find(<span class="string">&quot;img&quot;</span>).animate(&#123;<span class="string">&quot;left&quot;</span>:stickW+<span class="string">&quot;px&quot;</span>&#125;,<span class="number">1000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">var</span> wellL = $(<span class="string">&quot;.well&quot;</span>).eq(<span class="number">1</span>).offset().left;<span class="comment">//柱子距离屏幕左侧的距离</span></span><br><span class="line">        <span class="keyword">var</span> well0 = $(<span class="string">&quot;.well&quot;</span>).eq(<span class="number">0</span>).offset().left;<span class="comment">//柱子距离屏幕左侧的距离</span></span><br><span class="line">        colWidth= $(<span class="string">&quot;.well&quot;</span>).eq(<span class="number">0</span>).width();</span><br><span class="line">        <span class="keyword">var</span> range = wellL-well0-colWidth;<span class="comment">//获取两个柱子之间的距离</span></span><br><span class="line">        <span class="keyword">if</span>( (stickW &lt; range) || (stickW &gt; wellL))&#123; <span class="comment">//判断人物是否落下</span></span><br><span class="line">            $(<span class="string">&quot;.man&quot;</span>).animate(&#123;<span class="string">&quot;bottom&quot;</span>:<span class="string">&quot;0px&quot;</span>&#125;);</span><br><span class="line">           &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;$(<span class="string">&quot;.man&quot;</span>).find(<span class="string">&quot;img&quot;</span>).attr(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;images/stick_stand.png&quot;</span>).css(&#123;<span class="string">&quot;left&quot;</span>:<span class="number">0</span>&#125;).hide();</span><br><span class="line">          $(<span class="string">&quot;.stick&quot;</span>).removeClass(<span class="string">&quot;stickDown&quot;</span>).width(<span class="number">0</span>);<span class="comment">//棍子变为初始</span></span><br><span class="line">           <span class="keyword">var</span> oldL = $(<span class="string">&quot;.well-box&quot;</span>).offset().left;</span><br><span class="line">           $(<span class="string">&quot;.well-box&quot;</span>).animate(&#123;<span class="string">&quot;left&quot;</span>:-wellL+oldL&#125;,<span class="number">500</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//柱子移动</span></span><br><span class="line">           $(<span class="string">&quot;.man&quot;</span>).find(<span class="string">&quot;img&quot;</span>).show();</span><br><span class="line">            stop = <span class="literal">false</span>;<span class="comment">//按钮不可以单击</span></span><br><span class="line">    &#125;); </span><br><span class="line">         &#125; &#125;);</span><br><span class="line">            &#125;,<span class="number">600</span>);&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           </span><br><span class="line">           </span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723153940283.png" alt="image-20210723153940283"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/image-20210723153940283.png" alt="image-20210723153940283"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -1776,7 +1776,7 @@
   </entry>
   <entry>
     <title>使用jQuery操作DOM</title>
-    <url>/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/</url>
     <content><![CDATA[<h1 id="DOM操作分类"><a href="#DOM操作分类" class="headerlink" title="DOM操作分类"></a>DOM操作分类</h1><ol>
 <li><p>DOM操作分为三类：</p>
 <ol>
@@ -1805,13 +1805,13 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.text&#123; <span class="attr">padding</span>:10px;&#125;</span><br><span class="line">.content &#123;background-color:#FFFF00; &#125;</span><br><span class="line">.border &#123;<span class="attr">border</span>:1px dashed #<span class="number">333</span>; &#125;</span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;h2&quot;</span>).mouseover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     $(<span class="string">&quot;p&quot;</span>).addClass(<span class="string">&quot;content border&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114644273.png" alt="image-20210730114644273"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114644273.png" alt="image-20210730114644273"></p>
 </li>
 <li><h4 id="移除样式"><a href="#移除样式" class="headerlink" title="移除样式"></a>移除样式</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(selector).removeClass(<span class="string">&quot;class&quot;</span>) ;</span><br><span class="line">或   $(selector).removeClass(<span class="string">&quot;class1 class2 … classN &quot;</span>) ;</span><br></pre></td></tr></table></figure></li>
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;h2&quot;</span>).mouseout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">&quot;p&quot;</span>).removeClass(<span class="string">&quot;text content&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114910666.png" alt="image-20210730114910666"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114910666.png" alt="image-20210730114910666"></p>
 </li>
 </ol>
 </li>
@@ -1823,7 +1823,7 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;h2&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&quot;p&quot;</span>).toggleClass(<span class="string">&quot;content  border&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115124065.png" alt="image-20210730115124065"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115124065.png" alt="image-20210730115124065"></p>
 </li>
 </ol>
 </li>
@@ -1839,14 +1839,14 @@
 <li><h3 id="HTML代码操作"><a href="#HTML代码操作" class="headerlink" title="HTML代码操作"></a>HTML代码操作</h3><ol>
 <li><h4 id="html-可以对HTML代码进行操作，类似于JS中的innerHTML"><a href="#html-可以对HTML代码进行操作，类似于JS中的innerHTML" class="headerlink" title="html()可以对HTML代码进行操作，类似于JS中的innerHTML"></a>html()可以对HTML代码进行操作，类似于JS中的innerHTML</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;div.left&quot;</span>).html();<span class="comment">//获取元素中的html代码</span></span><br><span class="line">或</span><br><span class="line"> $(<span class="string">&quot;div.left&quot;</span>).html(<span class="string">&quot;&lt;div class=&#x27;content&#x27;&gt;…&lt;/div&gt;&quot;</span>);<span class="comment">//设置元素中的html代码</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115355193.png" alt="image-20210730115355193"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115355193.png" alt="image-20210730115355193"></p>
 </li>
 </ol>
 </li>
 <li><h3 id="标签内容操作"><a href="#标签内容操作" class="headerlink" title="标签内容操作"></a>标签内容操作</h3><ol>
 <li><h4 id="text-可以获取或设置元素的文本内容"><a href="#text-可以获取或设置元素的文本内容" class="headerlink" title="text()可以获取或设置元素的文本内容"></a>text()可以获取或设置元素的文本内容</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;div.left&quot;</span>).text();<span class="comment">//获取元素中的文本内容</span></span><br><span class="line">或</span><br><span class="line"> $(<span class="string">&quot;div.left&quot;</span>).text(<span class="string">&quot;&lt;div class=&#x27;content&#x27;&gt;…&lt;/div&gt;&quot;</span>);<span class="comment">//设置元素中的文本内容</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115425191.png" alt="image-20210730115425191"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115425191.png" alt="image-20210730115425191"></p>
 </li>
 </ol>
 </li>
@@ -1883,7 +1883,7 @@
 <li><h3 id="属性值操作"><a href="#属性值操作" class="headerlink" title="属性值操作"></a>属性值操作</h3><ol>
 <li><h4 id="val-可以获取或设置元素的value属性值"><a href="#val-可以获取或设置元素的value属性值" class="headerlink" title="val()可以获取或设置元素的value属性值"></a>val()可以获取或设置元素的value属性值</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">this</span>).val();<span class="comment">//获取元素的value属性值</span></span><br><span class="line">或     $(<span class="built_in">this</span>).val(value);<span class="comment">//设置元素的value属性值</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115555608.png" alt="image-20210730115555608"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115555608.png" alt="image-20210730115555608"></p>
 </li>
 </ol>
 </li>
@@ -1980,7 +1980,7 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain img&quot;</span>).attr(&#123;<span class="attr">width</span>:<span class="string">&quot;200&quot;</span>,<span class="attr">height</span>:<span class="string">&quot;80&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120205309.png" alt="image-20210730120205309"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120205309.png" alt="image-20210730120205309"></p>
 </li>
 </ol>
 </li>
@@ -1998,7 +1998,7 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> $section =$(<span class="string">&quot;section&quot;</span>).children();<span class="comment">//获取&lt;section&gt;的子元素，但不包含子元素的子元素</span></span><br><span class="line">alert($section.length);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120422022.png" alt="image-20210730120422022"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120422022.png" alt="image-20210730120422022"></p>
 </li>
 </ol>
 </li>
@@ -2040,13 +2040,13 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;img&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       $(<span class="string">&quot;li&quot;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           <span class="keyword">var</span> str=$(<span class="built_in">this</span>).text()+<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">           $(<span class="string">&quot;section&quot;</span>).append(str);</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120622570.png" alt="image-20210730120622570"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120622570.png" alt="image-20210730120622570"></p>
 </li>
 <li><h4 id="end-：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态"><a href="#end-：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态" class="headerlink" title="end( )：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态"></a>end( )：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态</h4></li>
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain :header&quot;</span>).css(&#123;<span class="string">&quot;background&quot;</span>:<span class="string">&quot;#2a65ba&quot;</span>,<span class="string">&quot;color&quot;</span>:<span class="string">&quot;#ffffff&quot;</span>&#125;);</span><br><span class="line">$(<span class="string">&quot;.gameList li&quot;</span>).first().css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#b8e7f9&quot;</span>).end().last().css (<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#d3f4b5&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;.gameList li:last&quot;</span>).css(<span class="string">&quot;border&quot;</span>,<span class="string">&quot;none&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120649878.png" alt="image-20210730120649878"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120649878.png" alt="image-20210730120649878"></p>
 </li>
 </ol>
 </li>
@@ -2097,7 +2097,7 @@
 </ol>
 </li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120843146.png" alt="image-20210730120843146"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120843146.png" alt="image-20210730120843146"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -2105,7 +2105,7 @@
   </entry>
   <entry>
     <title>初始jQuery</title>
-    <url>/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/</url>
     <content><![CDATA[<h1 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h1><ol>
 <li><h2 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h2><ol>
 <li>jQuery由美国人John Resig于2006年创建</li>
@@ -2121,7 +2121,7 @@
 <li><p>jQuery是JavaScript的程序库之一，它是JavaScript对象和实用函数的封装</p>
 </li>
 <li><p>实现隔行变色效果，只需一句关键代码</p>
-<p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718153121263.png" alt="image-20210718153121263"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718153121263.png" alt="image-20210718153121263"></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;tr:even&quot;</span>).css(<span class="string">&quot;background-color&quot;</span>,<span class="string">&quot;#e8f0f2&quot;</span>);</span><br></pre></td></tr></table></figure></li>
 <li><p>jQuery制作交互特效的语法更为简单，代码量大大减少了</p>
 </li>
@@ -2241,7 +2241,7 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#current&quot;</span>).addClass(<span class="string">&quot;current&quot;</span>);      </span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718155322438.png" alt="image-20210718155322438"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718155322438.png" alt="image-20210718155322438"></p>
 </li>
 </ol>
 </li>
@@ -2252,7 +2252,7 @@
 <li><p>示例</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">this</span>).css(&#123;<span class="string">&quot;background&quot;</span>:<span class="string">&quot;#c81623&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718155514742.png" alt="image-20210718155514742"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718155514742.png" alt="image-20210718155514742"></p>
 </li>
 </ol>
 </li>
@@ -2271,7 +2271,7 @@
 <li><p>~~~js<br>$(document).ready()=jQuery(document).ready()<br>$(function(){…})=jQuery (function(){…})      </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2. ### 链式操作</span><br><span class="line"></span><br><span class="line">   1. 在对DOM元素进行多个操作时，为了避免过度使用临时变量或不必要的重复代码，在大多数jQuery代码中采用了一种链式编程模式。它可以对一个对象进行多重操作，并将操作结果返回给该对象，以便于将返回结果应用于该对象的下一次操作。</span><br><span class="line"></span><br><span class="line">   2. 对一个对象进行多重操作，并将操作结果返回给该对象</span><br><span class="line"></span><br><span class="line">      ~~~js</span><br><span class="line">       $(&quot;h2&quot;).css(&quot;background-color&quot;,&quot;#ccffff&quot;).next().css(&quot;display&quot;,&quot;block&quot;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718160422713.png" alt="image-20210718160422713"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718160422713.png" alt="image-20210718160422713"></p>
 </li>
 </ol>
 </li>
@@ -2281,7 +2281,7 @@
 <li><p>获取所有1i标签，并设置字体样式。如果在传统的JavaScript写法中，需要使用getElementsByTagName( )获取li标签集合，然后使用for循环一个一个设置字样样式，而这里使用jQuery就不一样了。它不需要遍历所有元素，可以直接设置元素的样式，这就是隐式迭代，在jQuery中获取一个集合后会默认遍历内部的所有元素。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">&quot;li&quot;</span>).css(&#123;<span class="string">&quot;font-weight&quot;</span>:<span class="string">&quot;bold&quot;</span>,<span class="string">&quot;color&quot;</span>:<span class="string">&quot;red&quot;</span>&#125;);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718160859199.png" alt="image-20210718160859199"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718160859199.png" alt="image-20210718160859199"></p>
 </li>
 </ol>
 </li>
@@ -2312,7 +2312,7 @@
 <h1 id="DOM对象和jQuery对象"><a href="#DOM对象和jQuery对象" class="headerlink" title="DOM对象和jQuery对象"></a>DOM对象和jQuery对象</h1><ol>
 <li><h2 id="DOM模型"><a href="#DOM模型" class="headerlink" title="DOM模型"></a>DOM模型</h2><ol>
 <li><p>浏览器把HTML文档的元素转换成节点对象，所有节点组成了一个树状结构</p>
-<p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718161437470.png" alt="image-20210718161437470"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718161437470.png" alt="image-20210718161437470"></p>
 </li>
 </ol>
 </li>
@@ -2347,7 +2347,7 @@
 </ol>
 </li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718161923661.png" alt="image-20210718161923661"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/image-20210718161923661.png" alt="image-20210718161923661"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -2355,7 +2355,7 @@
   </entry>
   <entry>
     <title>动态网页开发基础</title>
-    <url>/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="动态网站和静态网站"><a href="#动态网站和静态网站" class="headerlink" title="动态网站和静态网站"></a><strong>动态网站和静态网站</strong></h1><ol>
 <li><strong>静态网页是相对于动态网页而言，是指没有后台数据库、不含程序和不可交互的网页。</strong></li>
 <li><strong>编的是什么它显示的就是什么、不会有任何改变。</strong></li>
@@ -2377,13 +2377,13 @@
 <li><h1 id="为什么学习B-S技术"><a href="#为什么学习B-S技术" class="headerlink" title="为什么学习B/S技术"></a><strong>为什么学习B/S技术</strong></h1><ol>
 <li><h2 id="C-S的局限性"><a href="#C-S的局限性" class="headerlink" title="C/S的局限性"></a><strong>C/S的局限性</strong></h2><ol>
 <li><p><strong>安装不同客户端软件</strong></p>
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103425579.png" alt="image-20210811103425579"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103425579.png" alt="image-20210811103425579"></strong></p>
 </li>
 </ol>
 </li>
 <li><h2 id="B-S带来全新体验"><a href="#B-S带来全新体验" class="headerlink" title="B/S带来全新体验"></a><strong>B/S带来全新体验</strong></h2><ol>
 <li><p><strong>无需安装客户端软件</strong></p>
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103439712.png" alt="image-20210811103439712"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103439712.png" alt="image-20210811103439712"></strong></p>
 </li>
 </ol>
 </li>
@@ -2424,9 +2424,9 @@
 </ol>
 </li>
 </ol>
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103743392.png" alt="image-20210811103743392"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103743392.png" alt="image-20210811103743392"></strong></p>
 <h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a><strong>URL</strong></h1><p><strong>Uniform Resource Locator统一资源定位符</strong><br><strong>URL的组成</strong></p>
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103824035.png" alt="image-20210811103824035"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103824035.png" alt="image-20210811103824035"></strong></p>
 <h1 id="Tomcat服务器简介"><a href="#Tomcat服务器简介" class="headerlink" title="Tomcat服务器简介"></a><strong>Tomcat服务器简介</strong></h1><p><strong>Tomcat服务器</strong><br>    <strong>Apache Jakarta的开源项目</strong><br>    <strong>JSP/Servlet容器</strong></p>
 <h1 id="Tomcat的目录结构"><a href="#Tomcat的目录结构" class="headerlink" title="Tomcat的目录结构"></a><strong>Tomcat的目录结构</strong></h1><p>​    <strong>Tomcat服务器的目录结构</strong></p>
 <table>
@@ -2500,7 +2500,7 @@
 <h1 id="什么是JSP"><a href="#什么是JSP" class="headerlink" title="什么是JSP"></a><strong>什么是JSP</strong></h1><p><strong>JSP (Java Server Pages) 在HTML中嵌入Java脚本代码</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*,java.text.*&quot;</span> </span><br><span class="line">	contentType= <span class="string">&quot;text/html; charset=utf-8&quot;</span> %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>输出当前日期<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">        你好，今天是</span></span><br><span class="line"><span class="xml">        &lt;% SimpleDateFormat formater =</span></span><br><span class="line"><span class="xml">              new SimpleDateFormat(&quot;yyyy年 MM月dd日&quot;);</span></span><br><span class="line"><span class="xml">    	    String strCurrentTime = formater.format(new Date()); %&gt;	</span></span><br><span class="line"><span class="xml">        &lt;%=strCurrentTime %&gt;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104439922.png" alt="image-20210811104439922"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104439922.png" alt="image-20210811104439922"></strong></p>
 <h2 id="JSP中的page指令"><a href="#JSP中的page指令" class="headerlink" title="JSP中的page指令"></a><strong>JSP中的page指令</strong></h2><p><strong>通过设置内部的多个属性定义整个页面的属性</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;%@ page 属性<span class="number">1</span>=<span class="string">&quot;属性值&quot;</span> 属性<span class="number">2</span>=<span class="string">&quot;属性值1,属性值2&quot;</span>… </span><br><span class="line">                   属性n=<span class="string">&quot;属性值n&quot;</span>%&gt;</span><br></pre></td></tr></table></figure>
 
@@ -2550,13 +2550,13 @@
 <p><strong>在JSP脚本中注释</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="comment">//单行注释 %&gt; </span></span><br><span class="line">&lt;%  <span class="comment">/*多行注释 */</span> %&gt;</span><br></pre></td></tr></table></figure>
 
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104913589.png" alt="image-20210811104913589"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104913589.png" alt="image-20210811104913589"></strong></p>
 <h2 id="JSP-执行过程"><a href="#JSP-执行过程" class="headerlink" title="JSP 执行过程"></a><strong>JSP 执行过程</strong></h2><p>​    <strong>Web容器处理JSP文件请求需要经过3个阶段</strong></p>
 <p>​    <strong>1.翻译阶段    2.编译阶段    3.执行阶段</strong></p>
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105025243.png" alt="image-20210811105025243"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105025243.png" alt="image-20210811105025243"></strong></p>
 <p><strong>第一次请求之后，Web容器可以重用已经编译好的字节码文件</strong></p>
 <p><strong>如果对JSP文件进行了修改，Web容器会重新对JSP文件进行翻译和编译</strong> </p>
-<p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105133180.png" alt="image-20210811105133180"></strong></p>
+<p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105133180.png" alt="image-20210811105133180"></strong></p>
 <h1 id="部署Web项目"><a href="#部署Web项目" class="headerlink" title="部署Web项目"></a><strong>部署Web项目</strong></h1><ol>
 <li><p><strong>配置Tomcat</strong></p>
 <ol>
@@ -2568,7 +2568,7 @@
 </li>
 <li><p><strong>部署Web项目</strong></p>
 <ol>
-<li><p><strong>单击MyEclipse菜单栏上的部署图标<img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105255170.png" alt="image-20210811105255170"></strong></p>
+<li><p><strong>单击MyEclipse菜单栏上的部署图标<img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105255170.png" alt="image-20210811105255170"></strong></p>
 </li>
 <li><p> <strong>选择需要部署的项目</strong></p>
 </li>
@@ -2577,17 +2577,17 @@
 </ol>
 </li>
 </ol>
-<h2 id="Web程序的调试与排错"><a href="#Web程序的调试与排错" class="headerlink" title="Web程序的调试与排错"></a><strong>Web程序的调试与排错</strong></h2><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105322283.png" alt="image-20210811105322283"></strong></p>
-<h3 id="常见错误：未启动Tomcat"><a href="#常见错误：未启动Tomcat" class="headerlink" title="常见错误：未启动Tomcat"></a><strong>常见错误：未启动Tomcat</strong></h3><h4 id="错误现象"><a href="#错误现象" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105341721.png" alt="image-20210811105341721"></strong></p>
-<h4 id="排错方法：检查Tomcat服务能否正确运行"><a href="#排错方法：检查Tomcat服务能否正确运行" class="headerlink" title="排错方法：检查Tomcat服务能否正确运行"></a><strong>排错方法：检查Tomcat服务能否正确运行</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105354965.png" alt="image-20210811105354965"></strong></p>
+<h2 id="Web程序的调试与排错"><a href="#Web程序的调试与排错" class="headerlink" title="Web程序的调试与排错"></a><strong>Web程序的调试与排错</strong></h2><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105322283.png" alt="image-20210811105322283"></strong></p>
+<h3 id="常见错误：未启动Tomcat"><a href="#常见错误：未启动Tomcat" class="headerlink" title="常见错误：未启动Tomcat"></a><strong>常见错误：未启动Tomcat</strong></h3><h4 id="错误现象"><a href="#错误现象" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105341721.png" alt="image-20210811105341721"></strong></p>
+<h4 id="排错方法：检查Tomcat服务能否正确运行"><a href="#排错方法：检查Tomcat服务能否正确运行" class="headerlink" title="排错方法：检查Tomcat服务能否正确运行"></a><strong>排错方法：检查Tomcat服务能否正确运行</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105354965.png" alt="image-20210811105354965"></strong></p>
 <h4 id="排除错误："><a href="#排除错误：" class="headerlink" title="排除错误："></a><strong>排除错误：</strong></h4><p><strong>启动Tomcat服务</strong><br><strong>如果控制台上显示Tomcat服务已启动，观察端口号是否与预期端口号一致，按照实际端口号重新运行</strong></p>
-<h3 id="常见错误：未部署Web应用"><a href="#常见错误：未部署Web应用" class="headerlink" title="常见错误：未部署Web应用"></a><strong>常见错误：未部署Web应用</strong></h3><h4 id="错误现象-1"><a href="#错误现象-1" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105436646.png" alt="image-20210811105436646"></strong></p>
-<h4 id="排错方法：检查Web应用是否正确部署"><a href="#排错方法：检查Web应用是否正确部署" class="headerlink" title="排错方法：检查Web应用是否正确部署"></a><strong>排错方法：检查Web应用是否正确部署</strong></h4><h4 id><a href="#" class="headerlink" title></a><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105519329.png" alt="image-20210811105519329"></strong></h4><h4 id="排除错误：部署Web应用"><a href="#排除错误：部署Web应用" class="headerlink" title="排除错误：部署Web应用"></a><strong>排除错误：部署Web应用</strong></h4><h3 id="常见错误：-URL输入错误"><a href="#常见错误：-URL输入错误" class="headerlink" title="常见错误： URL输入错误"></a><strong>常见错误： URL输入错误</strong></h3><h4 id="错误现象-2"><a href="#错误现象-2" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105610706.png" alt="image-20210811105610706"></strong></p>
-<h4 id="排错方法：检查URL"><a href="#排错方法：检查URL" class="headerlink" title="排错方法：检查URL"></a><strong>排错方法：检查URL</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105711274.png" alt="image-20210811105711274"></strong></p>
-<h4 id="排除错误：使用正确的URL"><a href="#排除错误：使用正确的URL" class="headerlink" title="排除错误：使用正确的URL"></a><strong>排除错误：使用正确的URL</strong></h4><h3 id="常见错误：目录不能被引用"><a href="#常见错误：目录不能被引用" class="headerlink" title="常见错误：目录不能被引用"></a><strong>常见错误：目录不能被引用</strong></h3><h4 id="错误现象-3"><a href="#错误现象-3" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105807077.png" alt="image-20210811105807077"></strong></p>
-<h4 id="排错方法：检查文件的存放位置"><a href="#排错方法：检查文件的存放位置" class="headerlink" title="排错方法：检查文件的存放位置"></a><strong>排错方法：检查文件的存放位置</strong></h4><h4 id="META-INF，WEB-INF文件夹下的内容无法对外发布"><a href="#META-INF，WEB-INF文件夹下的内容无法对外发布" class="headerlink" title="META-INF，WEB-INF文件夹下的内容无法对外发布"></a><strong>META-INF，WEB-INF文件夹下的内容无法对外发布</strong></h4><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105851155.png" alt="image-20210811105851155"></strong></p>
+<h3 id="常见错误：未部署Web应用"><a href="#常见错误：未部署Web应用" class="headerlink" title="常见错误：未部署Web应用"></a><strong>常见错误：未部署Web应用</strong></h3><h4 id="错误现象-1"><a href="#错误现象-1" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105436646.png" alt="image-20210811105436646"></strong></p>
+<h4 id="排错方法：检查Web应用是否正确部署"><a href="#排错方法：检查Web应用是否正确部署" class="headerlink" title="排错方法：检查Web应用是否正确部署"></a><strong>排错方法：检查Web应用是否正确部署</strong></h4><h4 id><a href="#" class="headerlink" title></a><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105519329.png" alt="image-20210811105519329"></strong></h4><h4 id="排除错误：部署Web应用"><a href="#排除错误：部署Web应用" class="headerlink" title="排除错误：部署Web应用"></a><strong>排除错误：部署Web应用</strong></h4><h3 id="常见错误：-URL输入错误"><a href="#常见错误：-URL输入错误" class="headerlink" title="常见错误： URL输入错误"></a><strong>常见错误： URL输入错误</strong></h3><h4 id="错误现象-2"><a href="#错误现象-2" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105610706.png" alt="image-20210811105610706"></strong></p>
+<h4 id="排错方法：检查URL"><a href="#排错方法：检查URL" class="headerlink" title="排错方法：检查URL"></a><strong>排错方法：检查URL</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105711274.png" alt="image-20210811105711274"></strong></p>
+<h4 id="排除错误：使用正确的URL"><a href="#排除错误：使用正确的URL" class="headerlink" title="排除错误：使用正确的URL"></a><strong>排除错误：使用正确的URL</strong></h4><h3 id="常见错误：目录不能被引用"><a href="#常见错误：目录不能被引用" class="headerlink" title="常见错误：目录不能被引用"></a><strong>常见错误：目录不能被引用</strong></h3><h4 id="错误现象-3"><a href="#错误现象-3" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105807077.png" alt="image-20210811105807077"></strong></p>
+<h4 id="排错方法：检查文件的存放位置"><a href="#排错方法：检查文件的存放位置" class="headerlink" title="排错方法：检查文件的存放位置"></a><strong>排错方法：检查文件的存放位置</strong></h4><h4 id="META-INF，WEB-INF文件夹下的内容无法对外发布"><a href="#META-INF，WEB-INF文件夹下的内容无法对外发布" class="headerlink" title="META-INF，WEB-INF文件夹下的内容无法对外发布"></a><strong>META-INF，WEB-INF文件夹下的内容无法对外发布</strong></h4><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105851155.png" alt="image-20210811105851155"></strong></p>
 <p><strong>排除错误：把index.html文件拖至WebRoot文件夹下</strong></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h1><p><strong><img src="/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811110015217.png" alt="image-20210811110015217"></strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h1><p><strong><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811110015217.png" alt="image-20210811110015217"></strong></p>
 <h1 id="老郑的课堂笔记"><a href="#老郑的课堂笔记" class="headerlink" title="老郑的课堂笔记"></a><strong>老郑的课堂笔记</strong></h1><h2 id="C-S和B-S的区别"><a href="#C-S和B-S的区别" class="headerlink" title="C/S和B/S的区别"></a><strong>C/S和B/S的区别</strong></h2><h2 id="URL-1"><a href="#URL-1" class="headerlink" title="URL"></a><strong>URL</strong></h2><h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a><strong>协议</strong></h3><p>​        <strong>http https ftp</strong></p>
 <h3 id="ip-端口"><a href="#ip-端口" class="headerlink" title="ip:端口"></a><strong>ip:端口</strong></h3><p>​        <strong>localhost:端口8080</strong><br>​        <strong>127.0.0.1:端口8080</strong><br>​        <strong>192.168.1.1:端口</strong></p>
 <h3 id="项目资源地址"><a href="#项目资源地址" class="headerlink" title="项目资源地址"></a><strong>项目资源地址</strong></h3><p>​        <strong>/项目名/文件夹名/网页名</strong><br>​    <strong><a href="http://localhost:8080/%E9%A1%B9%E7%9B%AE%E5%90%8D/%E7%BD%91%E9%A1%B5%E5%90%8D">http://localhost:8080/项目名/网页名</a></strong></p>
@@ -2608,10 +2608,10 @@
   </entry>
   <entry>
     <title>安装Hexo</title>
-    <url>/2021/07/09/%E5%AE%89%E8%A3%85Hexo/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/</url>
     <content><![CDATA[<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><ol>
 <li><p>先安装git和node</p>
-<p><img src="/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png" alt="image-20210709203602142"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png" alt="image-20210709203602142"></p>
 </li>
 <li><p>安装hexo</p>
 <span id="more"></span>
@@ -2776,7 +2776,7 @@
 
 
 
-<p>新建文章时，在相同目录下创建同名文件夹（便于图片管理）<br>打开站点配置文件_config.yml，搜索post_asset_folder字段，设置其值为true<br>安装hexo-asset-image：npm install hexo-asset-image –save<br>此时hexo new “fileName”会在/source/_posts目录下创建同名的文件夹<br>只需在 md 文件里使用 <img src="/2021/07/09/%E5%AE%89%E8%A3%85Hexo/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="title"> ，无需路径名就可以插入图片。</p>
+<p>新建文章时，在相同目录下创建同名文件夹（便于图片管理）<br>打开站点配置文件_config.yml，搜索post_asset_folder字段，设置其值为true<br>安装hexo-asset-image：npm install hexo-asset-image –save<br>此时hexo new “fileName”会在/source/_posts目录下创建同名的文件夹<br>只需在 md 文件里使用 <img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="title"> ，无需路径名就可以插入图片。</p>
 <h2 id="首页显示文章摘要（阅读全文）及配图（文章内不重复显示）"><a href="#首页显示文章摘要（阅读全文）及配图（文章内不重复显示）" class="headerlink" title="首页显示文章摘要（阅读全文）及配图（文章内不重复显示）"></a>首页显示文章摘要（阅读全文）及配图（文章内不重复显示）</h2><p>打开<code>themes/next/</code>下的<code>_config.yml</code>，查找<code>excerpt</code></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">auto_excerpt: <span class="comment">//自动摘录</span></span><br><span class="line">  enable: <span class="literal">true</span></span><br><span class="line">  length: <span class="number">150</span> <span class="comment">//摘录字数</span></span><br><span class="line">read_more_btn: <span class="literal">true</span> <span class="comment">//显示全文按钮</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -2812,7 +2812,7 @@
   </entry>
   <entry>
     <title>第一章 对象和封装</title>
-    <url>/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<h1 id="一、为什么使用面向对象"><a href="#一、为什么使用面向对象" class="headerlink" title="一、为什么使用面向对象"></a>一、为什么使用面向对象</h1><h2 id="1、软件出现的目的"><a href="#1、软件出现的目的" class="headerlink" title="1、软件出现的目的"></a>1、软件出现的目的</h2><p>用计算机的语言描述现实世界</p>
 <p>用计算机解决现实世界的问题</p>
 <h2 id="2、面向对象设计和开发程序的好处"><a href="#2、面向对象设计和开发程序的好处" class="headerlink" title="2、面向对象设计和开发程序的好处"></a>2、面向对象设计和开发程序的好处</h2><p>交流更加流畅</p>
@@ -2907,7 +2907,7 @@
   </entry>
   <entry>
     <title>第七章 多线程</title>
-    <url>/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、进程"><a href="#一、进程" class="headerlink" title="一、进程"></a>一、进程</h2><h3 id="1-什么是进程："><a href="#1-什么是进程：" class="headerlink" title="1.什么是进程："></a>1.什么是进程：</h3><p>​    继承是程序的一次动态执行过程，他对应了从代码加载、执行至完成的一个完整过程，这个过程也是程序本身从产生、发展至消亡的过程。</p>
 <p>​    操作系统同时管理一个计算机系统中的多个进程，让计算机系统中的多个进程轮流使用CPU资源，或者共享操作系统的其他资源。</p>
 <span id="more"></span>
@@ -3121,7 +3121,7 @@
   </entry>
   <entry>
     <title>第三章 多态</title>
-    <url>/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
     <content><![CDATA[<h2 id="1-什么是多态"><a href="#1-什么是多态" class="headerlink" title="1.什么是多态"></a>1.什么是多态</h2><p>​    多态是具有表现多种形态的能力的特征</p>
 <p>​    同一种操作，由于条件不同，产生的结果也不同</p>
 <p>​    多态：同一个引用类型，使用不同的实例而执行不同操作 </p>
@@ -3155,7 +3155,7 @@
   </entry>
   <entry>
     <title>第二章 继承</title>
-    <url>/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<h1>一 继承的一些定义</h1>
 <h2>1.为什么使用继承</h2>
 将重复代码抽取到父类中<br>
@@ -3279,7 +3279,7 @@
   </entry>
   <entry>
     <title>第五章 异常</title>
-    <url>/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h2 id="一、什么是异常"><a href="#一、什么是异常" class="headerlink" title="一、什么是异常"></a>一、什么是异常</h2><p>​    异常就是在程序的允许过程中所发生的不正常的事件。</p>
 <h2 id="二、异常处理"><a href="#二、异常处理" class="headerlink" title="二、异常处理"></a>二、异常处理</h2><p>​    Java的异常处理是通过五个关键词来实现的： **try、catch、finally、throw和throws ** </p>
 <span id="more"></span>
@@ -3368,7 +3368,7 @@
 <td>数字格式转换异常，如把”abc”转换成数字</td>
 </tr>
 </tbody></table>
-<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
+<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
 <p><strong>Throwable</strong> 类：所有异常都是 <strong>Throwable</strong> 类的子类，他派生两个子类，即 <strong>Error</strong> 和 <strong>Exception</strong> 。</p>
 <p><strong>Error</strong> 类：表示仅靠程序本身无法恢复的严重错误，如内存溢出动态链接失败，虚拟机错误。应用程序不应该抛出这种类型的对象（一般是由虚拟机抛出的）。加入出现这种错误，除了尽力使程序安全退出为，在其他方面是无能为力的。使用在进行程序设计时，应该更关注 <strong>Exception</strong> 类。</p>
 <p><strong>Exception</strong> 类：由java应用程序抛出和处理的非严重错误，如所需文件找不到、网络连接不通或终端、算书运算出错（如被零除）、数字（下标越界）、数组下标越界、装在了一个不存在的类、对null对象操作、类型转换异常等。它的各种不同的子类分半对应不同类型的异常。</p>
@@ -3402,7 +3402,7 @@
   </entry>
   <entry>
     <title>第八章 File I/O</title>
-    <url>/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
     <content><![CDATA[<h1 id="第八章-File-I-O"><a href="#第八章-File-I-O" class="headerlink" title="第八章 File I/O"></a>第八章 File I/O</h1><h2 id="1-File类"><a href="#1-File类" class="headerlink" title="1.File类"></a>1.File类</h2><p>操作文件和文件夹</p>
 <h2 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h2><table>
 <thead>
@@ -3570,7 +3570,7 @@
   </entry>
   <entry>
     <title>第六章 集合框架</title>
-    <url>/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<h2 id="1-为什么使用集合框架"><a href="#1-为什么使用集合框架" class="headerlink" title="1.为什么使用集合框架"></a>1.为什么使用集合框架</h2><ul>
 <li>数组长度固定不变，不能很好地适应元素数量动态变化的情况。</li>
 <li>课通过数组名**.length**获取数组的长度，取无法直接获取数组中真实存储的个数。</li>
@@ -3592,7 +3592,7 @@
 <li> <strong>Map</strong> 接口存储一组成对的键-值对象，提供 <strong>key（键）</strong> 到 <strong>value（值）</strong> 的映射。<strong>Map</strong> 中的 <strong>key</strong> 不要求有序，不允许重复。 <strong>value</strong> 同样不要求有序，但运行重复。</li>
 <li> <strong>lterator</strong> 接口负责定义访问和遍历元素的接口。</li>
 </ul>
-<p><img src="/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/img%5Cimage-20210528165408509.png" alt="image-20210528165408509"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/img%5Cimage-20210528165408509.png" alt="image-20210528165408509"></p>
 <h2 id="3-List接口"><a href="#3-List接口" class="headerlink" title="3.List接口"></a>3.List接口</h2><ul>
 <li>实现List接口的常用类有 <strong>ArrayList</strong> 和 <strong>LinkedList</strong> 。他们都可以容纳所有类型的对象，包括null，允许重复，并且都包子元素的存储顺序。</li>
 </ul>
@@ -3720,7 +3720,7 @@
   </entry>
   <entry>
     <title>第四章 接口</title>
-    <url>/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<h2 id="一、什么是接口？"><a href="#一、什么是接口？" class="headerlink" title="一、什么是接口？"></a>一、什么是接口？</h2><p>接口同样是哟中规范和标准，题目可以约束类的行为，是一些方法特征的集合，但是没有方法的实现。</p>
 <p>接口可以看做一种特殊的“抽象类”，但是差异与抽象类万千不同的语法来表示，两者的设计观念也是不同的，抽象类利用与代码复用，接口利于代码的扩展和维护</p>
 <span id="more"></span>
@@ -3771,7 +3771,7 @@
   </entry>
   <entry>
     <title>表单验证</title>
-    <url>/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</url>
     <content><![CDATA[<h1 id="表单验证的重要性"><a href="#表单验证的重要性" class="headerlink" title="表单验证的重要性"></a>表单验证的重要性</h1><p>不但能检查用户输入的无效或错误数据,还能检查用户遗漏的必选选项,从而减轻服务器端的压力,避免服务器端的信息出现错误。</p>
 <h1 id="常用的表单验证"><a href="#常用的表单验证" class="headerlink" title="常用的表单验证"></a>常用的表单验证</h1><ol>
 <li><p>日期格式</p>
@@ -3933,7 +3933,7 @@
 <li>编写脚本验证函数</li>
 <li>鼠标失去焦点时（blur事件）调用验证函数</li>
 </ol>
-<p><img src="/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%5Cimage-20210811095910785.png" alt="image-20210811095910785"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%5Cimage-20210811095910785.png" alt="image-20210811095910785"></p>
 </li>
 </ol>
 <h1 id="表单验证事件和方法"><a href="#表单验证事件和方法" class="headerlink" title="表单验证事件和方法"></a>表单验证事件和方法</h1><p>表单验证需要综合运用元素的事件和方法</p>
@@ -4165,7 +4165,7 @@
 <td>使用自定义的验证错误提示信息。使用setCustomValidity( )方法自定义错误提示信息：setCustomValidity(message)会把错误提示信息自定义为message，此时customError属性值为true；setCustomValidity(“”)会清除自定义的错误信息，此时customError属性值为false。</td>
 </tr>
 </tbody></table>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/image-20210811102306208.png" alt="image-20210811102306208"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/image-20210811102306208.png" alt="image-20210811102306208"></p>
 ]]></content>
       <categories>
         <category>使用jQuery快速高效制作网页交互特效</category>
@@ -4173,7 +4173,7 @@
   </entry>
   <entry>
     <title>jQuery选择器</title>
-    <url>/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+    <url>/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/</url>
     <content><![CDATA[<h2 id="什么是jQuery选择器？"><a href="#什么是jQuery选择器？" class="headerlink" title="什么是jQuery选择器？"></a>什么是jQuery选择器？</h2><p>jQuery选择器类似于CSS选择器，用来选取网页中的元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;h3&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#09F&quot;</span>);</span><br></pre></td></tr></table></figure>
 
@@ -4231,7 +4231,7 @@
 <li><p>标签选择器根据给定的标签名匹配元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">&quot;dt&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">&quot;dd&quot;</span>).css(<span class="string">&quot;display&quot;</span>,<span class="string">&quot;block&quot;</span>); </span><br><span class="line">    &#125;);<span class="comment">//设置&lt;dd&gt;标签中的内容显示出来</span></span><br><span class="line">    $(<span class="string">&quot;h1&quot;</span>).css(<span class="string">&quot;color&quot;</span>,<span class="string">&quot;blue&quot;</span>);</span><br><span class="line">&#125;)<span class="comment">//设置&lt;h1&gt;标签中的字体颜色为蓝色</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112219912.png" alt="image-20210723112219912"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112219912.png" alt="image-20210723112219912"></p>
 </li>
 </ol>
 </li>
@@ -4239,7 +4239,7 @@
 <li><p>类选择器根据给定的class匹配元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.price&quot;</span>).css(&#123;<span class="string">&quot;background&quot;</span>:<span class="string">&quot;#efefef&quot;</span>,<span class="string">&quot;padding&quot;</span>:<span class="string">&quot;5px&quot;</span>&#125;);</span><br><span class="line">	<span class="comment">//设置class为price元素的背景颜色和内边距</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112305387.png" alt="image-20210723112305387"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112305387.png" alt="image-20210723112305387"></p>
 </li>
 </ol>
 </li>
@@ -4247,7 +4247,7 @@
 <li><p>ID选择器根据给定的id匹配元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#author&quot;</span>).css(<span class="string">&quot;color&quot;</span>,<span class="string">&quot;#083499&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112328682.png" alt="image-20210723112328682"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112328682.png" alt="image-20210723112328682"></p>
 </li>
 </ol>
 </li>
@@ -4255,7 +4255,7 @@
 <li><p>并集选择器用来合并元素集合</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.intro,dt,dd&quot;</span>).css(<span class="string">&quot;color&quot;</span>,<span class="string">&quot;#ff0000&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112409148.png" alt="image-20210723112409148"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112409148.png" alt="image-20210723112409148"></p>
 </li>
 </ol>
 </li>
@@ -4263,7 +4263,7 @@
 <li><p>全局选择器可以获取所有元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;*&quot;</span>).css(<span class="string">&quot;font-weight&quot;</span>,<span class="string">&quot;bold&quot;</span>);</span><br><span class="line">	<span class="comment">//设置所有元素的字体加粗显示</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112440569.png" alt="image-20210723112440569"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112440569.png" alt="image-20210723112440569"></p>
 </li>
 </ol>
 </li>
@@ -4313,7 +4313,7 @@
 <li><p>后代选择器用来获取元素的后代元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.textRight p&quot;</span>).css(<span class="string">&quot;color&quot;</span>,<span class="string">&quot;red&quot;</span>);</span><br><span class="line"><span class="comment">//设置class为textRight元素中的所有&lt;p&gt;标签的字体全部为红色</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112623146.png" alt="image-20210723112623146"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112623146.png" alt="image-20210723112623146"></p>
 </li>
 </ol>
 </li>
@@ -4321,7 +4321,7 @@
 <li><p>子选择器用来获取元素的子元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.textRight&gt;p&quot;</span>).css(<span class="string">&quot;color&quot;</span>,<span class="string">&quot;red&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112647339.png" alt="image-20210723112647339"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112647339.png" alt="image-20210723112647339"></p>
 </li>
 </ol>
 </li>
@@ -4329,7 +4329,7 @@
 <li><p>相邻选择器用来选取紧邻目标元素的下一个元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;h1+p&quot;</span>).css(text-decoration<span class="string">&quot;,&quot;</span>underline<span class="string">&quot;); </span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112712423.png" alt="image-20210723112712423"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112712423.png" alt="image-20210723112712423"></p>
 </li>
 </ol>
 </li>
@@ -4337,7 +4337,7 @@
 <li><p>同辈选择器用来选取目标元素之后的所有同辈元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;h1~p&quot;</span>).css(<span class="string">&quot;text-decoration&quot;</span>,<span class="string">&quot;underline&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112730816.png" alt="image-20210723112730816"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723112730816.png" alt="image-20210723112730816"></p>
 </li>
 </ol>
 </li>
@@ -4395,14 +4395,14 @@
 <li><p>~~~js<br>$(“#news a[class]”).css(“background”,”#c9cbcb”);</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">      ![image-20210723112940224](jQuery选择器/image-20210723112940224.png)</span><br><span class="line"></span><br><span class="line">2. #### 根据属性值获取元素</span><br><span class="line"></span><br><span class="line">   1. 属性选择器可以根据属性的值来选取元素</span><br><span class="line"></span><br><span class="line">   2. class属性值为hot</span><br><span class="line"></span><br><span class="line">      ~~~js</span><br><span class="line">      $(&quot;#news a[class=&#x27;hot&#x27;]&quot;).css(&quot;background&quot;,&quot;#c9cbcb&quot;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113014433.png" alt="image-20210723113014433"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113014433.png" alt="image-20210723113014433"></p>
 </li>
 <li><p>属性选择器可以指定选取不等于属性是某个特定值的元素</p>
 </li>
 <li><p>class值不等于hot</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#news a[class!=&#x27;hot&#x27;]&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#c9cbcb&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113032444.png" alt="image-20210723113032444"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113032444.png" alt="image-20210723113032444"></p>
 </li>
 </ol>
 </li>
@@ -4412,7 +4412,7 @@
 <li><p>a标签href属性值以www开头</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#news a[href^=&#x27;www&#x27;]&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#c9cbcb&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113120807.png" alt="image-20210723113120807"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113120807.png" alt="image-20210723113120807"></p>
 </li>
 </ol>
 </li>
@@ -4421,7 +4421,7 @@
 <li><p>a标签href属性值以html结尾</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#news a[href$=&#x27;html&#x27;]&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#c9cbcb&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113141700.png" alt="image-20210723113141700"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113141700.png" alt="image-20210723113141700"></p>
 </li>
 </ol>
 </li>
@@ -4430,7 +4430,7 @@
 <li><p>a标签href属性值包含“k2”的元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#news a[href*=&#x27;k2&#x27;]&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#c9cbcb&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113208034.png" alt="image-20210723113208034"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113208034.png" alt="image-20210723113208034"></p>
 </li>
 </ol>
 </li>
@@ -4522,7 +4522,7 @@
 <li><ol>
 <li>页面效果</li>
 </ol>
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114014625.png" alt="image-20210723114014625"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114014625.png" alt="image-20210723114014625"></p>
 <ol>
 <li><p>代码：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;contain&quot;</span>&gt;</span><br><span class="line">   <span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>祝福冬奥<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">   <span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> 贝克汉姆：衷心希望北京能够申办成功！<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> 姚明：北京申冬奥是个非常棒的机会！加油！<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> 张虹：北京办冬奥，大家的热情定超乎想象！ <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> 肖恩怀特：我爱北京，支持北京申办冬奥会！<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> 赵宏博：北京申办冬奥会是再合适不过了！<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span> 你喜欢哪些冬季运动项目？(点击进入调查页)<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;.contain :header&quot;</span>).css(&#123;<span class="string">&quot;background&quot;</span>:<span class="string">&quot;#2a65ba&quot;</span>,<span class="string">&quot;color&quot;</span>:<span class="string">&quot;#ffffff&quot;</span>&#125;);</span><br></pre></td></tr></table></figure></li>
@@ -4530,13 +4530,13 @@
 </li>
 <li></li>
 <li><p>页面效果</p>
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114224306.png" alt="image-20210723114224306"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114224306.png" alt="image-20210723114224306"></p>
 </li>
 <li><p>代码</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain li:first&quot;</span>).css(&#123;<span class="string">&quot;font-size&quot;</span>:<span class="string">&quot;16px&quot;</span>,<span class="string">&quot;color&quot;</span>:<span class="string">&quot;#e90202&quot;</span>&#125;);</span><br><span class="line">$(<span class="string">&quot;.contain li:last&quot;</span>).css(<span class="string">&quot;border&quot;</span>,<span class="string">&quot;none&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;.contain li:even&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#f0f0f0&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;.contain li:odd&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#cccccc&quot;</span>);</span><br></pre></td></tr></table></figure></li>
 <li></li>
 <li><p>页面效果</p>
-<p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114242711.png" alt="image-20210723114242711"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114242711.png" alt="image-20210723114242711"></p>
 </li>
 <li><p>代码</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain li:lt(2)&quot;</span>).css(&#123;<span class="string">&quot;color&quot;</span>:<span class="string">&quot;#708b02&quot;</span>&#125;);</span><br><span class="line">$(<span class="string">&quot;.contain li:gt(3)&quot;</span>).css(&#123;<span class="string">&quot;color&quot;</span>:<span class="string">&quot;#b66302&quot;</span>&#125;);</span><br></pre></td></tr></table></figure></li>
@@ -4584,12 +4584,12 @@
 </li>
 <li><h2 id="如何实现同一个列表不同样式？"><a href="#如何实现同一个列表不同样式？" class="headerlink" title="如何实现同一个列表不同样式？"></a>如何实现同一个列表不同样式？</h2></li>
 <li><h3 id="如何实现奇偶行不同颜色背景，首行红色字体？"><a href="#如何实现奇偶行不同颜色背景，首行红色字体？" class="headerlink" title="如何实现奇偶行不同颜色背景，首行红色字体？"></a>如何实现奇偶行不同颜色背景，首行红色字体？</h3></li>
-<li><p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113236352.png" alt="image-20210723113236352"></p>
+<li><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723113236352.png" alt="image-20210723113236352"></p>
 </li>
 <li><p>代码</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html</span><br><span class="line">	PUBLIC <span class="string">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">title</span>&gt;</span> <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span></span><br><span class="line"><span class="css"><span class="xml">			* &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">padding</span>: <span class="number">0px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">margin</span>: <span class="number">0px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">a</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">color</span>: <span class="number">#000</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">text-decoration</span>: none;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">ul</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">list-style</span>: none;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dl</span>,</span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dt</span>,</span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dd</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">display</span>: block;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dl</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">clear</span>: both;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">height</span>: <span class="number">30px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">width</span>: <span class="number">670px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">line-height</span>: <span class="number">30px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dl</span> <span class="selector-tag">dt</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">width</span>: <span class="number">100px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">padding-left</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">float</span>: left;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dl</span> <span class="selector-tag">dd</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">float</span>: left;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dl</span> <span class="selector-tag">dd</span> <span class="selector-tag">a</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">margin</span>: <span class="number">3px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span></span></span><br><span class="line"><span class="css"><span class="xml">			<span class="selector-tag">dl</span> <span class="selector-tag">dd</span><span class="selector-class">.more</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">float</span>: right;</span></span></span><br><span class="line"><span class="css"><span class="xml">				<span class="attribute">margin-right</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/youxi.htm&quot;</span>&gt;</span>[页游]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://codes.dian5000.com/htmlcode/38319.html&quot;</span>&gt;</span>枪魂<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">							<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://p.37pk49.com/s/1/683/11722.html?uid=510412&quot;</span>&gt;</span>女神联盟<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://tg.131cc.com/?uid=510412&quot;</span>&gt;</span>37WAN游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://p.37pk49.com/s/1/683/13574.html?uid=510412&quot;</span>&gt;</span>武易<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://jcnm.game3737.com/htmlcode/36266.html&quot;</span>&gt;</span>斗圣<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://tk.pk897.com/1616dh.php?id=2467&quot;</span>&gt;</span>烈焰<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://p.37pk49.com/s/1/683/14006.html?uid=510412&quot;</span>&gt;</span>大闹天宫OL<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/youxi.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span> <span class="attr">class</span>=<span class="string">&quot;s1&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/xiaoyouxi.htm&quot;</span>&gt;</span>[小游戏]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.4339.cc&quot;</span>&gt;</span>4339小游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6949.com&quot;</span>&gt;</span>6949小游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.3155.com/?hmsr=1616&quot;</span>&gt;</span>3155小游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.4399i.net/&quot;</span>&gt;</span>4399i小游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.3199.cn/?hmsr=1616&quot;</span>&gt;</span>3199小游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.7k7k7.net&quot;</span>&gt;</span>7k7k7小游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/xiaoyouxi.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/yingshi.htm&quot;</span>&gt;</span>[影视]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.iqiyi.com&quot;</span>&gt;</span>爱奇艺高清<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.tudou.com/&quot;</span>&gt;</span>土豆网<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://tv.sohu.com/movie/&quot;</span>&gt;</span>搜狐电影<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://tv.cntv.cn/&quot;</span>&gt;</span>CNTV<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">							<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.kktv1.com/c.shtml?c=52560&quot;</span>&gt;</span>KK美女视频<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://p.yiqifa.com/s?sid=a4df75c5719e9b11<span class="symbol">&amp;amp;</span>pid=184<span class="symbol">&amp;amp;</span>wid=410486<span class="symbol">&amp;amp;</span>vid=426282<span class="symbol">&amp;amp;</span>cid=7100<span class="symbol">&amp;amp;</span>lid=168915<span class="symbol">&amp;amp;</span>euid=<span class="symbol">&amp;amp;</span>vwid=&quot;</span>&gt;</span>六间房<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/yingshi.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span> <span class="attr">class</span>=<span class="string">&quot;s1&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/xiaoshuo.htm&quot;</span>&gt;</span>[小说]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.qdmm.com/&quot;</span>&gt;</span>起点女生网<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.zongheng.com/?co=1616&quot;</span>&gt;</span>纵横中文网<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://p.yiqifa.com/c?s=3b2f15ba<span class="symbol">&amp;amp;</span>w=88243<span class="symbol">&amp;amp;</span>c=6805<span class="symbol">&amp;amp;</span>i=23342<span class="symbol">&amp;amp;</span>l=0<span class="symbol">&amp;amp;</span>e=<span class="symbol">&amp;amp;</span>t=http://www.zazhipu.com/&quot;</span>&gt;</span>杂志铺<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.xxsy.net/&quot;</span>&gt;</span>潇湘书院<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.qidian.com/Default.aspx&quot;</span>&gt;</span>起点<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">							<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.xs8.cn/&quot;</span>&gt;</span>言情小说吧<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/xiaoshuo.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/youxi.htm&quot;</span>&gt;</span>[游戏]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://365.uc108.com/&quot;</span>&gt;</span>同城游棋牌<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://games.sina.com.cn/&quot;</span>&gt;</span>新浪游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://p.yiqifa.com/c?s=ae39a645<span class="symbol">&amp;amp;</span>w=154815<span class="symbol">&amp;amp;</span>c=6756<span class="symbol">&amp;amp;</span>i=23904<span class="symbol">&amp;amp;</span>l=0<span class="symbol">&amp;amp;</span>e=<span class="symbol">&amp;amp;</span>t=http://www.5173.com/&quot;</span>&gt;</span>5173游戏交易<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.17173.com/&quot;</span>&gt;</span>17173游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.duowan.com/&quot;</span>&gt;</span>多玩游戏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/youxi.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span> <span class="attr">class</span>=<span class="string">&quot;s1&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/yinyue.htm&quot;</span>&gt;</span>[音乐]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.1ting.com&quot;</span>&gt;</span>一听音乐网<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://mp3.sogou.com/&quot;</span>&gt;</span>搜狗音乐<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://music.baidu.com&quot;</span>&gt;</span>百度mp3<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.yinyuetai.com/&quot;</span>&gt;</span>音悦台MV<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.iqiyi.com/zongyi/superboy.html&quot;</span>&gt;</span>快乐男声<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/yinyue.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/jiaoyou.htm&quot;</span>&gt;</span>[交友]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://reg.jiayuan.com/st/?id=421710<span class="symbol">&amp;amp;</span>url=http://reg.jiayuan.com&quot;</span>&gt;</span>世纪佳缘<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">							<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.zhiji.com/?ad=1616&quot;</span> <span class="attr">class</span>=<span class="string">&quot;green&quot;</span>&gt;</span>同城交友网<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.zhenai.com/901934.html&quot;</span>&gt;</span>珍爱网<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.9see.com/go123?from=120_1&quot;</span>&gt;</span>美女秀场<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.iqiyi.com/zongyi/fcwr.html&quot;</span>&gt;</span>非诚勿扰<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/jiaoyou.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">dl</span> <span class="attr">class</span>=<span class="string">&quot;s1&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dt</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/lvyou.htm&quot;</span>&gt;</span>[旅游]<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://vacations.ctrip.com/?allianceid=1091<span class="symbol">&amp;amp;</span>sid=1227<span class="symbol">&amp;amp;</span>ouid=&quot;</span>&gt;</span>携程旅游<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.tuniu.com/?p=1627<span class="symbol">&amp;amp;</span>cmpid=mkt_08005301<span class="symbol">&amp;amp;</span>utm_campaign=daohang<span class="symbol">&amp;amp;</span>utm_source=1616.net<span class="symbol">&amp;amp;</span>utm_medium=textlink&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">class</span>=<span class="string">&quot;green&quot;</span>&gt;</span>途牛旅游网<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.zoutu.com/&quot;</span>&gt;</span>云南旅游<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://hotel.elong.com/?banid=1616&quot;</span>&gt;</span>艺龙订酒店<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.qunar.com/?ex_track=auto_4f4dd298&quot;</span>&gt;</span>去哪儿旅游<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://detail.tmall.com/item.htm?id=21737099723&quot;</span>&gt;</span>迪士尼门票<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">								<span class="attr">href</span>=<span class="string">&quot;http://www.17u.cn/FlightQuery.aspx#refid=14748221&quot;</span>&gt;</span>同程机票<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">dd</span> <span class="attr">class</span>=<span class="string">&quot;more&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.6655.com/1/lvyou.htm&quot;</span>&gt;</span>更多<span class="symbol">&amp;gt;</span><span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-1.8.3.min.js&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span></span><br><span class="line"><span class="xml">    </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">	$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">	<span class="comment">//$(&quot;dl:even&quot;).css(&quot;background&quot;, &quot;#ECF8FD&quot;);</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">	$(<span class="string">&quot;dl:not(:first):even&quot;</span>).css(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;#eff7d1&quot;</span>);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">	$(<span class="string">&quot;dl:not(:first):odd&quot;</span>).css(<span class="string">&quot;background-color&quot;</span>, <span class="string">&quot;#f7e195&quot;</span>);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">	</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">	&#125;);</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114807141.png" alt="image-20210723114807141"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/image-20210723114807141.png" alt="image-20210723114807141"></p>
 </li>
 </ol>
 ]]></content>

@@ -8,42 +8,42 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bbt.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bbt.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/jianglin0428/jianglin0428.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/jianglin0428/jianglin0428.github.io/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/jianglin0428/jianglin0428.github.io/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/jianglin0428/jianglin0428.github.io/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/jianglin0428/jianglin0428.github.io/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jianglin0428.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/jianglin0428/jianglin0428.github.io/","images":"/jianglin0428/jianglin0428.github.io/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/jianglin0428/jianglin0428.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/jianglin0428/jianglin0428.github.io/js/config.js"></script>
 <meta name="description" content="在JavaScript中，所有的事物都是对象，如字符串，数值，数组，函数，所以本章在讲解之间先回顾一下，学习过的JavaScript数据类型。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript对象及初始面向对象">
-<meta property="og:url" content="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:url" content="https://github.com/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="阿霖的博客">
 <meta property="og:description" content="在JavaScript中，所有的事物都是对象，如字符串，数值，数组，函数，所以本章在讲解之间先回顾一下，学习过的JavaScript数据类型。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png">
-<meta property="og:image" content="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718112801650.png">
-<meta property="og:image" content="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718113518713.png">
-<meta property="og:image" content="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718114438758.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718112801650.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718113518713.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718114438758.png">
 <meta property="article:published_time" content="2021-07-18T02:10:59.000Z">
 <meta property="article:modified_time" content="2021-07-18T03:44:50.859Z">
 <meta property="article:author" content="姜霖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png">
+<meta name="twitter:image" content="https://github.com/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png">
 
 
-<link rel="canonical" href="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+<link rel="canonical" href="https://github.com/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/","path":"2021/07/18/JavaScript对象及初始面向对象/","title":"JavaScript对象及初始面向对象"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/","path":"2021/07/18/JavaScript对象及初始面向对象/","title":"JavaScript对象及初始面向对象"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>JavaScript对象及初始面向对象 | 阿霖的博客</title>
@@ -53,7 +53,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/jianglin0428/jianglin0428.github.io/css/noscript.css">
   </noscript>
 </head>
 
@@ -76,13 +76,13 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/jianglin0428/jianglin0428.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">阿霖的博客</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">雨林</p>
-      <img class="custom-logo-image" src="/images/logo.jpg" alt="阿霖的博客">
+      <img class="custom-logo-image" src="/jianglin0428/jianglin0428.github.io/images/logo.jpg" alt="阿霖的博客">
   </div>
 
   <div class="site-nav-right">
@@ -96,8 +96,8 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+        <li class="menu-item menu-item-home"><a href="/jianglin0428/jianglin0428.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/jianglin0428/jianglin0428.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -162,20 +162,20 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="姜霖"
-      src="/images/avatar.jpg">
+      src="/jianglin0428/jianglin0428.github.io/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">姜霖</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives">
+          <a href="/jianglin0428/jianglin0428.github.io/archives">
           <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/jianglin0428/jianglin0428.github.io/categories/">
           
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
@@ -184,7 +184,7 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
@@ -228,10 +228,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/jianglin0428/jianglin0428.github.io/images/avatar.jpg">
       <meta itemprop="name" content="姜霖">
       <meta itemprop="description" content="">
     </span>
@@ -261,7 +261,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%BD%BF%E7%94%A8jQuery%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%88%B6%E4%BD%9C%E7%BD%91%E9%A1%B5%E4%BA%A4%E4%BA%92%E7%89%B9%E6%95%88/" itemprop="url" rel="index"><span itemprop="name">使用jQuery快速高效制作网页交互特效</span></a>
+          <a href="/jianglin0428/jianglin0428.github.io/categories/%E4%BD%BF%E7%94%A8jQuery%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%88%B6%E4%BD%9C%E7%BD%91%E9%A1%B5%E4%BA%A4%E4%BA%92%E7%89%B9%E6%95%88/" itemprop="url" rel="index"><span itemprop="name">使用jQuery快速高效制作网页交互特效</span></a>
         </span>
     </span>
 
@@ -389,7 +389,7 @@
 <li><p>prototype就是通过调用构造函数而创建的那个对象实例的原型对象，使用原型对象的好处就是可以让所有对象实例共享它所有的属性和方法，也就是说不必再构造函数中定义对象实例的信息，可以将这些信息直接添加到原型对象中。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Flower</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    Flower.prototype.name=<span class="string">&quot;曼陀罗花&quot;</span>;</span><br><span class="line">    Flower.prototype.genera=<span class="string">&quot;茄科 曼陀罗属&quot;</span>;</span><br><span class="line">    Flower.prototype.area=<span class="string">&quot;印度、中国北部&quot;</span>;</span><br><span class="line">    Flower.prototype.uses=<span class="string">&quot;观赏或药用&quot;</span>;</span><br><span class="line">    Flower.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> flower1=<span class="keyword">new</span> Flower();</span><br><span class="line">    flower1.showName();</span><br><span class="line">    <span class="keyword">var</span> flower2=<span class="keyword">new</span> Flower();</span><br><span class="line">    flower2.showName();</span><br><span class="line">    alert(flower1.showName==flower2.showName);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png" alt="image-20210718111954605"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718111954605.png" alt="image-20210718111954605"></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对象._ _proto_ _指向原型对象</span><br><span class="line">原型对象用<span class="title">constructor</span>属性指向构造函数</span><br><span class="line">类用<span class="title">prototype</span>执行原型对象</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
@@ -415,7 +415,7 @@
 <li><p>一个原型对象是另一个原型对象的实例<br>相关的原型对象层层递进，就构成了实例与原型的链条，就是原型链</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Humans</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.foot=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Humans.prototype.getFoot=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="built_in">this</span>.foot;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.head=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Man.prototype=<span class="keyword">new</span> Humans();          <span class="comment">//继承了Humans</span></span><br><span class="line">    Man.prototype.getHead=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> man1=<span class="keyword">new</span> Man();</span><br><span class="line">    alert(man1.getFoot());                          <span class="comment">//2</span></span><br><span class="line">    alert(man1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>);          <span class="comment">//true     </span></span><br><span class="line">    alert(man1 <span class="keyword">instanceof</span> Humans);        <span class="comment">//true</span></span><br><span class="line">    alert(man1 <span class="keyword">instanceof</span> Man);          <span class="comment">//true</span></span><br></pre></td></tr></table></figure></li>
 <li><p>构造函数和原型之间的关系</p>
-<p><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718112801650.png" alt="image-20210718112801650"></p>
+<p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718112801650.png" alt="image-20210718112801650"></p>
 </li>
 <li><p>实际上就是重写圆形对象，赋值于一个新类型的实例，也就是说，原来存于新实例中的所有属性和方法，现在也存在与新的原型对象中了</p>
 </li>
@@ -430,7 +430,7 @@
 </li>
 <li>最后一步才会找到该方法，在找不到属性或方法的情况下，搜索过程总要一环一环地前行到原型链的末端才会停下来。</li>
 <li>上面示例展示的原型链还少一环,大家知道，所有的引用类型默认都继承了Object，而这个继承也是通过原型链实现的。所有函数都默认原型都是Object 的实例，因此默认原型都会包含一个内部指针，指向Object.prototype，这也正是所有自定义类型都会继承toString( ). valueOf()等默认方法的根本原因，所以上面示例展示的原型链中还应该包括另外一个继承层次,此示例的完整原型链如图4.8所示。</li>
-<li><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718113518713.png" alt="image-20210718113518713"></li>
+<li><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718113518713.png" alt="image-20210718113518713"></li>
 </ol>
 </li>
 </ol>
@@ -469,7 +469,7 @@
 </ol>
 </li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718114438758.png" alt="image-20210718114438758"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jianglin0428.github.io/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/image-20210718114438758.png" alt="image-20210718114438758"></p>
 
     </div>
 
@@ -487,7 +487,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="JavaScript对象及初始面向对象">https://jianglin0428.github.io/2021/07/18/JavaScript对象及初始面向对象/</a>
+      <a href="https://github.com/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="JavaScript对象及初始面向对象">https://github.com/jianglin0428/jianglin0428.github.io/2021/07/18/JavaScript对象及初始面向对象/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -500,12 +500,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/" rel="prev" title="JavaScript操作DOM对象">
+                <a href="/jianglin0428/jianglin0428.github.io/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/" rel="prev" title="JavaScript操作DOM对象">
                   <i class="fa fa-chevron-left"></i> JavaScript操作DOM对象
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/" rel="next" title="初始jQuery">
+                <a href="/jianglin0428/jianglin0428.github.io/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/" rel="next" title="初始jQuery">
                   初始jQuery <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -566,10 +566,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/jianglin0428/jianglin0428.github.io/js/comments.js"></script><script src="/jianglin0428/jianglin0428.github.io/js/utils.js"></script><script src="/jianglin0428/jianglin0428.github.io/js/motion.js"></script><script src="/jianglin0428/jianglin0428.github.io/js/next-boot.js"></script>
 
   
-<script src="/js/third-party/search/local-search.js"></script>
+<script src="/jianglin0428/jianglin0428.github.io/js/third-party/search/local-search.js"></script>
 
 
 
