@@ -28,12 +28,12 @@
 <meta property="og:site_name" content="阿霖的博客">
 <meta property="og:description" content="一、什么是异常​    异常就是在程序的允许过程中所发生的不正常的事件。 二、异常处理​    Java的异常处理是通过五个关键词来实现的： **try、catch、finally、throw和throws **">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jianglin0428.github.io/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png">
 <meta property="article:published_time" content="2021-06-03T21:50:51.000Z">
 <meta property="article:modified_time" content="2021-07-11T00:59:31.203Z">
 <meta property="article:author" content="姜霖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jianglin0428.github.io/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png">
+<meta name="twitter:image" content="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png">
 
 
 <link rel="canonical" href="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/">
@@ -382,7 +382,7 @@
 <td>数字格式转换异常，如把”abc”转换成数字</td>
 </tr>
 </tbody></table>
-<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
+<h2 id="二、-异常的分类"><a href="#二、-异常的分类" class="headerlink" title="二、.异常的分类"></a>二、.异常的分类</h2><p><img src="/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/img%5Cimage-20210528154353741.png" alt="image-20210528154353741"></p>
 <p><strong>Throwable</strong> 类：所有异常都是 <strong>Throwable</strong> 类的子类，他派生两个子类，即 <strong>Error</strong> 和 <strong>Exception</strong> 。</p>
 <p><strong>Error</strong> 类：表示仅靠程序本身无法恢复的严重错误，如内存溢出动态链接失败，虚拟机错误。应用程序不应该抛出这种类型的对象（一般是由虚拟机抛出的）。加入出现这种错误，除了尽力使程序安全退出为，在其他方面是无能为力的。使用在进行程序设计时，应该更关注 <strong>Exception</strong> 类。</p>
 <p><strong>Exception</strong> 类：由java应用程序抛出和处理的非严重错误，如所需文件找不到、网络连接不通或终端、算书运算出错（如被零除）、数字（下标越界）、数组下标越界、装在了一个不存在的类、对null对象操作、类型转换异常等。它的各种不同的子类分半对应不同类型的异常。</p>

@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="阿霖的博客">
 <meta property="og:description" content="安装Hexo 先安装git和node   安装hexo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jianglin0428.github.io/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png">
-<meta property="og:image" content="https://jianglin0428.github.io/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/%E5%9B%BE%E7%89%87%E5%90%8D.jpg">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/%E5%9B%BE%E7%89%87%E5%90%8D.jpg">
 <meta property="article:published_time" content="2021-07-09T14:44:40.000Z">
 <meta property="article:modified_time" content="2021-07-16T01:49:32.880Z">
 <meta property="article:author" content="姜霖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jianglin0428.github.io/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png">
+<meta name="twitter:image" content="https://jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png">
 
 
 <link rel="canonical" href="https://jianglin0428.github.io/2021/07/09/%E5%AE%89%E8%A3%85Hexo/">
@@ -297,7 +297,7 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><ol>
 <li><p>先安装git和node</p>
-<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png" alt="image-20210709203602142"></p>
+<p><img src="/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png" alt="image-20210709203602142"></p>
 </li>
 <li><p>安装hexo</p>
 <span id="more"></span>
@@ -462,7 +462,7 @@
 
 
 
-<p>新建文章时，在相同目录下创建同名文件夹（便于图片管理）<br>打开站点配置文件_config.yml，搜索post_asset_folder字段，设置其值为true<br>安装hexo-asset-image：npm install hexo-asset-image –save<br>此时hexo new “fileName”会在/source/_posts目录下创建同名的文件夹<br>只需在 md 文件里使用 <img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="title"> ，无需路径名就可以插入图片。</p>
+<p>新建文章时，在相同目录下创建同名文件夹（便于图片管理）<br>打开站点配置文件_config.yml，搜索post_asset_folder字段，设置其值为true<br>安装hexo-asset-image：npm install hexo-asset-image –save<br>此时hexo new “fileName”会在/source/_posts目录下创建同名的文件夹<br>只需在 md 文件里使用 <img src="/2021/07/09/%E5%AE%89%E8%A3%85Hexo/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="title"> ，无需路径名就可以插入图片。</p>
 <h2 id="首页显示文章摘要（阅读全文）及配图（文章内不重复显示）"><a href="#首页显示文章摘要（阅读全文）及配图（文章内不重复显示）" class="headerlink" title="首页显示文章摘要（阅读全文）及配图（文章内不重复显示）"></a>首页显示文章摘要（阅读全文）及配图（文章内不重复显示）</h2><p>打开<code>themes/next/</code>下的<code>_config.yml</code>，查找<code>excerpt</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt: <span class="comment">//自动摘录</span></span><br><span class="line">  enable: <span class="literal">true</span></span><br><span class="line">  length: <span class="number">150</span> <span class="comment">//摘录字数</span></span><br><span class="line">read_more_btn: <span class="literal">true</span> <span class="comment">//显示全文按钮</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
