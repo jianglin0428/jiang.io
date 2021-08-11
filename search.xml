@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>JSP数据交互(一)</title>
-    <url>/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/</url>
+    <url>/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/</url>
     <content><![CDATA[<h1 id="什么是JSP内置对象"><a href="#什么是JSP内置对象" class="headerlink" title="什么是JSP内置对象"></a>什么是JSP内置对象</h1><p>JSP内置对象是 Web 容器创建的一组对象</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">        int[ ] value = &#123; <span class="number">60</span>, <span class="number">70</span>, <span class="number">80</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span>  (int i : value) &#123;</span><br><span class="line">                out.println(i);</span><br><span class="line">        &#125; </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 
@@ -164,7 +164,7 @@
   </entry>
   <entry>
     <title>JavaScript基础</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
+    <url>/2021/07/07/JavaScript%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="为什么要学JavaScript"><a href="#为什么要学JavaScript" class="headerlink" title="为什么要学JavaScript?"></a>为什么要学JavaScript?</h1><ol>
 <li>表单验证－减轻服务器端压力</li>
 <li>页面动态效果</li>
@@ -477,7 +477,7 @@
   </entry>
   <entry>
     <title>JavaScript对象及初始面向对象</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <url>/2021/07/18/JavaScript%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%88%9D%E5%A7%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>在JavaScript中，所有的事物都是对象，如字符串，数值，数组，函数，所以本章在讲解之间先回顾一下，学习过的JavaScript数据类型。</p>
 <span id="more"></span>
 
@@ -664,7 +664,7 @@
   </entry>
   <entry>
     <title>JavaScript操作BOM对象</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
+    <url>/2021/07/11/JavaScript%E6%93%8D%E4%BD%9CBOM%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h1 id="BOM模型"><a href="#BOM模型" class="headerlink" title="BOM模型"></a>BOM模型</h1><ol>
 <li><p>BOM：浏览器对象模型（Browser Object Model）</p>
 </li>
@@ -1088,7 +1088,7 @@
   </entry>
   <entry>
     <title>JavaScript操作DOM对象</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/</url>
+    <url>/2021/07/16/JavaScript%E6%93%8D%E4%BD%9CDOM%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>DOM是Document Object Model的缩写，即文档对象模型,是基于文档编程的一套API接口。</p>
 <p>使用JavaScript操作DOM分为三个方面：DOM Core (核心) ，HTML-DOM和CSS-DOM。通过这些标准开发人员可以让网页真正动起来，动态得增加，修好，删除数据，使用户与计算机的交互更加便捷，交互也更加丰富，那么下面，大家就一起学习JavaScript操作DOM吧。</p>
 <span id="more"></span>
@@ -1468,7 +1468,7 @@
   </entry>
   <entry>
     <title>Windows系统使用技巧</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+    <url>/2021/07/07/Windows%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<p>虽然用了好久的电脑，但是对很多系统的常用技巧都不熟悉，也不曾总结，这一次借看书的机会总结一下。 </p>
 <span id="more"></span>
 
@@ -1483,7 +1483,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/jianglin0428/jiang.io.git/2021/08/08/hello-world/</url>
+    <url>/2021/08/08/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
@@ -1503,7 +1503,7 @@
   </entry>
   <entry>
     <title>hexo语法合集</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
+    <url>/2021/06/30/hexo%E8%AF%AD%E6%B3%95%E5%90%88%E9%9B%86/</url>
     <content><![CDATA[<h2 id="写在前头："><a href="#写在前头：" class="headerlink" title="写在前头："></a>写在前头：</h2><p><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html"><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">使用hexo+github搭建免费个人博客详细教程</a></a></p>
 <span id="more"></span>
 
@@ -1583,7 +1583,7 @@
   </entry>
   <entry>
     <title>jQuery中的事件与动画</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
+    <url>/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
     <content><![CDATA[<h1 id="网页中的事件"><a href="#网页中的事件" class="headerlink" title="网页中的事件"></a>网页中的事件</h1><p>和WinForm一样，在网页中的交互也是需要事件来实现的，例如tab切换效果，可以通过鼠标单击事件来实现</p>
 <span id="more"></span>
 
@@ -1776,7 +1776,7 @@
   </entry>
   <entry>
     <title>使用jQuery操作DOM</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/</url>
+    <url>/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/</url>
     <content><![CDATA[<h1 id="DOM操作分类"><a href="#DOM操作分类" class="headerlink" title="DOM操作分类"></a>DOM操作分类</h1><ol>
 <li><p>DOM操作分为三类：</p>
 <ol>
@@ -2105,7 +2105,7 @@
   </entry>
   <entry>
     <title>初始jQuery</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/</url>
+    <url>/2021/07/18/%E5%88%9D%E5%A7%8BjQuery/</url>
     <content><![CDATA[<h1 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h1><ol>
 <li><h2 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h2><ol>
 <li>jQuery由美国人John Resig于2006年创建</li>
@@ -2355,7 +2355,7 @@
   </entry>
   <entry>
     <title>动态网页开发基础</title>
-    <url>/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
+    <url>/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="动态网站和静态网站"><a href="#动态网站和静态网站" class="headerlink" title="动态网站和静态网站"></a><strong>动态网站和静态网站</strong></h1><ol>
 <li><strong>静态网页是相对于动态网页而言，是指没有后台数据库、不含程序和不可交互的网页。</strong></li>
 <li><strong>编的是什么它显示的就是什么、不会有任何改变。</strong></li>
@@ -2608,7 +2608,7 @@
   </entry>
   <entry>
     <title>安装Hexo</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/</url>
+    <url>/2021/07/09/%E5%AE%89%E8%A3%85Hexo/</url>
     <content><![CDATA[<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><ol>
 <li><p>先安装git和node</p>
 <p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/09/%E5%AE%89%E8%A3%85Hexo/image-20210709203602142.png" alt="image-20210709203602142"></p>
@@ -2812,7 +2812,7 @@
   </entry>
   <entry>
     <title>第一章 对象和封装</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<h1 id="一、为什么使用面向对象"><a href="#一、为什么使用面向对象" class="headerlink" title="一、为什么使用面向对象"></a>一、为什么使用面向对象</h1><h2 id="1、软件出现的目的"><a href="#1、软件出现的目的" class="headerlink" title="1、软件出现的目的"></a>1、软件出现的目的</h2><p>用计算机的语言描述现实世界</p>
 <p>用计算机解决现实世界的问题</p>
 <h2 id="2、面向对象设计和开发程序的好处"><a href="#2、面向对象设计和开发程序的好处" class="headerlink" title="2、面向对象设计和开发程序的好处"></a>2、面向对象设计和开发程序的好处</h2><p>交流更加流畅</p>
@@ -2907,7 +2907,7 @@
   </entry>
   <entry>
     <title>第七章 多线程</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、进程"><a href="#一、进程" class="headerlink" title="一、进程"></a>一、进程</h2><h3 id="1-什么是进程："><a href="#1-什么是进程：" class="headerlink" title="1.什么是进程："></a>1.什么是进程：</h3><p>​    继承是程序的一次动态执行过程，他对应了从代码加载、执行至完成的一个完整过程，这个过程也是程序本身从产生、发展至消亡的过程。</p>
 <p>​    操作系统同时管理一个计算机系统中的多个进程，让计算机系统中的多个进程轮流使用CPU资源，或者共享操作系统的其他资源。</p>
 <span id="more"></span>
@@ -3121,7 +3121,7 @@
   </entry>
   <entry>
     <title>第三章 多态</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%9A%E6%80%81/</url>
     <content><![CDATA[<h2 id="1-什么是多态"><a href="#1-什么是多态" class="headerlink" title="1.什么是多态"></a>1.什么是多态</h2><p>​    多态是具有表现多种形态的能力的特征</p>
 <p>​    同一种操作，由于条件不同，产生的结果也不同</p>
 <p>​    多态：同一个引用类型，使用不同的实例而执行不同操作 </p>
@@ -3155,7 +3155,7 @@
   </entry>
   <entry>
     <title>第二章 继承</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<h1>一 继承的一些定义</h1>
 <h2>1.为什么使用继承</h2>
 将重复代码抽取到父类中<br>
@@ -3279,7 +3279,7 @@
   </entry>
   <entry>
     <title>第五章 异常</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
+    <url>/2021/06/04/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h2 id="一、什么是异常"><a href="#一、什么是异常" class="headerlink" title="一、什么是异常"></a>一、什么是异常</h2><p>​    异常就是在程序的允许过程中所发生的不正常的事件。</p>
 <h2 id="二、异常处理"><a href="#二、异常处理" class="headerlink" title="二、异常处理"></a>二、异常处理</h2><p>​    Java的异常处理是通过五个关键词来实现的： **try、catch、finally、throw和throws ** </p>
 <span id="more"></span>
@@ -3402,7 +3402,7 @@
   </entry>
   <entry>
     <title>第八章 File I/O</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
+    <url>/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/</url>
     <content><![CDATA[<h1 id="第八章-File-I-O"><a href="#第八章-File-I-O" class="headerlink" title="第八章 File I/O"></a>第八章 File I/O</h1><h2 id="1-File类"><a href="#1-File类" class="headerlink" title="1.File类"></a>1.File类</h2><p>操作文件和文件夹</p>
 <h2 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h2><table>
 <thead>
@@ -3570,7 +3570,7 @@
   </entry>
   <entry>
     <title>第六章 集合框架</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
+    <url>/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<h2 id="1-为什么使用集合框架"><a href="#1-为什么使用集合框架" class="headerlink" title="1.为什么使用集合框架"></a>1.为什么使用集合框架</h2><ul>
 <li>数组长度固定不变，不能很好地适应元素数量动态变化的情况。</li>
 <li>课通过数组名**.length**获取数组的长度，取无法直接获取数组中真实存储的个数。</li>
@@ -3720,7 +3720,7 @@
   </entry>
   <entry>
     <title>第四章 接口</title>
-    <url>/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
+    <url>/2021/06/04/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<h2 id="一、什么是接口？"><a href="#一、什么是接口？" class="headerlink" title="一、什么是接口？"></a>一、什么是接口？</h2><p>接口同样是哟中规范和标准，题目可以约束类的行为，是一些方法特征的集合，但是没有方法的实现。</p>
 <p>接口可以看做一种特殊的“抽象类”，但是差异与抽象类万千不同的语法来表示，两者的设计观念也是不同的，抽象类利用与代码复用，接口利于代码的扩展和维护</p>
 <span id="more"></span>
@@ -3771,7 +3771,7 @@
   </entry>
   <entry>
     <title>表单验证</title>
-    <url>/jianglin0428/jiang.io.git/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</url>
+    <url>/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</url>
     <content><![CDATA[<h1 id="表单验证的重要性"><a href="#表单验证的重要性" class="headerlink" title="表单验证的重要性"></a>表单验证的重要性</h1><p>不但能检查用户输入的无效或错误数据,还能检查用户遗漏的必选选项,从而减轻服务器端的压力,避免服务器端的信息出现错误。</p>
 <h1 id="常用的表单验证"><a href="#常用的表单验证" class="headerlink" title="常用的表单验证"></a>常用的表单验证</h1><ol>
 <li><p>日期格式</p>
@@ -4173,7 +4173,7 @@
   </entry>
   <entry>
     <title>jQuery选择器</title>
-    <url>/jianglin0428/jiang.io.git/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+    <url>/2021/07/23/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/</url>
     <content><![CDATA[<h2 id="什么是jQuery选择器？"><a href="#什么是jQuery选择器？" class="headerlink" title="什么是jQuery选择器？"></a>什么是jQuery选择器？</h2><p>jQuery选择器类似于CSS选择器，用来选取网页中的元素</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;h3&quot;</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#09F&quot;</span>);</span><br></pre></td></tr></table></figure>
 

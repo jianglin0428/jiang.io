@@ -8,23 +8,23 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/jianglin0428/jiang.io.git/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/jianglin0428/jiang.io.git/images/favicon-32x32-bbt.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/jianglin0428/jiang.io.git/images/favicon-16x16-bbt.png">
-  <link rel="mask-icon" href="/jianglin0428/jiang.io.git/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/jianglin0428/jiang.io.git/","images":"/jianglin0428/jiang.io.git/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/jianglin0428/jiang.io.git/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/jianglin0428/jiang.io.git/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jianglin0428.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta name="description" content="一、进程1.什么是进程：​    继承是程序的一次动态执行过程，他对应了从代码加载、执行至完成的一个完整过程，这个过程也是程序本身从产生、发展至消亡的过程。 ​    操作系统同时管理一个计算机系统中的多个进程，让计算机系统中的多个进程轮流使用CPU资源，或者共享操作系统的其他资源。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第七章 多线程">
-<meta property="og:url" content="https://github.com/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:url" content="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="阿霖的博客">
 <meta property="og:description" content="一、进程1.什么是进程：​    继承是程序的一次动态执行过程，他对应了从代码加载、执行至完成的一个完整过程，这个过程也是程序本身从产生、发展至消亡的过程。 ​    操作系统同时管理一个计算机系统中的多个进程，让计算机系统中的多个进程轮流使用CPU资源，或者共享操作系统的其他资源。">
 <meta property="og:locale" content="zh_CN">
@@ -34,11 +34,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://github.com/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+<link rel="canonical" href="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/","path":"2021/06/04/第七章 多线程/","title":"第七章 多线程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/","path":"2021/06/04/第七章 多线程/","title":"第七章 多线程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>第七章 多线程 | 阿霖的博客</title>
@@ -48,7 +48,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -71,13 +71,13 @@
 
   <div class="site-meta">
 
-    <a href="/jianglin0428/jiang.io.git/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">阿霖的博客</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">雨林</p>
-      <img class="custom-logo-image" src="/jianglin0428/jiang.io.git/images/logo.jpg" alt="阿霖的博客">
+      <img class="custom-logo-image" src="/images/logo.jpg" alt="阿霖的博客">
   </div>
 
   <div class="site-nav-right">
@@ -91,8 +91,8 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/jianglin0428/jiang.io.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/jianglin0428/jiang.io.git/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -157,20 +157,20 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="姜霖"
-      src="/jianglin0428/jiang.io.git/images/avatar.jpg">
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">姜霖</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/jianglin0428/jiang.io.git/archives">
+          <a href="/archives">
           <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/jianglin0428/jiang.io.git/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
@@ -179,7 +179,7 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
@@ -223,10 +223,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/jianglin0428/jiang.io.git/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="姜霖">
       <meta itemprop="description" content="">
     </span>
@@ -262,7 +262,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/jianglin0428/jiang.io.git/categories/%E4%BD%BF%E7%94%A8Java%E5%AE%9E%E7%8E%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%95%B4%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">使用Java实现面向对象编程整理</span></a>
+          <a href="/categories/%E4%BD%BF%E7%94%A8Java%E5%AE%9E%E7%8E%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%95%B4%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">使用Java实现面向对象编程整理</span></a>
         </span>
     </span>
 
@@ -515,7 +515,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://github.com/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="第七章 多线程">https://github.com/jianglin0428/jiang.io.git/2021/06/04/第七章 多线程/</a>
+      <a href="https://jianglin0428.github.io/2021/06/04/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="第七章 多线程">https://jianglin0428.github.io/2021/06/04/第七章 多线程/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -528,12 +528,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" rel="prev" title="第六章 集合框架">
+                <a href="/2021/06/04/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" rel="prev" title="第六章 集合框架">
                   <i class="fa fa-chevron-left"></i> 第六章 集合框架
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/jianglin0428/jiang.io.git/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/" rel="next" title="第八章 File I/O">
+                <a href="/2021/06/04/%E7%AC%AC%E5%85%AB%E7%AB%A0%20File%20IO/" rel="next" title="第八章 File I/O">
                   第八章 File I/O <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -594,10 +594,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/jianglin0428/jiang.io.git/js/comments.js"></script><script src="/jianglin0428/jiang.io.git/js/utils.js"></script><script src="/jianglin0428/jiang.io.git/js/motion.js"></script><script src="/jianglin0428/jiang.io.git/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="/jianglin0428/jiang.io.git/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
