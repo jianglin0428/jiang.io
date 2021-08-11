@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/jianglin0428/jiang.io.git/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/jianglin0428/jiang.io.git/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/jianglin0428/jiang.io.git/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/jianglin0428/jiang.io.git/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/jianglin0428/jiang.io.git/","images":"/jianglin0428/jiang.io.git/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/jianglin0428/jiang.io.git/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/jianglin0428/jiang.io.git/js/config.js"></script>
+<meta name="description" content="DOM操作分类 DOM操作分为三类：  DOM Core：任何一种支持DOM的编程语言都可以使用它，如getElementById() HTML-DOM：用于处理HTML文档，如document.forms CSS-DOM：用于操作CSS，如element.style.color&#x3D;”green”   JavaScript用于对(x)html文档进行操作，它对这三类DOM操作都提供了支持  jQue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用jQuery操作DOM">
+<meta property="og:url" content="https://github.com/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/index.html">
+<meta property="og:site_name" content="阿霖的博客">
+<meta property="og:description" content="DOM操作分类 DOM操作分为三类：  DOM Core：任何一种支持DOM的编程语言都可以使用它，如getElementById() HTML-DOM：用于处理HTML文档，如document.forms CSS-DOM：用于操作CSS，如element.style.color&#x3D;”green”   JavaScript用于对(x)html文档进行操作，它对这三类DOM操作都提供了支持  jQue">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114644273.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114910666.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115124065.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115355193.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115425191.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115555608.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120205309.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120422022.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120622570.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120649878.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120843146.png">
+<meta property="article:published_time" content="2021-07-30T02:45:14.000Z">
+<meta property="article:modified_time" content="2021-07-30T04:09:21.557Z">
+<meta property="article:author" content="姜霖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114644273.png">
+
+
+<link rel="canonical" href="https://github.com/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/","path":"2021/07/30/使用jQuery操作DOM/","title":"使用jQuery操作DOM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用jQuery操作DOM | 阿霖的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/noscript.css">
+  </noscript>
+</head>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/jianglin0428/jiang.io.git/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">阿霖的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">雨林</p>
+      <img class="custom-logo-image" src="/jianglin0428/jiang.io.git/images/logo.jpg" alt="阿霖的博客">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/jianglin0428/jiang.io.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/jianglin0428/jiang.io.git/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">DOM操作分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Query%E4%B8%AD%E7%9A%84DOM%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">Query中的DOM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">样式操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%92%8C%E8%8E%B7%E5%8F%96%E6%A0%B7%E5%BC%8F%E5%80%BC"><span class="nav-number">2.1.1.</span> <span class="nav-text">设置和获取样式值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%BD%E5%8A%A0%E5%92%8C%E7%A7%BB%E9%99%A4%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">追加和移除样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E5%8A%A0%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">追加样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">移除样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.3.</span> <span class="nav-text">切换样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%8C%87%E5%AE%9A%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.4.</span> <span class="nav-text">判断是否含指定的样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hasClass-%E6%96%B9%E6%B3%95%E6%9D%A5%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">hasClass( )方法来判断是否包含指定的样式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E5%8F%8AValue%E5%80%BC%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">内容及Value值操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E4%BB%A3%E7%A0%81%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.1.</span> <span class="nav-text">HTML代码操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html-%E5%8F%AF%E4%BB%A5%E5%AF%B9HTML%E4%BB%A3%E7%A0%81%E8%BF%9B%E8%A1%8C%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%B1%BB%E4%BC%BC%E4%BA%8EJS%E4%B8%AD%E7%9A%84innerHTML"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">html()可以对HTML代码进行操作，类似于JS中的innerHTML</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%86%85%E5%AE%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.2.</span> <span class="nav-text">标签内容操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#text-%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E6%88%96%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">text()可以获取或设置元素的文本内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-%E5%92%8Ctext-%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.2.3.</span> <span class="nav-text">html( ) 和text( )方法的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.4.</span> <span class="nav-text">属性值操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#val-%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E6%88%96%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E7%9A%84value%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">val()可以获取或设置元素的value属性值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">节点操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9%EF%BC%88%E5%89%8D%E9%9D%A2%E7%AB%A0%E8%8A%82%E5%B7%B2%E8%AE%B2%EF%BC%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">查找节点（前面章节已讲）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.2.</span> <span class="nav-text">创建节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0-%E7%94%A8%E4%BA%8E%E8%8E%B7%E5%8F%96%E6%88%96%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">工厂函数$()用于获取或创建节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.3.</span> <span class="nav-text">插入节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%86%85%E9%83%A8%E6%8F%92%E5%85%A5%E5%AD%90%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">元素内部插入子节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%A4%96%E9%83%A8%E6%8F%92%E5%85%A5%E5%90%8C%E8%BE%88%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">元素外部插入同辈节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.4.</span> <span class="nav-text">删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%89%E7%A7%8D%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">jQuery提供了三种删除节点的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.5.</span> <span class="nav-text">替换节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#replaceWith-%E5%92%8CreplaceAll-%E7%94%A8%E4%BA%8E%E6%9B%BF%E6%8D%A2%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.5.1.</span> <span class="nav-text">replaceWith()和replaceAll()用于替换某个节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.6.</span> <span class="nav-text">复制节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#clone-%E7%94%A8%E4%BA%8E%E5%A4%8D%E5%88%B6%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.6.1.</span> <span class="nav-text">clone()用于复制某个节点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">2.4.</span> <span class="nav-text">节点属性操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.1.</span> <span class="nav-text">获取与设置元素属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#attr-%E7%94%A8%E6%9D%A5%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">attr()用来获取与设置元素属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.2.</span> <span class="nav-text">删除元素属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#removeAttr-%E7%94%A8%E6%9D%A5%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">removeAttr()用来删除元素的属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E9%81%8D%E5%8E%86"><span class="nav-number">2.5.</span> <span class="nav-text">节点遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%AD%90%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text">遍历子元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#children-%E6%96%B9%E6%B3%95%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9D%A5%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%90%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">children()方法可以用来获取元素的所有子元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%90%8C%E8%BE%88%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.</span> <span class="nav-text">遍历同辈元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%B4%A7%E9%82%BB%E5%85%B6%E5%90%8E%E3%80%81%E7%B4%A7%E9%82%BB%E5%85%B6%E5%89%8D%E5%92%8C%E4%BD%8D%E4%BA%8E%E8%AF%A5%E5%85%83%E7%B4%A0%E5%89%8D%E4%B8%8E%E5%90%8E%E7%9A%84%E6%89%80%E6%9C%89%E5%90%8C%E8%BE%88%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">jQuery可以获取紧邻其后、紧邻其前和位于该元素前与后的所有同辈元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%89%8D%E8%BE%88%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.</span> <span class="nav-text">遍历前辈元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery%E4%B8%AD%E5%8F%AF%E4%BB%A5%E9%81%8D%E5%8E%86%E5%89%8D%E8%BE%88%E5%85%83%E7%B4%A0"><span class="nav-number">2.5.3.1.</span> <span class="nav-text">jQuery中可以遍历前辈元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95"><span class="nav-number">2.5.4.</span> <span class="nav-text">其他遍历方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#each-%EF%BC%9A%E8%A7%84%E5%AE%9A%E4%B8%BA%E6%AF%8F%E4%B8%AA%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E8%A7%84%E5%AE%9A%E8%BF%90%E8%A1%8C%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">2.5.4.1.</span> <span class="nav-text">each( ) ：规定为每个匹配元素规定运行的函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#end-%EF%BC%9A%E7%BB%93%E6%9D%9F%E5%BD%93%E5%89%8D%E9%93%BE%E6%9D%A1%E4%B8%AD%E7%9A%84%E6%9C%80%E8%BF%91%E7%9A%84%E7%AD%9B%E9%80%89%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E9%9B%86%E8%BF%98%E5%8E%9F%E4%B8%BA%E4%B9%8B%E5%89%8D%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">2.5.4.2.</span> <span class="nav-text">end( )：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-DOM%E6%93%8D%E4%BD%9C"><span class="nav-number">2.6.</span> <span class="nav-text">CSS-DOM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%A4css-%E5%A4%96%EF%BC%8C%E8%BF%98%E6%9C%89%E8%8E%B7%E5%8F%96%E5%92%8C%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E3%80%81%E5%AE%BD%E5%BA%A6%E7%AD%89%E7%9A%84%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-number">2.6.0.1.</span> <span class="nav-text">除css()外，还有获取和设置元素高度、宽度等的样式操作方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="姜霖"
+      src="/jianglin0428/jiang.io.git/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">姜霖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/jianglin0428/jiang.io.git/archives">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/jianglin0428/jiang.io.git/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://jq.qq.com/?_wv=1027&k=4dyoeB6O" title="QQ群 → https:&#x2F;&#x2F;jq.qq.com&#x2F;?_wv&#x3D;1027&amp;k&#x3D;4dyoeB6O" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>QQ群</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/jianglin0428/jiang.io.git/images/avatar.jpg">
+      <meta itemprop="name" content="姜霖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿霖的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用jQuery操作DOM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-07-30 10:45:14 / 修改时间：12:09:21" itemprop="dateCreated datePublished" datetime="2021-07-30T10:45:14+08:00">2021-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/jianglin0428/jiang.io.git/categories/%E4%BD%BF%E7%94%A8jQuery%E5%BF%AB%E9%80%9F%E9%AB%98%E6%95%88%E5%88%B6%E4%BD%9C%E7%BD%91%E9%A1%B5%E4%BA%A4%E4%BA%92%E7%89%B9%E6%95%88/" itemprop="url" rel="index"><span itemprop="name">使用jQuery快速高效制作网页交互特效</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="DOM操作分类"><a href="#DOM操作分类" class="headerlink" title="DOM操作分类"></a>DOM操作分类</h1><ol>
+<li><p>DOM操作分为三类：</p>
+<ol>
+<li>DOM Core：任何一种支持DOM的编程语言都可以使用它，如getElementById()</li>
+<li>HTML-DOM：用于处理HTML文档，如document.forms</li>
+<li>CSS-DOM：用于操作CSS，如element.style.color=”green”</li>
+</ol>
+</li>
+<li><p>JavaScript用于对(x)html文档进行操作，它对这三类DOM操作都提供了支持</p>
+</li>
+<li><p>jQuery对JavaScript中的DOM操作进行了封装</p>
+</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="Query中的DOM操作"><a href="#Query中的DOM操作" class="headerlink" title="Query中的DOM操作"></a>Query中的DOM操作</h1><ol>
+<li><h2 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h2><ol>
+<li><h3 id="设置和获取样式值"><a href="#设置和获取样式值" class="headerlink" title="设置和获取样式值"></a>设置和获取样式值</h3></li>
+<li><p>使用css()为指定的元素设置样式值或获取样式值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">css(name,value) ;<span class="comment">//设置单个属性</span></span><br><span class="line">或</span><br><span class="line">css(&#123;<span class="attr">name</span>:value, <span class="attr">name</span>:value,<span class="attr">name</span>:value…&#125;) ;<span class="comment">//同时设置多个属性</span></span><br><span class="line"></span><br><span class="line">css(name)<span class="comment">//获取属性值</span></span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">this</span>).css(<span class="string">&quot;border&quot;</span>,<span class="string">&quot;5px solid #f5f5f5&quot;</span>);</span><br><span class="line">或</span><br><span class="line">$(<span class="built_in">this</span>).css(&#123;<span class="string">&quot;border&quot;</span>:<span class="string">&quot;5px solid #f5f5f5&quot;</span>,<span class="string">&quot;opacity&quot;</span>:<span class="string">&quot;0.5&quot;</span>&#125;);</span><br><span class="line"><span class="comment">//opacity 设置透明度</span></span><br></pre></td></tr></table></figure></li>
+<li><h3 id="追加和移除样式"><a href="#追加和移除样式" class="headerlink" title="追加和移除样式"></a>追加和移除样式</h3><ol>
+<li><h4 id="追加样式"><a href="#追加样式" class="headerlink" title="追加样式"></a>追加样式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(selector).addClass(<span class="class"><span class="keyword">class</span>)</span>;</span><br><span class="line">或   $(selector).addClass(class1 class2 … classN);</span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.text&#123; <span class="attr">padding</span>:10px;&#125;</span><br><span class="line">.content &#123;background-color:#FFFF00; &#125;</span><br><span class="line">.border &#123;<span class="attr">border</span>:1px dashed #<span class="number">333</span>; &#125;</span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;h2&quot;</span>).mouseover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     $(<span class="string">&quot;p&quot;</span>).addClass(<span class="string">&quot;content border&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114644273.png" alt="image-20210730114644273"></p>
+</li>
+<li><h4 id="移除样式"><a href="#移除样式" class="headerlink" title="移除样式"></a>移除样式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(selector).removeClass(<span class="string">&quot;class&quot;</span>) ;</span><br><span class="line">或   $(selector).removeClass(<span class="string">&quot;class1 class2 … classN &quot;</span>) ;</span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;h2&quot;</span>).mouseout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">&quot;p&quot;</span>).removeClass(<span class="string">&quot;text content&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730114910666.png" alt="image-20210730114910666"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="切换样式"><a href="#切换样式" class="headerlink" title="切换样式"></a>切换样式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(selector).toggleClass(<span class="class"><span class="keyword">class</span>) </span>;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>模拟了addClass()与removeClass()实现样式切换的过程</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;h2&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&quot;p&quot;</span>).toggleClass(<span class="string">&quot;content  border&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115124065.png" alt="image-20210730115124065"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="判断是否含指定的样式"><a href="#判断是否含指定的样式" class="headerlink" title="判断是否含指定的样式"></a>判断是否含指定的样式</h3><ol>
+<li><h4 id="hasClass-方法来判断是否包含指定的样式"><a href="#hasClass-方法来判断是否包含指定的样式" class="headerlink" title="hasClass( )方法来判断是否包含指定的样式"></a>hasClass( )方法来判断是否包含指定的样式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(selector). hasClass(<span class="class"><span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;h2&quot;</span>).mouseover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!$(<span class="string">&quot;p&quot;</span>).hasClass(<span class="string">&quot;content &quot;</span>))&#123;</span><br><span class="line">	$(<span class="string">&quot;p&quot;</span>).addClass(<span class="string">&quot;content &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;h2&quot;</span>).mouseout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>($(<span class="string">&quot;p&quot;</span>).hasClass(<span class="string">&quot;content &quot;</span>)) &#123;</span><br><span class="line">	$(<span class="string">&quot;p&quot;</span>).removeClass(<span class="string">&quot;content &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="内容及Value值操作"><a href="#内容及Value值操作" class="headerlink" title="内容及Value值操作"></a>内容及Value值操作</h2><ol>
+<li><h3 id="HTML代码操作"><a href="#HTML代码操作" class="headerlink" title="HTML代码操作"></a>HTML代码操作</h3><ol>
+<li><h4 id="html-可以对HTML代码进行操作，类似于JS中的innerHTML"><a href="#html-可以对HTML代码进行操作，类似于JS中的innerHTML" class="headerlink" title="html()可以对HTML代码进行操作，类似于JS中的innerHTML"></a>html()可以对HTML代码进行操作，类似于JS中的innerHTML</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;div.left&quot;</span>).html();<span class="comment">//获取元素中的html代码</span></span><br><span class="line">或</span><br><span class="line"> $(<span class="string">&quot;div.left&quot;</span>).html(<span class="string">&quot;&lt;div class=&#x27;content&#x27;&gt;…&lt;/div&gt;&quot;</span>);<span class="comment">//设置元素中的html代码</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115355193.png" alt="image-20210730115355193"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="标签内容操作"><a href="#标签内容操作" class="headerlink" title="标签内容操作"></a>标签内容操作</h3><ol>
+<li><h4 id="text-可以获取或设置元素的文本内容"><a href="#text-可以获取或设置元素的文本内容" class="headerlink" title="text()可以获取或设置元素的文本内容"></a>text()可以获取或设置元素的文本内容</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;div.left&quot;</span>).text();<span class="comment">//获取元素中的文本内容</span></span><br><span class="line">或</span><br><span class="line"> $(<span class="string">&quot;div.left&quot;</span>).text(<span class="string">&quot;&lt;div class=&#x27;content&#x27;&gt;…&lt;/div&gt;&quot;</span>);<span class="comment">//设置元素中的文本内容</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115425191.png" alt="image-20210730115425191"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="html-和text-方法的区别"><a href="#html-和text-方法的区别" class="headerlink" title="html( ) 和text( )方法的区别"></a>html( ) 和text( )方法的区别</h3><table>
+<thead>
+<tr>
+<th align="center">语法格式</th>
+<th align="center">参数说明</th>
+<th align="center">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">html( )</td>
+<td align="center">无参数</td>
+<td align="center">用于获取第一个匹配元素的HTML内容或文本内容</td>
+</tr>
+<tr>
+<td align="center">html(content)</td>
+<td align="center">content为元素的HTML内容</td>
+<td align="center">用于设置所有匹配元素的HTML内容或文本内容</td>
+</tr>
+<tr>
+<td align="center">text( )</td>
+<td align="center">无参数</td>
+<td align="center">用于获取所有匹配元素的文本内容</td>
+</tr>
+<tr>
+<td align="center">text  (content)</td>
+<td align="center">content为元素的文本内容</td>
+<td align="center">用于设置所有匹配元素的文本内容</td>
+</tr>
+</tbody></table>
+</li>
+<li><h3 id="属性值操作"><a href="#属性值操作" class="headerlink" title="属性值操作"></a>属性值操作</h3><ol>
+<li><h4 id="val-可以获取或设置元素的value属性值"><a href="#val-可以获取或设置元素的value属性值" class="headerlink" title="val()可以获取或设置元素的value属性值"></a>val()可以获取或设置元素的value属性值</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">this</span>).val();<span class="comment">//获取元素的value属性值</span></span><br><span class="line">或     $(<span class="built_in">this</span>).val(value);<span class="comment">//设置元素的value属性值</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730115555608.png" alt="image-20210730115555608"></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h2><ol>
+<li><h3 id="查找节点（前面章节已讲）"><a href="#查找节点（前面章节已讲）" class="headerlink" title="查找节点（前面章节已讲）"></a>查找节点（前面章节已讲）</h3></li>
+<li><h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><ol>
+<li><h4 id="工厂函数-用于获取或创建节点"><a href="#工厂函数-用于获取或创建节点" class="headerlink" title="工厂函数$()用于获取或创建节点"></a>工厂函数$()用于获取或创建节点</h4><pre><code>  1. $(selector)：通过选择器获取节点
+  2. $(element)：把DOM节点转化成jQuery节点
+  3. $(html)：使用HTML字符串创建jQuery节点
+</code></pre>
+</li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $newNode=$(<span class="string">&quot;&lt;li&gt;&lt;/li&gt;&quot;</span>);</span><br><span class="line"> <span class="keyword">var</span> $newNode1=$(<span class="string">&quot;&lt;li&gt;你喜欢哪些冬季运动项目？&lt;/li&gt;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> $newNode2=$(<span class="string">&quot;&lt;li title=&#x27;last&#x27;&gt;北京申办冬奥会是再合适不过了！&lt;/li&gt;&quot;</span>);</span><br><span class="line">				<span class="comment">//创建含文本与属性&lt;li&gt;元素节点</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><ol>
+<li><h4 id="元素内部插入子节点"><a href="#元素内部插入子节点" class="headerlink" title="元素内部插入子节点"></a>元素内部插入子节点</h4><table>
+<thead>
+<tr>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">append(content)</td>
+<td align="center">$(A).append(B)表示将B追加到A中  如：$(“ul”).append($newNode1);</td>
+</tr>
+<tr>
+<td align="center">appendTo(content)</td>
+<td align="center">$(A).appendTo(B)表示把A追加到B中  如：$newNode1.appendTo(“ul”);</td>
+</tr>
+<tr>
+<td align="center">prepend(content)</td>
+<td align="center">$(A). prepend (B)表示将B前置插入到A中  如：$(“ul”). prepend ($newNode1);</td>
+</tr>
+<tr>
+<td align="center">prependTo(content)</td>
+<td align="center">$(A). prependTo (B)表示将A前置插入到B中  如：$newNode1. prependTo (“ul”);</td>
+</tr>
+</tbody></table>
+</li>
+<li><h4 id="元素外部插入同辈节点"><a href="#元素外部插入同辈节点" class="headerlink" title="元素外部插入同辈节点"></a>元素外部插入同辈节点</h4><table>
+<thead>
+<tr>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">after(content)</td>
+<td align="center">$(A).after (B)表示将B插入到A之后  如：$(“ul”).after($newNode1);</td>
+</tr>
+<tr>
+<td align="center">insertAfter(content)</td>
+<td align="center">$(A). insertAfter (B)表示将A插入到B之后  如：$newNode1.insertAfter(“ul”);</td>
+</tr>
+<tr>
+<td align="center">before(content)</td>
+<td align="center">$(A). before (B)表示将B插入至A之前  如：$(“ul”).before($newNode1);</td>
+</tr>
+<tr>
+<td align="center">insertBefore(content)</td>
+<td align="center">$(A). insertBefore (B)表示将A插入到B之前  如：$newNode1.insertBefore(“ul”);</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><ol>
+<li><h4 id="jQuery提供了三种删除节点的方法"><a href="#jQuery提供了三种删除节点的方法" class="headerlink" title="jQuery提供了三种删除节点的方法"></a>jQuery提供了三种删除节点的方法</h4><pre><code>  1. remove()：删除整个节点    **$(selector).remove([expr]);**
+  2. empty()：清空节点内容    **$(selector).empty();**
+  3. detach()：删除整个节点，保留元素的绑定事件、附加的数据
+</code></pre>
+</li>
+</ol>
+</li>
+<li><h3 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h3><ol>
+<li><h4 id="replaceWith-和replaceAll-用于替换某个节点"><a href="#replaceWith-和replaceAll-用于替换某个节点" class="headerlink" title="replaceWith()和replaceAll()用于替换某个节点"></a>replaceWith()和replaceAll()用于替换某个节点</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $newNode1=$(<span class="string">&quot;&lt;li&gt;你喜欢哪些冬季运动项目？&lt;/li&gt;&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;.gameList li:eq(2)&quot;</span>).replaceWith($newNode1);</span><br><span class="line"><span class="comment">//两者的关系类似于append()和appendTo()</span></span><br><span class="line">$($newNode1).replaceAll(<span class="string">&quot;.gameList li:eq(2)&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="复制节点"><a href="#复制节点" class="headerlink" title="复制节点"></a>复制节点</h3><ol>
+<li><h4 id="clone-用于复制某个节点"><a href="#clone-用于复制某个节点" class="headerlink" title="clone()用于复制某个节点"></a>clone()用于复制某个节点</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(selector).clone([includeEvents]) ;</span><br><span class="line"><span class="comment">//参数ture或flase, true复制事件处理，flase时反之</span></span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.gameList li:eq(1)&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     $(<span class="built_in">this</span>).clone(<span class="literal">true</span>).appendTo(<span class="string">&quot;.gameList&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">$(<span class="string">&quot;.gameList li:eq(2)&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     $(<span class="built_in">this</span>).clone(<span class="literal">false</span>).appendTo(<span class="string">&quot;.gameList&quot;</span>);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="节点属性操作"><a href="#节点属性操作" class="headerlink" title="节点属性操作"></a>节点属性操作</h2><ol>
+<li><h3 id="获取与设置元素属性"><a href="#获取与设置元素属性" class="headerlink" title="获取与设置元素属性"></a>获取与设置元素属性</h3><ol>
+<li><h4 id="attr-用来获取与设置元素属性"><a href="#attr-用来获取与设置元素属性" class="headerlink" title="attr()用来获取与设置元素属性"></a>attr()用来获取与设置元素属性</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(selector).attr([name]) ;<span class="comment">//获取属性值</span></span><br><span class="line">或</span><br><span class="line">$(selector).attr(&#123;[name1:value1]…[nameN:valueN]&#125;) ;<span class="comment">//设置多个属性的值</span></span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain img&quot;</span>).attr(&#123;<span class="attr">width</span>:<span class="string">&quot;200&quot;</span>,<span class="attr">height</span>:<span class="string">&quot;80&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120205309.png" alt="image-20210730120205309"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="删除元素属性"><a href="#删除元素属性" class="headerlink" title="删除元素属性"></a>删除元素属性</h3><ol>
+<li><h4 id="removeAttr-用来删除元素的属性"><a href="#removeAttr-用来删除元素的属性" class="headerlink" title="removeAttr()用来删除元素的属性"></a>removeAttr()用来删除元素的属性</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(selector).removeAttr(name) ;</span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain img&quot;</span>).removeAttr(<span class="string">&quot;alt&quot;</span>);</span><br><span class="line">	<span class="comment">//删除元素的alt属性</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="节点遍历"><a href="#节点遍历" class="headerlink" title="节点遍历"></a>节点遍历</h2><ol>
+<li><h3 id="遍历子元素"><a href="#遍历子元素" class="headerlink" title="遍历子元素"></a>遍历子元素</h3><ol>
+<li><h4 id="children-方法可以用来获取元素的所有子元素"><a href="#children-方法可以用来获取元素的所有子元素" class="headerlink" title="children()方法可以用来获取元素的所有子元素"></a>children()方法可以用来获取元素的所有子元素</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(selector).children([expr]);</span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $section =$(<span class="string">&quot;section&quot;</span>).children();<span class="comment">//获取&lt;section&gt;的子元素，但不包含子元素的子元素</span></span><br><span class="line">alert($section.length);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120422022.png" alt="image-20210730120422022"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="遍历同辈元素"><a href="#遍历同辈元素" class="headerlink" title="遍历同辈元素"></a>遍历同辈元素</h3><ol>
+<li><h4 id="jQuery可以获取紧邻其后、紧邻其前和位于该元素前与后的所有同辈元素"><a href="#jQuery可以获取紧邻其后、紧邻其前和位于该元素前与后的所有同辈元素" class="headerlink" title="jQuery可以获取紧邻其后、紧邻其前和位于该元素前与后的所有同辈元素"></a>jQuery可以获取紧邻其后、紧邻其前和位于该元素前与后的所有同辈元素</h4><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>next([expr])</td>
+<td>用于获取紧邻匹配元素之后的元素  $(“li:eq(1)”).next().addClass(“orange”);</td>
+</tr>
+<tr>
+<td>prev([expr])</td>
+<td>用于获取紧邻匹配元素之前的元素  $(“li:eq(1)”).prev().addClass(“orange”);</td>
+</tr>
+<tr>
+<td>slibings([expr])</td>
+<td>用于获取位于匹配元素前面和后面的所有同辈元素  $(“li:eq(1)”).siblings().addClass(“orange”);</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><h3 id="遍历前辈元素"><a href="#遍历前辈元素" class="headerlink" title="遍历前辈元素"></a>遍历前辈元素</h3><ol>
+<li><h4 id="jQuery中可以遍历前辈元素"><a href="#jQuery中可以遍历前辈元素" class="headerlink" title="jQuery中可以遍历前辈元素"></a>jQuery中可以遍历前辈元素</h4><pre><code>  1. parent()：获取元素的父级元素
+  2. parents()：元素元素的祖先元素
+</code></pre>
+</li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;li:eq(1)&quot;</span>).parent().addClass(<span class="string">&quot;orange&quot;</span>);</span><br><span class="line"> $(<span class="string">&quot;li:eq(1)&quot;</span>).parents().addClass(<span class="string">&quot;orange&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h3 id="其他遍历方法"><a href="#其他遍历方法" class="headerlink" title="其他遍历方法"></a>其他遍历方法</h3><ol>
+<li><h4 id="each-：规定为每个匹配元素规定运行的函数"><a href="#each-：规定为每个匹配元素规定运行的函数" class="headerlink" title="each( ) ：规定为每个匹配元素规定运行的函数"></a>each( ) ：规定为每个匹配元素规定运行的函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(selector).each(<span class="function"><span class="keyword">function</span>(<span class="params">index,element</span>)) </span>;  <span class="comment">//index选择器的位置   //element  当前的元素</span></span><br></pre></td></tr></table></figure></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;img&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       $(<span class="string">&quot;li&quot;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           <span class="keyword">var</span> str=$(<span class="built_in">this</span>).text()+<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">           $(<span class="string">&quot;section&quot;</span>).append(str);</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120622570.png" alt="image-20210730120622570"></p>
+</li>
+<li><h4 id="end-：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态"><a href="#end-：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态" class="headerlink" title="end( )：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态"></a>end( )：结束当前链条中的最近的筛选操作，并将匹配元素集还原为之前的状态</h4></li>
+<li><p>示例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;.contain :header&quot;</span>).css(&#123;<span class="string">&quot;background&quot;</span>:<span class="string">&quot;#2a65ba&quot;</span>,<span class="string">&quot;color&quot;</span>:<span class="string">&quot;#ffffff&quot;</span>&#125;);</span><br><span class="line">$(<span class="string">&quot;.gameList li&quot;</span>).first().css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#b8e7f9&quot;</span>).end().last().css (<span class="string">&quot;background&quot;</span>,<span class="string">&quot;#d3f4b5&quot;</span>);</span><br><span class="line">$(<span class="string">&quot;.gameList li:last&quot;</span>).css(<span class="string">&quot;border&quot;</span>,<span class="string">&quot;none&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120649878.png" alt="image-20210730120649878"></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h2 id="CSS-DOM操作"><a href="#CSS-DOM操作" class="headerlink" title="CSS-DOM操作"></a>CSS-DOM操作</h2><ol>
+<li><h4 id="除css-外，还有获取和设置元素高度、宽度等的样式操作方法"><a href="#除css-外，还有获取和设置元素高度、宽度等的样式操作方法" class="headerlink" title="除css()外，还有获取和设置元素高度、宽度等的样式操作方法"></a>除css()外，还有获取和设置元素高度、宽度等的样式操作方法</h4><table>
+<thead>
+<tr>
+<th align="center">语法</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">css()</td>
+<td align="center">设置或返回匹配元素的样式属性</td>
+</tr>
+<tr>
+<td align="center">height([value])</td>
+<td align="center">设置或返回匹配元素的高度</td>
+</tr>
+<tr>
+<td align="center">width([value])</td>
+<td align="center">设置或返回匹配元素的宽度</td>
+</tr>
+<tr>
+<td align="center">offset([value])</td>
+<td align="center">返回以像素为单位的top和left坐标。仅对可见元素有效</td>
+</tr>
+<tr>
+<td align="center">offsetParent( )</td>
+<td align="center">返回最近的已定位祖先元素。定位元素指的是元素的CSS position值被设置为relative、absolute或fixed的元素</td>
+</tr>
+<tr>
+<td align="center">position( )</td>
+<td align="center">返回第一个匹配元素相对于父元素的位置</td>
+</tr>
+<tr>
+<td align="center">scrollLeft([position])</td>
+<td align="center">参数可选。设置或返回匹配元素相对滚动条左侧的偏移</td>
+</tr>
+<tr>
+<td align="center">scrollTop([position])</td>
+<td align="center">参数可选。设置或返回匹配元素相对滚动条顶</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/image-20210730120843146.png" alt="image-20210730120843146"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>姜霖
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/jianglin0428/jiang.io.git/2021/07/30/%E4%BD%BF%E7%94%A8jQuery%E6%93%8D%E4%BD%9CDOM/" title="使用jQuery操作DOM">https://github.com/jianglin0428/jiang.io.git/2021/07/30/使用jQuery操作DOM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/jianglin0428/jiang.io.git/2021/07/23/jQuery%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8A%A8%E7%94%BB/" rel="prev" title="jQuery中的事件与动画">
+                  <i class="fa fa-chevron-left"></i> jQuery中的事件与动画
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/jianglin0428/jiang.io.git/2021/08/08/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+        
+	<div style="text-align:center;color: #ccc;font-size:20px;">
+		---------本文结束---------
+	</div>
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">姜霖</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">93k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:24</span>
+  </span>
+</div>
+<span id="busuanzi_container_site_uv">
+  本站访问次数：1314520 次<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/jianglin0428/jiang.io.git/js/comments.js"></script><script src="/jianglin0428/jiang.io.git/js/utils.js"></script><script src="/jianglin0428/jiang.io.git/js/motion.js"></script><script src="/jianglin0428/jiang.io.git/js/next-boot.js"></script>
+
+  
+<script src="/jianglin0428/jiang.io.git/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
+   <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+   <!-- 动态背景 -->
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="/js/canvas-nest.min.js"></script>
+
+<!-- 代码块复制功能 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+<script type="text/javascript" src="/js/clipboard_use.js"></script>

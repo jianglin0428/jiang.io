@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/jianglin0428/jiang.io.git/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/jianglin0428/jiang.io.git/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/jianglin0428/jiang.io.git/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/jianglin0428/jiang.io.git/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/jianglin0428/jiang.io.git/","images":"/jianglin0428/jiang.io.git/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/jianglin0428/jiang.io.git/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/jianglin0428/jiang.io.git/js/config.js"></script>
+<meta name="description" content="动态网站和静态网站 静态网页是相对于动态网页而言，是指没有后台数据库、不含程序和不可交互的网页。 编的是什么它显示的就是什么、不会有任何改变。 静态网页相对更新起来比较麻烦，适用于一般更新较少的展示型网站。 另外,如果扩展名为.asp但却没有连数据库,完全是静态的页面,那也是静态网站.只是.asp扩展名。 动态网页和静态网页是有区别的，网站采用动态网页还是静态网页主要取决于网站的功能需求和网站内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态网页开发基础">
+<meta property="og:url" content="https://github.com/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="阿霖的博客">
+<meta property="og:description" content="动态网站和静态网站 静态网页是相对于动态网页而言，是指没有后台数据库、不含程序和不可交互的网页。 编的是什么它显示的就是什么、不会有任何改变。 静态网页相对更新起来比较麻烦，适用于一般更新较少的展示型网站。 另外,如果扩展名为.asp但却没有连数据库,完全是静态的页面,那也是静态网站.只是.asp扩展名。 动态网页和静态网页是有区别的，网站采用动态网页还是静态网页主要取决于网站的功能需求和网站内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103425579.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103439712.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103743392.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103824035.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104439922.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104913589.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105025243.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105133180.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105255170.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105322283.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105341721.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105354965.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105436646.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105519329.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105610706.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105711274.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105807077.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105851155.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811110015217.png">
+<meta property="article:published_time" content="2021-08-09T07:52:46.000Z">
+<meta property="article:modified_time" content="2021-08-11T07:46:10.438Z">
+<meta property="article:author" content="姜霖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103425579.png">
+
+
+<link rel="canonical" href="https://github.com/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/","path":"2021/08/09/动态网页开发基础/","title":"动态网页开发基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>动态网页开发基础 | 阿霖的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/noscript.css">
+  </noscript>
+</head>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/jianglin0428/jiang.io.git/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">阿霖的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">雨林</p>
+      <img class="custom-logo-image" src="/jianglin0428/jiang.io.git/images/logo.jpg" alt="阿霖的博客">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/jianglin0428/jiang.io.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/jianglin0428/jiang.io.git/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E5%92%8C%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99"><span class="nav-number">1.</span> <span class="nav-text">动态网站和静态网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%A6%E4%B9%A0B-S%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">为什么学习B&#x2F;S技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-S%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">C&#x2F;S的局限性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-S%E5%B8%A6%E6%9D%A5%E5%85%A8%E6%96%B0%E4%BD%93%E9%AA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">B&#x2F;S带来全新体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-S%E4%B8%8EC-S%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.3.</span> <span class="nav-text">B&#x2F;S与C&#x2F;S的比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E4%BB%8B"><span class="nav-number">4.</span> <span class="nav-text">Tomcat服务器简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">Tomcat的目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BA%94%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">Tomcat服务器应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat%E7%9A%84%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="nav-number">7.</span> <span class="nav-text">Tomcat的端口配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">8.</span> <span class="nav-text">Web项目的目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%AE%BF%E9%97%AE%E9%A1%B5%E9%9D%A2"><span class="nav-number">8.1.</span> <span class="nav-text">配置访问页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJSP"><span class="nav-number">9.</span> <span class="nav-text">什么是JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E4%B8%AD%E7%9A%84page%E6%8C%87%E4%BB%A4"><span class="nav-number">9.1.</span> <span class="nav-text">JSP中的page指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E4%B8%AD%E7%9A%84%E5%B0%8F%E8%84%9A%E6%9C%AC%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">9.2.</span> <span class="nav-text">JSP中的小脚本与表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E4%B8%AD%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">9.3.</span> <span class="nav-text">JSP中的声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E4%B8%AD%E7%9A%84%E6%B3%A8%E9%87%8A"><span class="nav-number">9.4.</span> <span class="nav-text">JSP中的注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">9.5.</span> <span class="nav-text">JSP 执行过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Web%E9%A1%B9%E7%9B%AE"><span class="nav-number">10.</span> <span class="nav-text">部署Web项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%B0%83%E8%AF%95%E4%B8%8E%E6%8E%92%E9%94%99"><span class="nav-number">10.1.</span> <span class="nav-text">Web程序的调试与排错</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%EF%BC%9A%E6%9C%AA%E5%90%AF%E5%8A%A8Tomcat"><span class="nav-number">10.1.1.</span> <span class="nav-text">常见错误：未启动Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E7%8E%B0%E8%B1%A1"><span class="nav-number">10.1.1.1.</span> <span class="nav-text">错误现象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%94%99%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A3%80%E6%9F%A5Tomcat%E6%9C%8D%E5%8A%A1%E8%83%BD%E5%90%A6%E6%AD%A3%E7%A1%AE%E8%BF%90%E8%A1%8C"><span class="nav-number">10.1.1.2.</span> <span class="nav-text">排错方法：检查Tomcat服务能否正确运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%99%A4%E9%94%99%E8%AF%AF%EF%BC%9A"><span class="nav-number">10.1.1.3.</span> <span class="nav-text">排除错误：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%EF%BC%9A%E6%9C%AA%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8"><span class="nav-number">10.1.2.</span> <span class="nav-text">常见错误：未部署Web应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E7%8E%B0%E8%B1%A1-1"><span class="nav-number">10.1.2.1.</span> <span class="nav-text">错误现象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%94%99%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A3%80%E6%9F%A5Web%E5%BA%94%E7%94%A8%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE%E9%83%A8%E7%BD%B2"><span class="nav-number">10.1.2.2.</span> <span class="nav-text">排错方法：检查Web应用是否正确部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">10.1.2.3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%99%A4%E9%94%99%E8%AF%AF%EF%BC%9A%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8"><span class="nav-number">10.1.2.4.</span> <span class="nav-text">排除错误：部署Web应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%EF%BC%9A-URL%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF"><span class="nav-number">10.1.3.</span> <span class="nav-text">常见错误： URL输入错误</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E7%8E%B0%E8%B1%A1-2"><span class="nav-number">10.1.3.1.</span> <span class="nav-text">错误现象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%94%99%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A3%80%E6%9F%A5URL"><span class="nav-number">10.1.3.2.</span> <span class="nav-text">排错方法：检查URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%99%A4%E9%94%99%E8%AF%AF%EF%BC%9A%E4%BD%BF%E7%94%A8%E6%AD%A3%E7%A1%AE%E7%9A%84URL"><span class="nav-number">10.1.3.3.</span> <span class="nav-text">排除错误：使用正确的URL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%EF%BC%9A%E7%9B%AE%E5%BD%95%E4%B8%8D%E8%83%BD%E8%A2%AB%E5%BC%95%E7%94%A8"><span class="nav-number">10.1.4.</span> <span class="nav-text">常见错误：目录不能被引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E7%8E%B0%E8%B1%A1-3"><span class="nav-number">10.1.4.1.</span> <span class="nav-text">错误现象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%94%99%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">10.1.4.2.</span> <span class="nav-text">排错方法：检查文件的存放位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#META-INF%EF%BC%8CWEB-INF%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%86%85%E5%AE%B9%E6%97%A0%E6%B3%95%E5%AF%B9%E5%A4%96%E5%8F%91%E5%B8%83"><span class="nav-number">10.1.4.3.</span> <span class="nav-text">META-INF，WEB-INF文件夹下的内容无法对外发布</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%81%E9%83%91%E7%9A%84%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0"><span class="nav-number">12.</span> <span class="nav-text">老郑的课堂笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-S%E5%92%8CB-S%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">12.1.</span> <span class="nav-text">C&#x2F;S和B&#x2F;S的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-1"><span class="nav-number">12.2.</span> <span class="nav-text">URL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE"><span class="nav-number">12.2.1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip-%E7%AB%AF%E5%8F%A3"><span class="nav-number">12.2.2.</span> <span class="nav-text">ip:端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E5%9C%B0%E5%9D%80"><span class="nav-number">12.2.3.</span> <span class="nav-text">项目资源地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3"><span class="nav-number">12.3.</span> <span class="nav-text">修改端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp%E9%A1%B5%E9%9D%A2%E5%8C%85%E5%90%AB%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">12.4.</span> <span class="nav-text">jsp页面包含的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">12.4.1.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E8%84%9A%E6%9C%AC%EF%BC%9A"><span class="nav-number">12.4.2.</span> <span class="nav-text">小脚本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9A"><span class="nav-number">12.4.3.</span> <span class="nav-text">表达式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%EF%BC%9A"><span class="nav-number">12.4.4.</span> <span class="nav-text">声明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="nav-number">12.4.5.</span> <span class="nav-text">注释：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web%E5%AE%B9%E5%99%A8%E5%A4%84%E7%90%86jsp%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">12.5.</span> <span class="nav-text">web容器处理jsp页面的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp%E9%A1%B5%E9%9D%A2%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%A2%AB%E8%AE%BF%E9%97%AE%EF%BC%9A"><span class="nav-number">12.5.1.</span> <span class="nav-text">jsp页面第一次被访问：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp%E9%A1%B5%E9%9D%A2%E9%9D%9E%E5%88%9D%E6%AC%A1%E8%AE%BF%E9%97%AE"><span class="nav-number">12.5.2.</span> <span class="nav-text">jsp页面非初次访问</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="姜霖"
+      src="/jianglin0428/jiang.io.git/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">姜霖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/jianglin0428/jiang.io.git/archives">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/jianglin0428/jiang.io.git/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://jq.qq.com/?_wv=1027&k=4dyoeB6O" title="QQ群 → https:&#x2F;&#x2F;jq.qq.com&#x2F;?_wv&#x3D;1027&amp;k&#x3D;4dyoeB6O" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>QQ群</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/jianglin0428/jiang.io.git/images/avatar.jpg">
+      <meta itemprop="name" content="姜霖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿霖的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          动态网页开发基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-09 15:52:46" itemprop="dateCreated datePublished" datetime="2021-08-09T15:52:46+08:00">2021-08-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-11 15:46:10" itemprop="dateModified" datetime="2021-08-11T15:46:10+08:00">2021-08-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/jianglin0428/jiang.io.git/categories/%E4%BD%BF%E7%94%A8JSP%EF%BC%8FServlet%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">使用JSP／Servlet技术开发新闻发布系统</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="动态网站和静态网站"><a href="#动态网站和静态网站" class="headerlink" title="动态网站和静态网站"></a><strong>动态网站和静态网站</strong></h1><ol>
+<li><strong>静态网页是相对于动态网页而言，是指没有后台数据库、不含程序和不可交互的网页。</strong></li>
+<li><strong>编的是什么它显示的就是什么、不会有任何改变。</strong></li>
+<li><strong>静态网页相对更新起来比较麻烦，适用于一般更新较少的展示型网站。</strong></li>
+<li><strong>另外,如果扩展名为.asp但却没有连数据库,完全是静态的页面,那也是静态网站.只是.asp扩展名。</strong></li>
+<li><strong>动态网页和静态网页是有区别的，网站采用动态网页还是静态网页主要取决于网站的功能需求和网站内容的多少，如果网站功能比较简单，内容更新量不是很大，采用纯静态网页的方式会更简单，反之一般要采用动态网页技术来实现。不过现在一般的都是采用的动态网站，有内容更新的话就可以随时在后台来更新。</strong></li>
+<li><strong>静态网页</strong><ol>
+<li><strong>无法实现搜索、购买、登录等交互功能</strong></li>
+<li><strong>无法对静态页面的内容进行实时更新</strong></li>
+</ol>
+</li>
+<li><strong>动态网页</strong><ol>
+<li><strong>根据不同的输入(或操作)，返回不同的网页</strong></li>
+</ol>
+</li>
+</ol>
+<p><strong><span id="more"></span></strong></p>
+<ol>
+<li><h1 id="为什么学习B-S技术"><a href="#为什么学习B-S技术" class="headerlink" title="为什么学习B/S技术"></a><strong>为什么学习B/S技术</strong></h1><ol>
+<li><h2 id="C-S的局限性"><a href="#C-S的局限性" class="headerlink" title="C/S的局限性"></a><strong>C/S的局限性</strong></h2><ol>
+<li><p><strong>安装不同客户端软件</strong></p>
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103425579.png" alt="image-20210811103425579"></strong></p>
+</li>
+</ol>
+</li>
+<li><h2 id="B-S带来全新体验"><a href="#B-S带来全新体验" class="headerlink" title="B/S带来全新体验"></a><strong>B/S带来全新体验</strong></h2><ol>
+<li><p><strong>无需安装客户端软件</strong></p>
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103439712.png" alt="image-20210811103439712"></strong></p>
+</li>
+</ol>
+</li>
+<li><h2 id="B-S与C-S的比较"><a href="#B-S与C-S的比较" class="headerlink" title="B/S与C/S的比较"></a><strong>B/S与C/S的比较</strong></h2><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>B/S架构</strong></th>
+<th><strong>C/S架构</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>软件安装</strong></td>
+<td><strong>浏览器</strong></td>
+<td><strong>需要专门的客户端应用</strong></td>
+</tr>
+<tr>
+<td><strong>升级维护</strong></td>
+<td><strong>客户端零维护</strong></td>
+<td><strong>客户端需要单独维护和升级</strong></td>
+</tr>
+<tr>
+<td><strong>平台相关</strong></td>
+<td><strong>与操作系统平台的关系最小化</strong></td>
+<td><strong>对客户端操作系统一般有限制</strong></td>
+</tr>
+<tr>
+<td><strong>性能安全</strong></td>
+<td><strong>在响应速度和安全性上需要花费更多设计成本</strong></td>
+<td><strong>能充分发挥客户端处理能力，客户端响应快</strong></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>B/S架构（浏览器/服务器）：程序完全部署在服务器上</strong></p>
+</li>
+<li><p><strong>B/S技术的工作原理：B/S架构采用请求/响应模式进行交互</strong></p>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103743392.png" alt="image-20210811103743392"></strong></p>
+<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a><strong>URL</strong></h1><p><strong>Uniform Resource Locator统一资源定位符</strong><br><strong>URL的组成</strong></p>
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811103824035.png" alt="image-20210811103824035"></strong></p>
+<h1 id="Tomcat服务器简介"><a href="#Tomcat服务器简介" class="headerlink" title="Tomcat服务器简介"></a><strong>Tomcat服务器简介</strong></h1><p><strong>Tomcat服务器</strong><br>    <strong>Apache Jakarta的开源项目</strong><br>    <strong>JSP/Servlet容器</strong></p>
+<h1 id="Tomcat的目录结构"><a href="#Tomcat的目录结构" class="headerlink" title="Tomcat的目录结构"></a><strong>Tomcat的目录结构</strong></h1><p>​    <strong>Tomcat服务器的目录结构</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>目录</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>/bin</strong></td>
+<td><strong>存放各种平台下用于启动和停止Tomcat的脚本文件</strong></td>
+</tr>
+<tr>
+<td><strong>/conf</strong></td>
+<td><strong>存放Tomcat服务器的各种配置文件</strong></td>
+</tr>
+<tr>
+<td><strong>/lib</strong></td>
+<td><strong>存放Tomcat服务器所需的各种JAR文件</strong></td>
+</tr>
+<tr>
+<td><strong>/logs</strong></td>
+<td><strong>存放Tomcat的日志文件</strong></td>
+</tr>
+<tr>
+<td><strong>/temp</strong></td>
+<td><strong>Tomcat运行时用于存放临时文件</strong></td>
+</tr>
+<tr>
+<td><strong>/webapps</strong></td>
+<td><strong>当发布Web应用时，默认情况下会将Web应用的文件存放于此目录中</strong></td>
+</tr>
+<tr>
+<td><strong>/work</strong></td>
+<td><strong>Tomcat把由JSP生成的Servlet放于此目录下</strong></td>
+</tr>
+</tbody></table>
+<h1 id="Tomcat服务器应用"><a href="#Tomcat服务器应用" class="headerlink" title="Tomcat服务器应用"></a><strong>Tomcat服务器应用</strong></h1><p><strong>解压缩版本Tomcat的配置</strong><br>    <strong>添加系统变量，名称为CATALINA_HOME，值为Tomcat的安装目录</strong><br>        <strong>因Tomcat运行依赖JRE，确保已安装JRE并配置JRE_HOME环境变量。或针对已安装的JDK配置JAVA_HOME环境变量</strong><br><strong>启动和停止Tomcat服务器</strong><br><strong>Tomcat服务启动检测</strong><br>    <strong>在IE地址栏中输入<a href="http://localhost:端口号（8080）">http://localhost:端口号（8080）</a></strong><br>    <strong>页面进入到Tomcat启动成功界面</strong></p>
+<h1 id="Tomcat的端口配置"><a href="#Tomcat的端口配置" class="headerlink" title="Tomcat的端口配置"></a><strong>Tomcat的端口配置</strong></h1><p><strong>通过配置文件server.xml修改Tomcat端口号</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector port=<span class="string">&quot;8080&quot;</span> </span><br><span class="line">	protocol=<span class="string">&quot;HTTP/1.1 &quot;</span> </span><br><span class="line">	connectionTimeout=<span class="string">&quot;20000&quot;</span> </span><br><span class="line">   redirectPort=<span class="string">&quot;8443 &quot;</span> 	</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Web项目的目录结构"><a href="#Web项目的目录结构" class="headerlink" title="Web项目的目录结构"></a><strong>Web项目的目录结构</strong></h1><p><strong>Web应用的目录结构</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>目录</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>/</strong></td>
+<td><strong>Web应用的根目录，该目录下所有文件在客户端都可以访问(JSP、HTML等)</strong></td>
+</tr>
+<tr>
+<td><strong>/WEB-INF</strong></td>
+<td><strong>存放应用使用的各种资源，该目录及其子目录对客户端都是不可以访问</strong></td>
+</tr>
+<tr>
+<td><strong>/WEB-INF/classes</strong></td>
+<td><strong>存放Web项目的所有的class文件</strong></td>
+</tr>
+<tr>
+<td><strong>/WEB-INF/lib</strong></td>
+<td><strong>存放Web应用使用的JAR文件</strong></td>
+</tr>
+</tbody></table>
+<h2 id="配置访问页面"><a href="#配置访问页面" class="headerlink" title="配置访问页面"></a><strong>配置访问页面</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">version</span>=<span class="string">&quot;2.4&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="xml">	<span class="attr">xmlns</span>=<span class="string">&quot;http://java.sun.com/xml/ns/j2ee&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="xml">	<span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="xml">	<span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://java.sun.com/xml/ns/j2ee </span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="xml">	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.html<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>假定在web应用(news)下存在一个index.jsp页面，输入<a target="_blank" rel="noopener" href="http://localhost:8080/news%E5%9C%B0%E5%9D%80%E6%97%B6%EF%BC%8Cweb%E5%AE%B9%E5%99%A8%E4%BC%9A%E9%BB%98%E8%AE%A4%E8%B0%83%E7%94%A8index.jsp%E9%A1%B5%E9%9D%A2">http://localhost:8080/news地址时，web容器会默认调用index.jsp页面</a></strong> </p>
+<h1 id="什么是JSP"><a href="#什么是JSP" class="headerlink" title="什么是JSP"></a><strong>什么是JSP</strong></h1><p><strong>JSP (Java Server Pages) 在HTML中嵌入Java脚本代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*,java.text.*&quot;</span> </span><br><span class="line">	contentType= <span class="string">&quot;text/html; charset=utf-8&quot;</span> %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>输出当前日期<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">        你好，今天是</span></span><br><span class="line"><span class="xml">        &lt;% SimpleDateFormat formater =</span></span><br><span class="line"><span class="xml">              new SimpleDateFormat(&quot;yyyy年 MM月dd日&quot;);</span></span><br><span class="line"><span class="xml">    	    String strCurrentTime = formater.format(new Date()); %&gt;	</span></span><br><span class="line"><span class="xml">        &lt;%=strCurrentTime %&gt;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104439922.png" alt="image-20210811104439922"></strong></p>
+<h2 id="JSP中的page指令"><a href="#JSP中的page指令" class="headerlink" title="JSP中的page指令"></a><strong>JSP中的page指令</strong></h2><p><strong>通过设置内部的多个属性定义整个页面的属性</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page 属性<span class="number">1</span>=<span class="string">&quot;属性值&quot;</span> 属性<span class="number">2</span>=<span class="string">&quot;属性值1,属性值2&quot;</span>… </span><br><span class="line">                   属性n=<span class="string">&quot;属性值n&quot;</span>%&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>language</strong></td>
+<td><strong>指定JSP页面使用的脚本语言</strong></td>
+<td><strong>java</strong></td>
+</tr>
+<tr>
+<td><strong>import</strong></td>
+<td><strong>通过该属性来引用脚本语言中使用到的类文件</strong></td>
+<td><strong>无</strong></td>
+</tr>
+<tr>
+<td><strong>contentType</strong></td>
+<td><strong>用来指定JSP页面所采用的编码方式</strong></td>
+<td><strong>text/html,    ISO-8859-1</strong></td>
+</tr>
+</tbody></table>
+<h2 id="JSP中的小脚本与表达式"><a href="#JSP中的小脚本与表达式" class="headerlink" title="JSP中的小脚本与表达式"></a><strong>JSP中的小脚本与表达式</strong></h2><p><strong>在JSP页面中计算两个数的和，将结果输出显示</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*,java.text.*&quot;</span> contentType=<span class="string">&quot;text/html; charset=utf-8&quot;</span> %&gt;<span class="comment">//指令</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>计算求和<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">		两个数的求和结果为：</span></span><br><span class="line"><span class="xml">		&lt;%</span></span><br><span class="line"><span class="xml">			int numA = 4, numB = 5 ;//小脚本</span></span><br><span class="line"><span class="xml">			int result = numA+numB;</span></span><br><span class="line"><span class="xml">		%&gt;</span></span><br><span class="line"><span class="xml">		&lt;%=result %&gt;//表达式</span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP中的声明"><a href="#JSP中的声明" class="headerlink" title="JSP中的声明"></a><strong>JSP中的声明</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! Java代码%&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>JSP页面中定义方法对日期进行格式化</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*,java.text.*&quot;</span>  </span><br><span class="line">    contentType=<span class="string">&quot;text/html; charset=utf-8&quot;</span>%&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="xml">&lt;%！</span></span><br><span class="line"><span class="xml">    String formatDate(Date d)&#123;</span></span><br><span class="line"><span class="xml">        SimpleDateFormat formater = </span></span><br><span class="line"><span class="xml">             new SimpleDateFormat(&quot;yyyy年MM月dd日&quot;);</span></span><br><span class="line"><span class="xml">return formater.format(d);</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">%&gt;你好，今天是</span></span><br><span class="line"><span class="xml">&lt;%=formatDate(new Date()) %&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP中的注释"><a href="#JSP中的注释" class="headerlink" title="JSP中的注释"></a><strong>JSP中的注释</strong></h2><p><strong>HTML的注释</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- html注释--&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>JSP注释</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- JSP注释--%&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>在JSP脚本中注释</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="comment">//单行注释 %&gt; </span></span><br><span class="line">&lt;%  <span class="comment">/*多行注释 */</span> %&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811104913589.png" alt="image-20210811104913589"></strong></p>
+<h2 id="JSP-执行过程"><a href="#JSP-执行过程" class="headerlink" title="JSP 执行过程"></a><strong>JSP 执行过程</strong></h2><p>​    <strong>Web容器处理JSP文件请求需要经过3个阶段</strong></p>
+<p>​    <strong>1.翻译阶段    2.编译阶段    3.执行阶段</strong></p>
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105025243.png" alt="image-20210811105025243"></strong></p>
+<p><strong>第一次请求之后，Web容器可以重用已经编译好的字节码文件</strong></p>
+<p><strong>如果对JSP文件进行了修改，Web容器会重新对JSP文件进行翻译和编译</strong> </p>
+<p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105133180.png" alt="image-20210811105133180"></strong></p>
+<h1 id="部署Web项目"><a href="#部署Web项目" class="headerlink" title="部署Web项目"></a><strong>部署Web项目</strong></h1><ol>
+<li><p><strong>配置Tomcat</strong></p>
+<ol>
+<li><strong>Window -&gt; Preferences -&gt;MyEclipse -&gt; Servers -&gt; Tomcat</strong></li>
+<li><strong>选择Tomcat版本及安装路径</strong></li>
+<li><strong>设置为可用状态（Enable）</strong></li>
+<li><strong>指定Tomcat运行Java的运行环境</strong></li>
+</ol>
+</li>
+<li><p><strong>部署Web项目</strong></p>
+<ol>
+<li><p><strong>单击MyEclipse菜单栏上的部署图标<img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105255170.png" alt="image-20210811105255170"></strong></p>
+</li>
+<li><p> <strong>选择需要部署的项目</strong></p>
+</li>
+<li><p> <strong>选择Tomcat服务器并确认</strong></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Web程序的调试与排错"><a href="#Web程序的调试与排错" class="headerlink" title="Web程序的调试与排错"></a><strong>Web程序的调试与排错</strong></h2><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105322283.png" alt="image-20210811105322283"></strong></p>
+<h3 id="常见错误：未启动Tomcat"><a href="#常见错误：未启动Tomcat" class="headerlink" title="常见错误：未启动Tomcat"></a><strong>常见错误：未启动Tomcat</strong></h3><h4 id="错误现象"><a href="#错误现象" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105341721.png" alt="image-20210811105341721"></strong></p>
+<h4 id="排错方法：检查Tomcat服务能否正确运行"><a href="#排错方法：检查Tomcat服务能否正确运行" class="headerlink" title="排错方法：检查Tomcat服务能否正确运行"></a><strong>排错方法：检查Tomcat服务能否正确运行</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105354965.png" alt="image-20210811105354965"></strong></p>
+<h4 id="排除错误："><a href="#排除错误：" class="headerlink" title="排除错误："></a><strong>排除错误：</strong></h4><p><strong>启动Tomcat服务</strong><br><strong>如果控制台上显示Tomcat服务已启动，观察端口号是否与预期端口号一致，按照实际端口号重新运行</strong></p>
+<h3 id="常见错误：未部署Web应用"><a href="#常见错误：未部署Web应用" class="headerlink" title="常见错误：未部署Web应用"></a><strong>常见错误：未部署Web应用</strong></h3><h4 id="错误现象-1"><a href="#错误现象-1" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105436646.png" alt="image-20210811105436646"></strong></p>
+<h4 id="排错方法：检查Web应用是否正确部署"><a href="#排错方法：检查Web应用是否正确部署" class="headerlink" title="排错方法：检查Web应用是否正确部署"></a><strong>排错方法：检查Web应用是否正确部署</strong></h4><h4 id><a href="#" class="headerlink" title></a><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105519329.png" alt="image-20210811105519329"></strong></h4><h4 id="排除错误：部署Web应用"><a href="#排除错误：部署Web应用" class="headerlink" title="排除错误：部署Web应用"></a><strong>排除错误：部署Web应用</strong></h4><h3 id="常见错误：-URL输入错误"><a href="#常见错误：-URL输入错误" class="headerlink" title="常见错误： URL输入错误"></a><strong>常见错误： URL输入错误</strong></h3><h4 id="错误现象-2"><a href="#错误现象-2" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105610706.png" alt="image-20210811105610706"></strong></p>
+<h4 id="排错方法：检查URL"><a href="#排错方法：检查URL" class="headerlink" title="排错方法：检查URL"></a><strong>排错方法：检查URL</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105711274.png" alt="image-20210811105711274"></strong></p>
+<h4 id="排除错误：使用正确的URL"><a href="#排除错误：使用正确的URL" class="headerlink" title="排除错误：使用正确的URL"></a><strong>排除错误：使用正确的URL</strong></h4><h3 id="常见错误：目录不能被引用"><a href="#常见错误：目录不能被引用" class="headerlink" title="常见错误：目录不能被引用"></a><strong>常见错误：目录不能被引用</strong></h3><h4 id="错误现象-3"><a href="#错误现象-3" class="headerlink" title="错误现象"></a><strong>错误现象</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105807077.png" alt="image-20210811105807077"></strong></p>
+<h4 id="排错方法：检查文件的存放位置"><a href="#排错方法：检查文件的存放位置" class="headerlink" title="排错方法：检查文件的存放位置"></a><strong>排错方法：检查文件的存放位置</strong></h4><h4 id="META-INF，WEB-INF文件夹下的内容无法对外发布"><a href="#META-INF，WEB-INF文件夹下的内容无法对外发布" class="headerlink" title="META-INF，WEB-INF文件夹下的内容无法对外发布"></a><strong>META-INF，WEB-INF文件夹下的内容无法对外发布</strong></h4><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811105851155.png" alt="image-20210811105851155"></strong></p>
+<p><strong>排除错误：把index.html文件拖至WebRoot文件夹下</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h1><p><strong><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/image-20210811110015217.png" alt="image-20210811110015217"></strong></p>
+<h1 id="老郑的课堂笔记"><a href="#老郑的课堂笔记" class="headerlink" title="老郑的课堂笔记"></a><strong>老郑的课堂笔记</strong></h1><h2 id="C-S和B-S的区别"><a href="#C-S和B-S的区别" class="headerlink" title="C/S和B/S的区别"></a><strong>C/S和B/S的区别</strong></h2><h2 id="URL-1"><a href="#URL-1" class="headerlink" title="URL"></a><strong>URL</strong></h2><h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a><strong>协议</strong></h3><p>​        <strong>http https ftp</strong></p>
+<h3 id="ip-端口"><a href="#ip-端口" class="headerlink" title="ip:端口"></a><strong>ip:端口</strong></h3><p>​        <strong>localhost:端口8080</strong><br>​        <strong>127.0.0.1:端口8080</strong><br>​        <strong>192.168.1.1:端口</strong></p>
+<h3 id="项目资源地址"><a href="#项目资源地址" class="headerlink" title="项目资源地址"></a><strong>项目资源地址</strong></h3><p>​        <strong>/项目名/文件夹名/网页名</strong><br>​    <strong><a target="_blank" rel="noopener" href="http://localhost:8080/%E9%A1%B9%E7%9B%AE%E5%90%8D/%E7%BD%91%E9%A1%B5%E5%90%8D">http://localhost:8080/项目名/网页名</a></strong></p>
+<h2 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a><strong>修改端口</strong></h2><p>​    <strong>conf文件夹下，server.xml文件里，Connector节点的port属性</strong></p>
+<p><strong>只修改jsp页面的代码，无需重启服务</strong><br><strong>如修改了java代码，必须重启服务，代码才会重新编译生效</strong></p>
+<h2 id="jsp页面包含的元素"><a href="#jsp页面包含的元素" class="headerlink" title="jsp页面包含的元素"></a><strong>jsp页面包含的元素</strong></h2><p>​    <strong>html、css、js等网页元素都是可以的</strong></p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a><strong>指令</strong></h3><p>​        <strong>&lt;%@page %&gt; &lt;%@include %&gt; &lt;%@taglib %&gt;</strong></p>
+<h3 id="小脚本："><a href="#小脚本：" class="headerlink" title="小脚本："></a><strong>小脚本：</strong></h3><p>​            <strong>编写普通java代码(类似在main方法里编写)</strong><br>​        <strong>&lt;% 普通java代码 %&gt;</strong></p>
+<h3 id="表达式："><a href="#表达式：" class="headerlink" title="表达式："></a><strong>表达式：</strong></h3><p>​            <strong>在页面上输出内容(和out.print()类似)</strong><br>​        <strong>&lt;%=变量名/值 %&gt;</strong></p>
+<h3 id="声明："><a href="#声明：" class="headerlink" title="声明："></a><strong>声明：</strong></h3><p>​            <strong>类似是在类里面编写代码，属性/方法</strong><br>​        <strong>&lt;%!  java代码  %&gt;</strong></p>
+<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a><strong>注释：</strong></h3><p>​            <strong>在代码里看的到，在网页里看不到</strong><br>​        <strong>&lt;%– 注释内容 –%&gt;</strong></p>
+<h2 id="web容器处理jsp页面的步骤"><a href="#web容器处理jsp页面的步骤" class="headerlink" title="web容器处理jsp页面的步骤"></a><strong>web容器处理jsp页面的步骤</strong></h2><h3 id="jsp页面第一次被访问："><a href="#jsp页面第一次被访问：" class="headerlink" title="jsp页面第一次被访问："></a><strong>jsp页面第一次被访问：</strong></h3><p>​        <strong>jsp页面翻译成.java文件</strong><br>​        <strong>.java文件编译成.class文件</strong><br>​        <strong>执行.class文件把结果传输到用户的浏览器</strong></p>
+<h3 id="jsp页面非初次访问"><a href="#jsp页面非初次访问" class="headerlink" title="jsp页面非初次访问"></a><strong>jsp页面非初次访问</strong></h3><p>​        <strong>执行.class文件把结果传输到用户的浏览器</strong><br>​    <strong>但是如果我们修改了jsp页面，那么再次访问，jsp页面依然会经历翻译、编译、执行</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>姜霖
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" title="动态网页开发基础">https://github.com/jianglin0428/jiang.io.git/2021/08/09/动态网页开发基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/jianglin0428/jiang.io.git/2021/08/09/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" rel="prev" title="表单验证">
+                  <i class="fa fa-chevron-left"></i> 表单验证
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/" rel="next" title="JSP数据交互(一)">
+                  JSP数据交互(一) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+        
+	<div style="text-align:center;color: #ccc;font-size:20px;">
+		---------本文结束---------
+	</div>
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">姜霖</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">93k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:24</span>
+  </span>
+</div>
+<span id="busuanzi_container_site_uv">
+  本站访问次数：1314520 次<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/jianglin0428/jiang.io.git/js/comments.js"></script><script src="/jianglin0428/jiang.io.git/js/utils.js"></script><script src="/jianglin0428/jiang.io.git/js/motion.js"></script><script src="/jianglin0428/jiang.io.git/js/next-boot.js"></script>
+
+  
+<script src="/jianglin0428/jiang.io.git/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
+   <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+   <!-- 动态背景 -->
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="/js/canvas-nest.min.js"></script>
+
+<!-- 代码块复制功能 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+<script type="text/javascript" src="/js/clipboard_use.js"></script>

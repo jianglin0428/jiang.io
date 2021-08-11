@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/jianglin0428/jiang.io.git/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/jianglin0428/jiang.io.git/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/jianglin0428/jiang.io.git/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/jianglin0428/jiang.io.git/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/jianglin0428/jiang.io.git/","images":"/jianglin0428/jiang.io.git/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/jianglin0428/jiang.io.git/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/jianglin0428/jiang.io.git/js/config.js"></script>
+<meta name="description" content="什么是JSP内置对象JSP内置对象是 Web 容器创建的一组对象 123456&lt;%        int[ ] value &#x3D; &amp;#123; 60, 70, 80 &amp;#125;;        for  (int i : value) &amp;#123;                out.println(i);        &amp;#125; %&gt;    没有进行声明和创建，但却可以使用ou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP数据交互(一)">
+<meta property="og:url" content="https://github.com/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/index.html">
+<meta property="og:site_name" content="阿霖的博客">
+<meta property="og:description" content="什么是JSP内置对象JSP内置对象是 Web 容器创建的一组对象 123456&lt;%        int[ ] value &#x3D; &amp;#123; 60, 70, 80 &amp;#125;;        for  (int i : value) &amp;#123;                out.println(i);        &amp;#125; %&gt;    没有进行声明和创建，但却可以使用ou">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811152755101.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153122215.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153215604.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153646306.png">
+<meta property="og:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811154315974.png">
+<meta property="article:published_time" content="2021-08-09T07:53:10.000Z">
+<meta property="article:modified_time" content="2021-08-11T07:44:31.762Z">
+<meta property="article:author" content="姜霖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811152755101.png">
+
+
+<link rel="canonical" href="https://github.com/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://github.com/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/","path":"2021/08/09/JSP数据交互-一/","title":"JSP数据交互(一)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JSP数据交互(一) | 阿霖的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/jianglin0428/jiang.io.git/css/noscript.css">
+  </noscript>
+</head>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/jianglin0428/jiang.io.git/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">阿霖的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">雨林</p>
+      <img class="custom-logo-image" src="/jianglin0428/jiang.io.git/images/logo.jpg" alt="阿霖的博客">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/jianglin0428/jiang.io.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/jianglin0428/jiang.io.git/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">什么是JSP内置对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">常用的JSP内置对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1request"><span class="nav-number">3.</span> <span class="nav-text">JSP内置对象request</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">request对象常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.0.1.</span> <span class="nav-text">解决乱码问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F-POST%E6%96%B9%E5%BC%8F"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">提交方式:POST方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F-GET%E6%96%B9%E5%BC%8F1"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">提交方式:GET方式1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F-GET%E6%96%B9%E5%BC%8F2"><span class="nav-number">3.0.1.3.</span> <span class="nav-text">提交方式:GET方式2</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1response"><span class="nav-number">4.</span> <span class="nav-text">JSP内置对象response</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">4.1.</span> <span class="nav-text">页面重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%E8%B7%B3%E8%BD%AC%E4%BA%86%EF%BC%8C%E8%AF%B7%E6%B1%82%E7%9A%84%E4%BF%A1%E6%81%AF%E6%98%AF%E4%B8%8D%E4%BC%9A%E8%BD%AC%E7%A7%BB"><span class="nav-number">4.1.0.1.</span> <span class="nav-text">页面实现跳转了，请求的信息是不会转移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%BD%AC%E5%8F%91%E5%8F%96%E4%BB%A3%E9%87%8D%E5%AE%9A%E5%90%91%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC"><span class="nav-number">4.1.1.</span> <span class="nav-text">使用转发取代重定向实现页面跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BD%AC%E5%8F%91"><span class="nav-number">4.2.</span> <span class="nav-text">请求的转发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">4.2.0.1.</span> <span class="nav-text">转发的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.2.0.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91"><span class="nav-number">4.3.</span> <span class="nav-text">转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">4.4.</span> <span class="nav-text">重定向</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D"><span class="nav-number">5.</span> <span class="nav-text">会话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1session"><span class="nav-number">6.</span> <span class="nav-text">JSP内置对象session</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#session%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">session对象常用方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session%E4%B8%8E%E7%AA%97%E5%8F%A3%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">session与窗口的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8session%E5%AE%9E%E7%8E%B0%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="nav-number">6.0.1.</span> <span class="nav-text">使用session实现访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%AF%B7%E6%B1%82%E7%9A%84%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF%E8%BF%9B%E8%A1%8C%E9%AA%8C%E8%AF%81"><span class="nav-number">6.0.1.1.</span> <span class="nav-text">在控制页面获取用户请求的登录信息进行验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E9%A1%B5%E9%9D%A2%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81"><span class="nav-number">6.0.1.2.</span> <span class="nav-text">在新闻发布系统新闻发布页面增加登录验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A4%B1%E6%95%88"><span class="nav-number">6.1.</span> <span class="nav-text">session对象的失效</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">include指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%81%E9%83%91%E7%9A%84%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0"><span class="nav-number">9.</span> <span class="nav-text">老郑的课堂笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E9%97%B4%E8%B7%B3%E8%BD%AC"><span class="nav-number">9.0.1.</span> <span class="nav-text">页面间跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91-1"><span class="nav-number">9.0.1.1.</span> <span class="nav-text">转发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91-1"><span class="nav-number">9.0.1.2.</span> <span class="nav-text">重定向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session%E4%BC%9A%E8%AF%9D"><span class="nav-number">9.1.</span> <span class="nav-text">session会话</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="姜霖"
+      src="/jianglin0428/jiang.io.git/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">姜霖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/jianglin0428/jiang.io.git/archives">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/jianglin0428/jiang.io.git/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://jq.qq.com/?_wv=1027&k=4dyoeB6O" title="QQ群 → https:&#x2F;&#x2F;jq.qq.com&#x2F;?_wv&#x3D;1027&amp;k&#x3D;4dyoeB6O" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>QQ群</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/jianglin0428/jiang.io.git/images/avatar.jpg">
+      <meta itemprop="name" content="姜霖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿霖的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JSP数据交互(一)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-09 15:53:10" itemprop="dateCreated datePublished" datetime="2021-08-09T15:53:10+08:00">2021-08-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-11 15:44:31" itemprop="dateModified" datetime="2021-08-11T15:44:31+08:00">2021-08-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/jianglin0428/jiang.io.git/categories/%E4%BD%BF%E7%94%A8JSP%EF%BC%8FServlet%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">使用JSP／Servlet技术开发新闻发布系统</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="什么是JSP内置对象"><a href="#什么是JSP内置对象" class="headerlink" title="什么是JSP内置对象"></a>什么是JSP内置对象</h1><p>JSP内置对象是 Web 容器创建的一组对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">        int[ ] value = &#123; <span class="number">60</span>, <span class="number">70</span>, <span class="number">80</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span>  (int i : value) &#123;</span><br><span class="line">                out.println(i);</span><br><span class="line">        &#125; </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>没有进行声明和创建，但却可以使用out对象</p>
+<h1 id="常用的JSP内置对象"><a href="#常用的JSP内置对象" class="headerlink" title="常用的JSP内置对象"></a>常用的JSP内置对象</h1><ol>
+<li>out</li>
+<li>request</li>
+<li>session</li>
+<li>application</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="JSP内置对象request"><a href="#JSP内置对象request" class="headerlink" title="JSP内置对象request"></a>JSP内置对象request</h1><p>request对象主要用于处理客户端请求</p>
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811152755101.png" alt="image-20210811152755101"></p>
+<h4 id="request对象常用方法"><a href="#request对象常用方法" class="headerlink" title="request对象常用方法"></a>request对象常用方法</h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String  getParameter(String name)</td>
+<td>根据表单组件名称获取提交数据</td>
+</tr>
+<tr>
+<td>String[  ] getParameterValues(String name)</td>
+<td>获取表单组件对应多个值时的请求数据</td>
+</tr>
+<tr>
+<td>void  setCharacterEncoding(String charset)</td>
+<td>指定每个请求的编码</td>
+</tr>
+<tr>
+<td>RequestDispatcher getRequestDispatcher(String path)</td>
+<td>返回一个RequestDispatcher对象，该对象的forward( )方法用于转发请求</td>
+</tr>
+</tbody></table>
+<h3 id="解决乱码问题"><a href="#解决乱码问题" class="headerlink" title="解决乱码问题"></a>解决乱码问题</h3><h4 id="提交方式-POST方式"><a href="#提交方式-POST方式" class="headerlink" title="提交方式:POST方式"></a>提交方式:POST方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%   <span class="comment">// 以POST方式提交数据时</span></span><br><span class="line">        <span class="comment">// 设置读取请求信息的字符编码为UTF-8</span></span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);	</span><br><span class="line">        <span class="comment">// 读取用户名和密码</span></span><br><span class="line">        <span class="built_in">String</span> name = request.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">        <span class="built_in">String</span> pwd = request.getParameter(<span class="string">&quot;pwd&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="提交方式-GET方式1"><a href="#提交方式-GET方式1" class="headerlink" title="提交方式:GET方式1"></a>提交方式:GET方式1</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%   <span class="comment">// 以GET方式提交数据时</span></span><br><span class="line">        <span class="comment">// 读取用户名和密码</span></span><br><span class="line">        <span class="built_in">String</span> name = request.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">        <span class="comment">// 对请求数据进行字符编码</span></span><br><span class="line">        name = <span class="keyword">new</span> <span class="built_in">String</span>(name.getBytes(<span class="string">&quot;ISO-8859-1&quot;</span>), <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="提交方式-GET方式2"><a href="#提交方式-GET方式2" class="headerlink" title="提交方式:GET方式2"></a>提交方式:GET方式2</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在Tomcat目录结构\conf\server.xml中设置字符集</span><br><span class="line">&lt;Connector  port=<span class="string">&quot;8080&quot;</span>  protocol=<span class="string">&quot;HTTP/1.1&quot;</span></span><br><span class="line">connectionTimeout=<span class="string">&quot;20000&quot;</span></span><br><span class="line">redirectPort=<span class="string">&quot;8443&quot;</span>  URIEncoding=<span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="JSP内置对象response"><a href="#JSP内置对象response" class="headerlink" title="JSP内置对象response"></a>JSP内置对象response</h1><p><strong>response对象用于响应客户请求并向客户端输出信息</strong> </p>
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153122215.png" alt="image-20210811153122215"></p>
+<h2 id="页面重定向"><a href="#页面重定向" class="headerlink" title="页面重定向"></a>页面重定向</h2><ul>
+<li>void sendRedirect(String location)</li>
+<li>客户端将重新发送请求到指定的URL</li>
+</ul>
+<p>实现登录验证，并在验证成功后跳转至欢迎页面</p>
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153215604.png" alt="image-20210811153215604"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line"><span class="built_in">String</span> name = request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line"><span class="built_in">String</span> pwd = request.getParameter(<span class="string">&quot;pwd&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;sa&quot;</span>.equals(name) &amp;&amp; <span class="string">&quot;sa&quot;</span>.equals(pwd))       	</span><br><span class="line">    response.sendRedirect(<span class="string">&quot;welcome.jsp&quot;</span>);<span class="comment">//跳转至欢迎页面</span></span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="页面实现跳转了，请求的信息是不会转移"><a href="#页面实现跳转了，请求的信息是不会转移" class="headerlink" title="页面实现跳转了，请求的信息是不会转移"></a>页面实现跳转了，请求的信息是不会转移</h4><h3 id="使用转发取代重定向实现页面跳转"><a href="#使用转发取代重定向实现页面跳转" class="headerlink" title="使用转发取代重定向实现页面跳转"></a>使用转发取代重定向实现页面跳转</h3><p>如何才能实现页面跳转后，请求信息不丢失呢？</p>
+<h2 id="请求的转发"><a href="#请求的转发" class="headerlink" title="请求的转发"></a>请求的转发</h2><h4 id="转发的作用"><a href="#转发的作用" class="headerlink" title="转发的作用"></a>转发的作用</h4><p>在服务器端，将请求发送给服务器上的其他资源，以共同完成一次请求的处理</p>
+<p><strong>转发的实现</strong></p>
+<p><strong>RequestDispatcher对象的forward()方法</strong></p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">RequestDispatcher rd = request.getRequestDispatcher(<span class="string">&quot;welcome.jsp&quot;</span>);</span><br><span class="line">rd.forward(request, response);</span><br><span class="line">%&gt;<span class="comment">//在多个页面交互过程中请求中的数据可以共享</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h2><ul>
+<li>转发是在服务器端发挥作用，将同一请求在服务器资源之间进行传递</li>
+<li>客户端浏览器的地址栏不会显示转向后的地址</li>
+</ul>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><ul>
+<li>重定向是在客户端发挥作用，通过发送一个新的请求实现页面转向</li>
+<li>在地址栏中可以显示转向后的地址</li>
+</ul>
+<h1 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h1><p><strong>一个会话就是在一段时间内，一个客户端与Web服务器的一连串相关的交互过程</strong></p>
+<p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811153646306.png" alt="image-20210811153646306"></p>
+<h1 id="JSP内置对象session"><a href="#JSP内置对象session" class="headerlink" title="JSP内置对象session"></a>JSP内置对象session</h1><h4 id="session对象常用方法："><a href="#session对象常用方法：" class="headerlink" title="session对象常用方法："></a>session对象常用方法：</h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String getId()</td>
+<td>获取sessionid</td>
+</tr>
+<tr>
+<td>void setMaxInactiveInterval(int interval)</td>
+<td>设定session的非活动时间</td>
+</tr>
+<tr>
+<td>int getMaxInactiveInterval()</td>
+<td>获取session的有效非活动时间(以秒为单位)</td>
+</tr>
+<tr>
+<td>void invalidate()</td>
+<td>设置session对象失效</td>
+</tr>
+<tr>
+<td>void setAttribute(String key, Object value)</td>
+<td>以key/value的形式保存对象值</td>
+</tr>
+<tr>
+<td>Object getAttribute(String key)</td>
+<td>通过key获取对象值</td>
+</tr>
+<tr>
+<td>void removeAttribute(String key)</td>
+<td>从session中删除指定名称(key)所对应的对象</td>
+</tr>
+</tbody></table>
+<h4 id="session与窗口的关系"><a href="#session与窗口的关系" class="headerlink" title="session与窗口的关系"></a>session与窗口的关系</h4><ul>
+<li>每个session对象都与一个浏览器窗口对应 ，重新开启一个浏览器窗口，可以重新创建一个session对象（不同版本浏览器可能有所差别）</li>
+<li>通过超链接打开的新窗口，新窗口的session与其父窗口的session相同</li>
+</ul>
+<h3 id="使用session实现访问控制"><a href="#使用session实现访问控制" class="headerlink" title="使用session实现访问控制"></a>使用session实现访问控制</h3><ul>
+<li><p>在新闻发布系统中，增加访问控制功能</p>
+<ul>
+<li>提供用户登录功能</li>
+<li>管理员有权对新闻实现增、删、改的操作</li>
+</ul>
+<ol>
+<li>session中无法提取到用户信息</li>
+<li>登录处理页面<br>1、获得登录信息<br>2、查询数据库，判断该用户是否注册<br>3、如果该用户已注册，在session中保存该用户的登录信息<br>4、如果用户是管理员就跳转到管理员界面；否则跳转到新闻发布系统的首页面</li>
+<li>管理员界面<br>1、从session中提取该用户信息<br>2、如果用户信息存在，显示管理员界面内容<br>3、如果用户信息不存在，跳转到登录页面</li>
+</ol>
+</li>
+<li><h4 id="在控制页面获取用户请求的登录信息进行验证"><a href="#在控制页面获取用户请求的登录信息进行验证" class="headerlink" title="在控制页面获取用户请求的登录信息进行验证"></a><strong>在控制页面获取用户请求的登录信息进行验证</strong></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;admin&quot;</span>.equals(name) &amp;&amp; <span class="string">&quot;admin&quot;</span>.equals(pwd)) &#123;  <span class="comment">// 如果是已注册用户</span></span><br><span class="line">session.setAttribute(<span class="string">&quot;login&quot;</span>, name);<span class="comment">//在session中存放用户登录信息</span></span><br><span class="line"> <span class="comment">// 设置session过期时间</span></span><br><span class="line">session.setMaxInactiveInterval(<span class="number">10</span>*<span class="number">60</span>);</span><br><span class="line">request.getRequestDispatcher(<span class="string">&quot;admin.jsp&quot;</span>).forward(request, response);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">&#125; </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></li>
+<li><h4 id="在新闻发布系统新闻发布页面增加登录验证"><a href="#在新闻发布系统新闻发布页面增加登录验证" class="headerlink" title="在新闻发布系统新闻发布页面增加登录验证"></a><strong>在新闻发布系统新闻发布页面增加登录验证</strong></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line"><span class="built_in">String</span> login = (<span class="built_in">String</span>) session.getAttribute(<span class="string">&quot;login&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (login == <span class="literal">null</span>) &#123;<span class="comment">//如果session中不存在用户的登录信息，转入登录页面</span></span><br><span class="line">	response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125; %&gt;</span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="session对象的失效"><a href="#session对象的失效" class="headerlink" title="session对象的失效"></a>session对象的失效</h2><ul>
+<li><p>手动设置失效：invalidate()</p>
+</li>
+<li><p>超时失效</p>
+<ul>
+<li><p>通过setMaxInactiveInterval( )方法，单位是秒</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">session.setAttribute(<span class="string">&quot;login&quot;</span>,<span class="string">&quot;admin&quot;</span>); </span><br><span class="line">session.setMaxInactiveInterval(<span class="number">600</span>); </span><br><span class="line">response.sendRedirect(<span class="string">&quot;admin.jsp&quot;</span>); </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>通过设置项目的web.xml或Tomcat目录下的/conf/web.xml文件，单位是分钟</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;session-config&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>10<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span></span><br><span class="line">&lt;/session-config&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="include指令"><a href="#include指令" class="headerlink" title="include指令"></a>include指令</h1><p>除了首页面，其它页面中同样需要加入登录验证，有没有办法避免冗余代码的出现？</p>
+<p><strong>可以将一些共性的内容写入一个单独的文件中，然后通过include指令引用该文件</strong></p>
+<ul>
+<li><p>创建登录验证文件 loginControl.jsp</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line"><span class="built_in">String</span> login = (<span class="built_in">String</span>) session.getAttribute(<span class="string">&quot;login&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (login == <span class="literal">null</span>) &#123;</span><br><span class="line">　　response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125; %&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>在后台首页面中使用include指令引用登录验证文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@  include file=<span class="string">&quot;loginControl.jsp&quot;</span> %&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/jianglin0428/jiang.io.git/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/image-20210811154315974.png" alt="image-20210811154315974"></p>
+<h1 id="老郑的课堂笔记"><a href="#老郑的课堂笔记" class="headerlink" title="老郑的课堂笔记"></a>老郑的课堂笔记</h1><p><strong>登录页-&gt;业务处理页面(不需要展示任何内容)-&gt;(登录成功)首页</strong><br>                                                             <strong>-&gt;(登录失败)登录页</strong></p>
+<h3 id="页面间跳转"><a href="#页面间跳转" class="headerlink" title="页面间跳转"></a><strong>页面间跳转</strong></h3><h4 id="转发-1"><a href="#转发-1" class="headerlink" title="转发"></a><strong>转发</strong></h4><p>​        <strong>request.getRequestDispatcher(“新地址”).forward(request, response);</strong><br>​        <strong>网页url地址显示的是原地址</strong><br>​        <strong>保留了原请求里的数据</strong><br>​        <strong>在服务器端把老请求转给了新地址</strong><br>​        <strong>发生在服务器端</strong></p>
+<h4 id="重定向-1"><a href="#重定向-1" class="headerlink" title="重定向"></a><strong>重定向</strong></h4><p>​        <strong>response.sendRedirect(“新地址”);</strong><br>​        <strong>网页url地址显示的是最终的地址</strong><br>​        <strong>让客户端再次发送一个新请求去新地址</strong><br>​        <strong>发生在客户端</strong></p>
+<h2 id="session会话"><a href="#session会话" class="headerlink" title="session会话"></a><strong>session会话</strong></h2><p>​    <strong>浏览器第一次访问服务器，服务器生成一个sessionid，自己存，然后给浏览器带回去</strong><br>​    <strong>浏览器第N次访问，会带着sessionid去服务器</strong><br>​    <strong>假如关闭浏览器，或者会话过期，浏览器带去的sessionid和服务器存的不一致，那就不是同一个会话</strong></p>
+<p><strong>&lt;%@include file=”文件地址” %&gt;</strong><br>    <strong>不但可以使用jsp文件，还可以使用html、txt等</strong></p>
+<p><strong>使用表单提交数据，几乎都是post</strong><br><strong>使用a标签提交数据，一定是get</strong><br>    <strong>地址?名1=值1&amp;名2=值2</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>姜霖
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/jianglin0428/jiang.io.git/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/" title="JSP数据交互(一)">https://github.com/jianglin0428/jiang.io.git/2021/08/09/JSP数据交互-一/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/jianglin0428/jiang.io.git/2021/08/09/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" rel="prev" title="动态网页开发基础">
+                  <i class="fa fa-chevron-left"></i> 动态网页开发基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+        
+	<div style="text-align:center;color: #ccc;font-size:20px;">
+		---------本文结束---------
+	</div>
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">姜霖</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">93k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:24</span>
+  </span>
+</div>
+<span id="busuanzi_container_site_uv">
+  本站访问次数：1314520 次<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/jianglin0428/jiang.io.git/js/comments.js"></script><script src="/jianglin0428/jiang.io.git/js/utils.js"></script><script src="/jianglin0428/jiang.io.git/js/motion.js"></script><script src="/jianglin0428/jiang.io.git/js/next-boot.js"></script>
+
+  
+<script src="/jianglin0428/jiang.io.git/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
+   <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+   <!-- 动态背景 -->
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="/js/canvas-nest.min.js"></script>
+
+<!-- 代码块复制功能 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+<script type="text/javascript" src="/js/clipboard_use.js"></script>
