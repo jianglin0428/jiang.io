@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jianglin0428.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="本章目标: 掌握application的原理及应用 熟练应用JSP对象的作用域 掌握cookie的原理及应用                熟练应用JDBC访问数据库 掌握在Java Web开发中使用JavaBean">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP数据交互（二）">
+<meta property="og:url" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="阿霖的博客">
+<meta property="og:description" content="本章目标: 掌握application的原理及应用 熟练应用JSP对象的作用域 掌握cookie的原理及应用                熟练应用JDBC访问数据库 掌握在Java Web开发中使用JavaBean">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823095857678.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100156510.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100232847.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100449705.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100434498.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100726693.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100943520.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101347272.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101449702.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101549080.png">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101847508.png">
+<meta property="article:published_time" content="2021-08-23T01:57:01.000Z">
+<meta property="article:modified_time" content="2021-08-23T02:19:16.798Z">
+<meta property="article:author" content="姜霖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823095857678.png">
+
+
+<link rel="canonical" href="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/","path":"2021/08/23/JSP数据交互（二）/","title":"JSP数据交互（二）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JSP数据交互（二） | 阿霖的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">阿霖的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">雨林</p>
+      <img class="custom-logo-image" src="/images/logo.jpg" alt="阿霖的博客">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">本章目标:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1application"><span class="nav-number">2.</span> <span class="nav-text">JSP内置对象application</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E6%AC%A1%E6%95%B0"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">统计网站访问次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#application%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">application实现用户之间的数据共享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E6%AC%A1%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">统计网站访问次数的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSP%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">JSP常用内置对象</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.</span> <span class="nav-text">对象的作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">作用域的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#page%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">page作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#request%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">request作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">session作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#application%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.0.0.5.</span> <span class="nav-text">application作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F-1"><span class="nav-number">3.0.0.6.</span> <span class="nav-text">对象的作用域</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie%E7%9A%84%E7%AE%80%E4%BB%8B"><span class="nav-number">4.</span> <span class="nav-text">cookie的简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8JSP%E4%B8%AD%E4%BD%BF%E7%94%A8cookie"><span class="nav-number">4.0.1.</span> <span class="nav-text">在JSP中使用cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAcookie%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.0.1.1.</span> <span class="nav-text">创建cookie对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5cookie"><span class="nav-number">4.0.1.2.</span> <span class="nav-text">写入cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96cookie"><span class="nav-number">4.0.1.3.</span> <span class="nav-text">读取cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.0.1.4.</span> <span class="nav-text">cookie对象的常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie%E4%B8%8Esession%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">4.0.1.5.</span> <span class="nav-text">cookie与session的对比</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8JDBC%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.</span> <span class="nav-text">使用JDBC访问数据库的步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81JavaBean"><span class="nav-number">6.</span> <span class="nav-text">为什么需要JavaBean</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaBean%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">JavaBean的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaBean%E5%8F%8A%E5%85%B6%E5%88%86%E7%B1%BB"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">JavaBean及其分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%95%B0%E6%8D%AE%E7%9A%84JavaBean"><span class="nav-number">6.0.1.</span> <span class="nav-text">封装数据的JavaBean</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaBean%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">6.0.1.1.</span> <span class="nav-text">JavaBean的应用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="姜霖"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">姜霖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://jq.qq.com/?_wv=1027&k=4dyoeB6O" title="QQ群 → https:&#x2F;&#x2F;jq.qq.com&#x2F;?_wv&#x3D;1027&amp;k&#x3D;4dyoeB6O" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>QQ群</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="姜霖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿霖的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JSP数据交互（二）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-23 09:57:01 / 修改时间：10:19:16" itemprop="dateCreated datePublished" datetime="2021-08-23T09:57:01+08:00">2021-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BD%BF%E7%94%A8JSP%EF%BC%8FServlet%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">使用JSP／Servlet技术开发新闻发布系统</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="本章目标"><a href="#本章目标" class="headerlink" title="本章目标:"></a>本章目标:</h1><ol>
+<li>掌握application的原理及应用</li>
+<li>熟练应用JSP对象的作用域</li>
+<li>掌握cookie的原理及应用               </li>
+<li>熟练应用JDBC访问数据库</li>
+<li>掌握在Java Web开发中使用JavaBean</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="JSP内置对象application"><a href="#JSP内置对象application" class="headerlink" title="JSP内置对象application"></a>JSP内置对象application</h1><ol>
+<li><h4 id="统计网站访问次数"><a href="#统计网站访问次数" class="headerlink" title="统计网站访问次数"></a>统计网站访问次数</h4><p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823095857678.png" alt="image-20210823095857678"></p>
+</li>
+<li><h4 id="application实现用户之间的数据共享"><a href="#application实现用户之间的数据共享" class="headerlink" title="application实现用户之间的数据共享"></a>application实现用户之间的数据共享</h4><p>application对象的常用方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void  setAttribute(String key,       Object value)</td>
+<td>以key/value的形式保存对象值</td>
+</tr>
+<tr>
+<td>Object  getAttribute(String key)</td>
+<td>通过key获取对象值</td>
+</tr>
+<tr>
+<td>String  getRealPath(String path)</td>
+<td>返回相对路径的真实路径</td>
+</tr>
+</tbody></table>
+</li>
+<li><h4 id="统计网站访问次数的实现"><a href="#统计网站访问次数的实现" class="headerlink" title="统计网站访问次数的实现"></a>统计网站访问次数的实现</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> &lt;%<span class="comment">//统计页</span></span><br><span class="line">	Integer count = (Integer) application.getAttribute(<span class="string">&quot;count&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (count != <span class="keyword">null</span>) &#123;</span><br><span class="line">		count = <span class="number">1</span> + count;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		count = <span class="number">1</span>;	 	</span><br><span class="line">	&#125;</span><br><span class="line">	application.setAttribute(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;%<span class="comment">//显示页</span></span><br><span class="line">	Integer i = (Integer) application.getAttribute(<span class="string">&quot;count&quot;</span>);</span><br><span class="line">	out.println(<span class="string">&quot;您好，您是第 &quot;</span> + i + <span class="string">&quot; 位访问本网站的用户&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></li>
+<li><h4 id="JSP常用内置对象"><a href="#JSP常用内置对象" class="headerlink" title="JSP常用内置对象"></a>JSP常用内置对象</h4><table>
+<thead>
+<tr>
+<th>内置对象名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>out</td>
+<td>用于向客户端输出数据</td>
+</tr>
+<tr>
+<td>request</td>
+<td>主要用于处理客户端请求的数据信息</td>
+</tr>
+<tr>
+<td>response</td>
+<td>用于响应客户端请求并向客户端输出信息</td>
+</tr>
+<tr>
+<td>session</td>
+<td>用于记录会话状态的相关信息</td>
+</tr>
+<tr>
+<td>application</td>
+<td>类似于系统的全局变量，用于实现Web应用中的资源共享</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h1 id="对象的作用域"><a href="#对象的作用域" class="headerlink" title="对象的作用域"></a>对象的作用域</h1><ol>
+<li><h4 id="作用域的分类"><a href="#作用域的分类" class="headerlink" title="作用域的分类"></a>作用域的分类</h4><p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100156510.png" alt="image-20210823100156510"></p>
+<p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100232847.png" alt="image-20210823100232847"></p>
+</li>
+<li><h4 id="page作用域"><a href="#page作用域" class="headerlink" title="page作用域"></a>page作用域</h4><ol>
+<li><p>page作用域指本JSP页面的范围</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">pageContext.setAttribute(键,值)</span><br><span class="line">&lt;%<span class="comment">//testOne.jsp</span></span><br><span class="line">    String name = <span class="string">&quot;page&quot;</span>;</span><br><span class="line">    pageContext.setAttribute(<span class="string">&quot;name&quot;</span>,name);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;strong&gt; </span><br><span class="line">    testOne:&lt;%=pageContext.getAttribute(<span class="string">&quot;name&quot;</span>) %&gt;</span><br><span class="line">&lt;/strong&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    pageContext.include(<span class="string">&quot;testTwo.jsp&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;strong&gt; <span class="comment">//testTwo.jsp</span></span><br><span class="line">    testTwo:&lt;%=pageContext.getAttribute(<span class="string">&quot;name&quot;</span>) %&gt;</span><br><span class="line">&lt;/strong&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100449705.png" alt="image-20210823100449705"></p>
+</li>
+</ol>
+</li>
+<li><h4 id="request作用域"><a href="#request作用域" class="headerlink" title="request作用域"></a>request作用域</h4><ol>
+<li>request作用域内的对象则是与客户端的请求绑定在一起</li>
+</ol>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="comment">//testOne.jsp</span></span><br><span class="line">	String name = <span class="string">&quot;request&quot;</span>;</span><br><span class="line">	request.setAttribute(<span class="string">&quot;name&quot;</span>,name);</span><br><span class="line">	request.getRequestDispatcher(<span class="string">&quot;testTwo.jsp&quot;</span>).</span><br><span class="line">		forward(request, response);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!--testTwo.jsp--&gt;</span><br><span class="line">&lt;strong&gt; </span><br><span class="line">	testTwo:&lt;%=request.getAttribute(<span class="string">&quot;name&quot;</span>) %&gt;</span><br><span class="line">&lt;/strong&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100434498.png" alt="image-20210823100434498"></p>
+</li>
+<li><h4 id="session作用域"><a href="#session作用域" class="headerlink" title="session作用域"></a>session作用域</h4><ol>
+<li><p>session作用域：一次会话</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="comment">//testOne.jsp</span></span><br><span class="line">    String req = <span class="string">&quot;request&quot;</span>;</span><br><span class="line">    String ses = <span class="string">&quot;session&quot;</span>;</span><br><span class="line">    request.setAttribute(<span class="string">&quot;reqName &quot;</span>,req);</span><br><span class="line">    session.setAttribute(<span class="string">&quot;sessionName &quot;</span>,ses);</span><br><span class="line">    response.sendRedirect(<span class="string">&quot;testTwo.jsp&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line"><span class="comment">//testTwo.jsp</span></span><br><span class="line">&lt;strong&gt;</span><br><span class="line">    request:&lt;%= request.getAttribute(<span class="string">&quot;reqName&quot;</span>) %&gt;&lt;br/&gt;</span><br><span class="line">    session:&lt;%=session.getAttribute(<span class="string">&quot;sessionName&quot;</span>) %&gt;</span><br><span class="line">&lt;/strong&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100726693.png" alt="image-20210823100726693"></p>
+</li>
+</ol>
+</li>
+<li><h4 id="application作用域"><a href="#application作用域" class="headerlink" title="application作用域"></a>application作用域</h4><ol>
+<li><p>application作用域：面对整个Web应用程序</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="comment">//testOne.jsp</span></span><br><span class="line">    String app = <span class="string">&quot;application&quot;</span>;</span><br><span class="line">    String ses = <span class="string">&quot;session&quot;</span>;</span><br><span class="line">    session.setAttribute(<span class="string">&quot;sesName&quot;</span>,ses);</span><br><span class="line">    application.setAttribute(<span class="string">&quot;appName&quot;</span>,app);</span><br><span class="line">    response.sendRedirect(<span class="string">&quot;testTwo.jsp&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;strong&gt;<span class="comment">//testTwo.jsp</span></span><br><span class="line">    session:&lt;%=session.getAttribute(<span class="string">&quot;sesName&quot;</span>) %&gt;&lt;br/&gt;</span><br><span class="line">    application:&lt;%=application.getAttribute(<span class="string">&quot;appName&quot;</span>) %&gt;</span><br><span class="line">&lt;/strong&gt; </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823100943520.png" alt="image-20210823100943520"></p>
+</li>
+</ol>
+</li>
+<li><h4 id="对象的作用域-1"><a href="#对象的作用域-1" class="headerlink" title="对象的作用域"></a>对象的作用域</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>page作用域</td>
+<td>在一个页面范围内有效，通过pageContext对象访问</td>
+</tr>
+<tr>
+<td>request作用域</td>
+<td>在一个服务器请求范围内有效</td>
+</tr>
+<tr>
+<td>session作用域</td>
+<td>在一次会话范围内容有效</td>
+</tr>
+<tr>
+<td>application作用域</td>
+<td>在一个应用服务器范围内有效</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h1 id="cookie的简介"><a href="#cookie的简介" class="headerlink" title="cookie的简介"></a>cookie的简介</h1><ol>
+<li><p> cookie是Web服务器保存在客户端的一系列文本信息</p>
+</li>
+<li><p>cookie的作用</p>
+<ol>
+<li>对特定对象的追踪</li>
+<li>实现各种个性化服务</li>
+<li>简化登录</li>
+</ol>
+</li>
+<li><p>安全性能</p>
+<ol>
+<li>容易泄露信息</li>
+</ol>
+</li>
+<li><h3 id="在JSP中使用cookie"><a href="#在JSP中使用cookie" class="headerlink" title="在JSP中使用cookie"></a>在JSP中使用cookie</h3><ol>
+<li><h4 id="创建cookie对象"><a href="#创建cookie对象" class="headerlink" title="创建cookie对象"></a>创建cookie对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie newCookie = <span class="keyword">new</span> Cookie(String key, String value);</span><br></pre></td></tr></table></figure></li>
+<li><h4 id="写入cookie"><a href="#写入cookie" class="headerlink" title="写入cookie"></a>写入cookie</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.addCookie(newCookie);</span><br></pre></td></tr></table></figure></li>
+<li><h4 id="读取cookie"><a href="#读取cookie" class="headerlink" title="读取cookie"></a>读取cookie</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie[] cookies = request.getCookies();</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="cookie对象的常用方法"><a href="#cookie对象的常用方法" class="headerlink" title="cookie对象的常用方法"></a>cookie对象的常用方法</h4><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void  setMaxAge(int expiry)</td>
+<td>设置cookie的有效期，以秒为单位</td>
+</tr>
+<tr>
+<td>void  setValue(String value)</td>
+<td>在cookie创建后，对cookie进行赋值</td>
+</tr>
+<tr>
+<td>String  getName()</td>
+<td>获取cookie的名称</td>
+</tr>
+<tr>
+<td>String  getValue()</td>
+<td>获取cookie的值</td>
+</tr>
+</tbody></table>
+</li>
+<li><h4 id="cookie与session的对比"><a href="#cookie与session的对比" class="headerlink" title="cookie与session的对比"></a>cookie与session的对比</h4><p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101347272.png" alt="image-20210823101347272"></p>
+</li>
+</ol>
+<h1 id="使用JDBC访问数据库的步骤"><a href="#使用JDBC访问数据库的步骤" class="headerlink" title="使用JDBC访问数据库的步骤"></a>使用JDBC访问数据库的步骤</h1><p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101449702.png" alt="image-20210823101449702"></p>
+<h1 id="为什么需要JavaBean"><a href="#为什么需要JavaBean" class="headerlink" title="为什么需要JavaBean"></a>为什么需要JavaBean</h1><ol>
+<li><h4 id="JavaBean的优势"><a href="#JavaBean的优势" class="headerlink" title="JavaBean的优势"></a>JavaBean的优势</h4><ol>
+<li>解决代码重复编写，减少代码冗余</li>
+<li>功能区分明确</li>
+<li>提高了代码的维护性</li>
+</ol>
+</li>
+<li><h4 id="JavaBean及其分类"><a href="#JavaBean及其分类" class="headerlink" title="JavaBean及其分类"></a>JavaBean及其分类</h4><ol>
+<li><p>从JavaBean的功能上可以分为</p>
+<ol>
+<li>封装数据</li>
+<li>封装业务</li>
+</ol>
+<p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101549080.png" alt="image-20210823101549080"></p>
+</li>
+</ol>
+</li>
+<li><h3 id="封装数据的JavaBean"><a href="#封装数据的JavaBean" class="headerlink" title="封装数据的JavaBean"></a>封装数据的JavaBean</h3><ol>
+<li><p>封装数据的JavaBean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Comment</span> </span>&#123;       </span><br><span class="line">       <span class="keyword">private</span> String cid;	   	<span class="comment">// 用户名</span></span><br><span class="line">       <span class="keyword">private</span> String cnid;  		<span class="comment">// 邮编			///将属性声明为私有属性</span></span><br><span class="line">       <span class="keyword">private</span> String ccontent;	<span class="comment">// 电话</span></span><br><span class="line">       …</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">Comment</span> <span class="params">()</span> </span>&#123;    &#125;						<span class="comment">///无参的公有构造方法</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCid</span><span class="params">(String cid)</span> </span>&#123;</span><br><span class="line">                 <span class="keyword">this</span>. cid= cid;					<span class="comment">///公有的设置属性值方法setXxx(  )</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> String <span class="title">getCid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> cid;							<span class="comment">///公有的获取属性值方法getXxx( )</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;								<span class="comment">///使用工具自动生成getter/setter方法: Alt+Shift+S -&gt; Generate Getters and Setters</span></span><br></pre></td></tr></table></figure></li>
+<li><h4 id="JavaBean的应用"><a href="#JavaBean的应用" class="headerlink" title="JavaBean的应用"></a>JavaBean的应用</h4><ol>
+<li><p>在JSP页面中导入JavaBean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入JavaBean</span></span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.news.bean.*&quot;</span> %&gt;</span><br><span class="line"><span class="comment">//使用JavaBean</span></span><br><span class="line">&lt;%</span><br><span class="line">    Comment c = <span class="keyword">new</span> Comment();</span><br><span class="line">    c.setCid(<span class="number">1014</span>);</span><br><span class="line">    c.getCauthor();</span><br><span class="line">%&gt;												<span class="comment">///代码提示:Alt+/</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/image-20210823101847508.png" alt="image-20210823101847508"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>姜霖
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://jianglin0428.github.io/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/" title="JSP数据交互（二）">https://jianglin0428.github.io/2021/08/23/JSP数据交互（二）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/09/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92-%E4%B8%80/" rel="prev" title="JSP数据交互(一)">
+                  <i class="fa fa-chevron-left"></i> JSP数据交互(一)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" rel="next" title="jsp+jdbc增删改查">
+                  jsp+jdbc增删改查 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+        
+	<div style="text-align:center;color: #ccc;font-size:20px;">
+		---------本文结束---------
+	</div>
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">姜霖</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">110k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:40</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!-- <span id="busuanzi_container_site_uv">
+  本站访问次数：1314520 次<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span> -->
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+ <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
+   <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+   <!-- 动态背景 -->
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="/js/canvas-nest.min.js"></script>
+
+<!-- 代码块复制功能 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+<script type="text/javascript" src="/js/clipboard_use.js"></script>

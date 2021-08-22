@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-bbt.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-bbt.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jianglin0428.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="jsp+jdbc的增删改查 开发工具是MyEclipse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsp+jdbc增删改查">
+<meta property="og:url" content="https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/index.html">
+<meta property="og:site_name" content="阿霖的博客">
+<meta property="og:description" content="jsp+jdbc的增删改查 开发工具是MyEclipse">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/image-20210822213501356.png">
+<meta property="article:published_time" content="2021-08-23T02:20:52.000Z">
+<meta property="article:modified_time" content="2021-08-22T13:45:30.242Z">
+<meta property="article:author" content="姜霖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/image-20210822213501356.png">
+
+
+<link rel="canonical" href="https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/","path":"2021/08/23/jsp-jdbc增删改查/","title":"jsp+jdbc增删改查"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>jsp+jdbc增删改查 | 阿霖的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">阿霖的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">雨林</p>
+      <img class="custom-logo-image" src="/images/logo.jpg" alt="阿霖的博客">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">结构图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B"><span class="nav-number">2.</span> <span class="nav-text">具体代码 从上到下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dao-impl-%E8%A1%A8%E5%90%8DDaoImpl-java"><span class="nav-number">2.1.</span> <span class="nav-text">dao.impl.表名DaoImpl.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dao-BaseDao-jsp"><span class="nav-number">2.2.</span> <span class="nav-text">dao.BaseDao.jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dao-%E8%A1%A8%E5%90%8DDao-java"><span class="nav-number">2.3.</span> <span class="nav-text">dao.表名Dao.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-impl-%E8%A1%A8%E5%90%8DServerImpl-java"><span class="nav-number">2.4.</span> <span class="nav-text">service.impl.表名ServerImpl.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-%E8%A1%A8%E5%90%8DServer-java"><span class="nav-number">2.5.</span> <span class="nav-text">service.表名Server.java</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jsp%E9%A1%B5%E9%9D%A2"><span class="nav-number">3.</span> <span class="nav-text">jsp页面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#do%E9%A1%B5%E9%9D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">do页面</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="姜霖"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">姜霖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jianglin428" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jianglin428" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jianglin428@yeah.net" title="E-Mail → mailto:jianglin428@yeah.net" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://jq.qq.com/?_wv=1027&k=4dyoeB6O" title="QQ群 → https:&#x2F;&#x2F;jq.qq.com&#x2F;?_wv&#x3D;1027&amp;k&#x3D;4dyoeB6O" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>QQ群</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="姜霖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿霖的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jsp+jdbc增删改查
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-23 10:20:52" itemprop="dateCreated datePublished" datetime="2021-08-23T10:20:52+08:00">2021-08-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-22 21:45:30" itemprop="dateModified" datetime="2021-08-22T21:45:30+08:00">2021-08-22</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BD%BF%E7%94%A8JSP%EF%BC%8FServlet%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91%E6%96%B0%E9%97%BB%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">使用JSP／Servlet技术开发新闻发布系统</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>jsp+jdbc的增删改查</p>
+<p>开发工具是MyEclipse</p>
+<span id="more"></span>
+
+<h1 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h1><p><img src="/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/image-20210822213501356.png" alt="image-20210822213501356"></p>
+<h1 id="具体代码-从上到下"><a href="#具体代码-从上到下" class="headerlink" title="具体代码 从上到下"></a>具体代码 从上到下</h1><h2 id="dao-impl-表名DaoImpl-java"><a href="#dao-impl-表名DaoImpl-java" class="headerlink" title="dao.impl.表名DaoImpl.java"></a>dao.impl.表名DaoImpl.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> dao.BaseDao;</span><br><span class="line"><span class="keyword">import</span> dao.表名Dao;</span><br><span class="line"><span class="keyword">import</span> entity.表名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 表名<span class="title">DaoImpl</span> <span class="keyword">extends</span> <span class="title">BaseDao</span> <span class="keyword">implements</span> 表名<span class="title">Dao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span><span class="comment">//无条件查询全部</span></span><br><span class="line">	<span class="keyword">public</span> List&lt;表名&gt; getAll() &#123;</span><br><span class="line">		List&lt;表名&gt; list=<span class="keyword">new</span> ArrayList&lt;表名&gt;();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sql=<span class="string">&quot;select * from 表名&quot;</span>;<span class="comment">//sql语句</span></span><br><span class="line">			<span class="keyword">super</span>.executeQuery(sql);<span class="comment">//带上sql语句</span></span><br><span class="line">			<span class="keyword">while</span> (rs.next()) &#123;<span class="comment">//吧查询到的结果集拿过来</span></span><br><span class="line">				表名 p=<span class="keyword">new</span> 表名();<span class="comment">//定义集合放进去</span></span><br><span class="line">				p.setpId(rs.getInt(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">				p.setpName(rs.getString(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">				p.setPrice(rs.getFloat(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">				list.add(p);<span class="comment">//吧这一条数据放在集合里</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">super</span>.CloseAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> list;<span class="comment">//返回出去</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span><span class="comment">//新增</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(表名 p)</span> </span>&#123;</span><br><span class="line">		String sql=<span class="string">&quot;insert into 表名 (列名,列名) value (?,?)&quot;</span>;<span class="comment">//sql语句</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.executeUpdate(sql, p.getpName(),p.getPrice());<span class="comment">//放入sql语句  根据?的数据带上相应的参数  顺序一定要对应</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span><span class="comment">//根据id查询信息  id是主键 所以说只要返回一个对象就行了</span></span><br><span class="line">	<span class="keyword">public</span> 表名 getById(<span class="keyword">int</span> pId) &#123;</span><br><span class="line">		表名 p=<span class="keyword">null</span>;<span class="comment">//首先定义一个对象 如果没有直接返回null   后面好判断是否查得到</span></span><br><span class="line">		<span class="keyword">try</span> &#123;<span class="comment">//try catch finally不能少</span></span><br><span class="line">			String sql=<span class="string">&quot;select * from 表名 where 主键=?&quot;</span>;<span class="comment">//sql语句不能少  条件就是id  主键 这并不是写的id  是数据库里的主键 看好了......</span></span><br><span class="line">			<span class="keyword">super</span>.executeQuery(sql,pId);<span class="comment">//sql  后面得带上id  括号里的参数  一定要带,不然后面报错都不好找在哪报错的!!!!!</span></span><br><span class="line">			<span class="keyword">while</span> (rs.next()) &#123;<span class="comment">//跟查询一样的  有能力就复制,没有能力的自己敲</span></span><br><span class="line">				p=<span class="keyword">new</span> 表名();		<span class="comment">//给上面定义的对象new一下</span></span><br><span class="line">				p.setpId(rs.getInt(<span class="string">&quot;列名&quot;</span>));	<span class="comment">//放入值</span></span><br><span class="line">				p.setpName(rs.getString(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">				p.setPrice(rs.getFloat(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">				<span class="comment">//这个地方不跟查一样了  上面没有集合  所以说不用add了</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">super</span>.CloseAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> p;<span class="comment">//返回集合</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(表名 p)</span> </span>&#123;</span><br><span class="line">		String sql=<span class="string">&quot;update 表名 set 列名=?,列名=? where 主键=?&quot;</span>;<span class="comment">//sql语句</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.executeUpdate(sql,  p.getpName(),p.getPrice(),p.getpId());<span class="comment">//放入sql语句  根据?的数据带上相应的参数  顺序一定要对应</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> pId)</span> </span>&#123;</span><br><span class="line">		String sql=<span class="string">&quot;delete from 表名 where 列名=?&quot;</span>;<span class="comment">//sql语句</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.executeUpdate(sql, pId);<span class="comment">//放入sql语句  根据?的数据带上相应的参数  这里只要写一个id就行</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="dao-BaseDao-jsp"><a href="#dao-BaseDao-jsp" class="headerlink" title="dao.BaseDao.jsp"></a>dao.BaseDao.jsp</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="comment">//这个页面不需要说太多,,能敲出来就行  敲不出来应急  只有一处需要改的</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDao</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String Driver=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String url=<span class="string">&quot;jdbc:mysql://localhost:3306/数据库名&quot;</span>;<span class="comment">//只有这里需要改的!!!!!!</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String user=<span class="string">&quot;root&quot;</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String password=<span class="string">&quot;ok&quot;</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">protected</span> Connection conn=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">protected</span> PreparedStatement pstmt=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">protected</span> ResultSet rs=<span class="keyword">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(Driver);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(conn==<span class="keyword">null</span>||conn.isClosed())&#123;</span><br><span class="line">			conn=DriverManager.getConnection(url, user, password);</span><br><span class="line">		&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CloseAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(rs!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(pstmt!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				pstmt.close();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (conn!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">executeUpdate</span><span class="params">(String sql,Object...o)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			getConnection();</span><br><span class="line">			pstmt=conn.prepareStatement(sql);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; o.length; i++) &#123;</span><br><span class="line">				pstmt.setObject((i+<span class="number">1</span>), o[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			count=pstmt.executeUpdate();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			CloseAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeQuery</span><span class="params">(String sql,Object...o)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			getConnection();</span><br><span class="line">			pstmt=conn.prepareStatement(sql);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; o.length; i++) &#123;</span><br><span class="line">				pstmt.setObject((i+<span class="number">1</span>), o[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			rs=pstmt.executeQuery();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="dao-表名Dao-java"><a href="#dao-表名Dao-java" class="headerlink" title="dao.表名Dao.java"></a>dao.表名Dao.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> entity.表名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 表名<span class="title">Dao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	List&lt;表名&gt; getAll();  <span class="comment">//查询</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(表名 p)</span></span>;	<span class="comment">//新增</span></span><br><span class="line"></span><br><span class="line">	表名 getById(<span class="keyword">int</span> 主键);<span class="comment">//根据主键查询数据</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(表名 p)</span></span>;	<span class="comment">//修改</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> 主键)</span></span>;	<span class="comment">//删除</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>entity.表名.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> entity.表名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 表名<span class="title">Dao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	List&lt;表名&gt; getAll();  <span class="comment">//查询</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(表名 p)</span></span>;	<span class="comment">//新增</span></span><br><span class="line"></span><br><span class="line">	表名 getById(<span class="keyword">int</span> 主键);<span class="comment">//根据主键查询数据</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(表名 p)</span></span>;	<span class="comment">//修改</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> 主键)</span></span>;	<span class="comment">//删除</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="service-impl-表名ServerImpl-java"><a href="#service-impl-表名ServerImpl-java" class="headerlink" title="service.impl.表名ServerImpl.java"></a>service.impl.表名ServerImpl.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> service.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> service.表名Server;</span><br><span class="line"><span class="keyword">import</span> dao.impl.表名DaoImpl;</span><br><span class="line"><span class="keyword">import</span> entity.表名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 表名<span class="title">ServerImpl</span> <span class="keyword">implements</span> 表名<span class="title">Server</span></span>&#123;</span><br><span class="line"><span class="comment">//固定语法  直接照抄</span></span><br><span class="line">	表名DaoImpl dao=<span class="keyword">new</span> 表名DaoImpl();</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> List&lt;表名&gt; getAll() &#123;</span><br><span class="line">		<span class="keyword">return</span> dao.getAll();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(表名 p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.add(p);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> 表名 getById(<span class="keyword">int</span> pId) &#123;</span><br><span class="line">		<span class="keyword">return</span> dao.getById(pId);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(表名 p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.update(p);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> pId)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.delete(pId);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="service-表名Server-java"><a href="#service-表名Server-java" class="headerlink" title="service.表名Server.java"></a>service.表名Server.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> entity.表名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 表名<span class="title">Server</span> </span>&#123;<span class="comment">//直接复制</span></span><br><span class="line">	List&lt;表名&gt; getAll();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(表名 p)</span></span>;</span><br><span class="line"></span><br><span class="line">	表名 getById(<span class="keyword">int</span> pId);</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(表名 p)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> pId)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="jsp页面"><a href="#jsp页面" class="headerlink" title="jsp页面"></a>jsp页面</h1><h2 id="do页面"><a href="#do页面" class="headerlink" title="do页面"></a>do页面</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">&quot;service.impl.表名ServerImpl&quot;</span>%&gt;</span><br><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">&quot;entity.表名&quot;</span>%&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*&quot;</span> pageEncoding=<span class="string">&quot;utf-8&quot;</span>%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	<span class="comment">//这两行必写</span></span><br><span class="line">	request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">	response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//声明service实现类</span></span><br><span class="line">	表名ServerImpl server=<span class="keyword">new</span> 表名ServerImpl();</span><br><span class="line">	<span class="comment">//接收</span></span><br><span class="line">	String op=request.getParameter(<span class="string">&quot;op&quot;</span>);</span><br><span class="line">	<span class="comment">//对接收过来的值进行判断,要干什么的去干什么</span></span><br><span class="line">	<span class="keyword">if</span>(op==<span class="keyword">null</span>|op.equals(<span class="string">&quot;list&quot;</span>))&#123;</span><br><span class="line">		<span class="comment">//	查询</span></span><br><span class="line">		<span class="comment">//声明集合 接收查询来的数据</span></span><br><span class="line">		List&lt;表名&gt; list=server.getAll();</span><br><span class="line">		<span class="comment">//吧集合存到request里 </span></span><br><span class="line">		request.setAttribute(<span class="string">&quot;list&quot;</span>, list);</span><br><span class="line">		<span class="comment">//转发走  转发的固定语句</span></span><br><span class="line">		request.getRequestDispatcher(<span class="string">&quot;index.jsp&quot;</span>).forward(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op.equals(<span class="string">&quot;add&quot;</span>))&#123;</span><br><span class="line">		<span class="comment">//新增</span></span><br><span class="line">		<span class="comment">//接收新增页面的文本框里的内容 有多少接收多少</span></span><br><span class="line">		String pName=request.getParameter(<span class="string">&quot;列名&quot;</span>);</span><br><span class="line">		<span class="comment">//根据数据库里的内容进行强转</span></span><br><span class="line">		<span class="keyword">float</span> price=Float.parseFloat(request.getParameter(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">		<span class="comment">//声明一个对象</span></span><br><span class="line">		表名 p=<span class="keyword">new</span> 表名();</span><br><span class="line">		<span class="comment">//把除了主键外的列全部存入对象里</span></span><br><span class="line">		p.setpName(pName);</span><br><span class="line">		p.setPrice(price);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//吧取来的值放入对象后 进行新增操作</span></span><br><span class="line">		<span class="keyword">int</span> result=server.add(p);</span><br><span class="line">		<span class="comment">//新增完成之后进行结果判断</span></span><br><span class="line">		<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="comment">//打印js语句  这边也是固定语法,直接套模板</span></span><br><span class="line">			<span class="comment">//out.print(&quot;&lt;script&gt;alert(&#x27;要提示的内容 什么什么成功 什么什么失败&#x27;); location.href=&#x27; 之后需要跳转的网页 &#x27;&lt;/script&gt;&quot;);</span></span><br><span class="line">			out.print(<span class="string">&quot;&lt;script&gt;alert(&#x27;新增成功&#x27;); location.href=&#x27;index.jsp&#x27;&lt;/script&gt;&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			out.print(<span class="string">&quot;&lt;script&gt;alert(&#x27;新增失败&#x27;); location.href=&#x27;add.jsp&#x27;&lt;/script&gt;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op.equals(<span class="string">&quot;toupdate&quot;</span>))&#123;</span><br><span class="line">		<span class="comment">//取到值放入update页面</span></span><br><span class="line">		<span class="comment">//取到传过来的id值</span></span><br><span class="line">		<span class="keyword">int</span> pId=Integer.parseInt(request.getParameter(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">		<span class="comment">//然后定义对象接收根据id查来的数据</span></span><br><span class="line">		表名 p=server.getById(pId);</span><br><span class="line">		<span class="comment">//放入request里</span></span><br><span class="line">		request.setAttribute(<span class="string">&quot;p&quot;</span>, p);</span><br><span class="line">		<span class="comment">//转发走</span></span><br><span class="line">		request.getRequestDispatcher(<span class="string">&quot;update.jsp&quot;</span>).forward(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op.equals(<span class="string">&quot;update&quot;</span>))&#123;</span><br><span class="line">		<span class="comment">//修改页面</span></span><br><span class="line">		<span class="comment">//接收该页面所有的值   数据库里表里的所有列都应该接收</span></span><br><span class="line">		<span class="keyword">int</span> pId=Integer.parseInt(request.getParameter(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">		<span class="comment">//同时根据不用的列进行强转</span></span><br><span class="line">		String pName=request.getParameter(<span class="string">&quot;列名&quot;</span>);</span><br><span class="line">		<span class="keyword">float</span> price=Float.parseFloat(request.getParameter(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">		<span class="comment">//以上这3行,就是基本的会考到的强转,</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义对象 放入对象 </span></span><br><span class="line">		表名 p=<span class="keyword">new</span> 表名();</span><br><span class="line">		<span class="comment">//放入都是固定语法</span></span><br><span class="line">		p.setpId(pId);</span><br><span class="line">		p.setpName(pName);</span><br><span class="line">		p.setPrice(price);</span><br><span class="line">		<span class="comment">//进行修改操作</span></span><br><span class="line">		<span class="keyword">int</span> result=server.update(p);</span><br><span class="line">		<span class="comment">//对返回的值进行判断</span></span><br><span class="line">		<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="comment">//给出提示信息</span></span><br><span class="line">			out.print(<span class="string">&quot;&lt;script&gt;alert(&#x27;修改成功&#x27;); location.href=&#x27;index.jsp&#x27;&lt;/script&gt;&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="comment">//也是固定语法</span></span><br><span class="line">			out.print(<span class="string">&quot;&lt;script&gt;alert(&#x27;修改失败&#x27;); location.href=&#x27;index.jsp&#x27;&lt;/script&gt;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(op.equals(<span class="string">&quot;delete&quot;</span>))&#123;</span><br><span class="line">		<span class="comment">//删除</span></span><br><span class="line">		<span class="comment">//接收传来的id</span></span><br><span class="line">		<span class="keyword">int</span> pId=Integer.parseInt(request.getParameter(<span class="string">&quot;列名&quot;</span>));</span><br><span class="line">		<span class="comment">//进行删除操作</span></span><br><span class="line">		<span class="keyword">int</span> result=server.delete(pId);</span><br><span class="line">		<span class="comment">//判断结果</span></span><br><span class="line">		<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="comment">//给出提示</span></span><br><span class="line">			out.print(<span class="string">&quot;&lt;script&gt;alert(&#x27;删除成功&#x27;); location.href=&#x27;index.jsp&#x27;&lt;/script&gt;&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="comment">//固定语法</span></span><br><span class="line">			out.print(<span class="string">&quot;&lt;script&gt;alert(&#x27;删除失败&#x27;); location.href=&#x27;index.jsp&#x27;&lt;/script&gt;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查询页面</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">&quot;entity.表名&quot;</span>%&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*&quot;</span> pageEncoding=<span class="string">&quot;utf-8&quot;</span>%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;title&gt;My JSP <span class="string">&#x27;index.jsp&#x27;</span> starting page&lt;/title&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;pragma&quot;</span> content=<span class="string">&quot;no-cache&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;cache-control&quot;</span> content=<span class="string">&quot;no-cache&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;expires&quot;</span> content=<span class="string">&quot;0&quot;</span>&gt;    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;keywords&quot;</span> content=<span class="string">&quot;keyword1,keyword2,keyword3&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;description&quot;</span> content=<span class="string">&quot;This is my page&quot;</span>&gt;</span><br><span class="line">	&lt;!--</span><br><span class="line">	&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> type=<span class="string">&quot;text/css&quot;</span> href=<span class="string">&quot;styles.css&quot;</span>&gt;</span><br><span class="line">	--&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;%</span><br><span class="line">  		<span class="comment">//取到request里的集合</span></span><br><span class="line">    	List&lt;表名&gt; list=(List&lt;表名&gt;)request.getAttribute(<span class="string">&quot;list&quot;</span>);</span><br><span class="line">    	<span class="comment">//进行判断 如果为null 也不要往下面走了,,再走就报错了,,直接跳转会do页面</span></span><br><span class="line">      	<span class="keyword">if</span>(list==<span class="keyword">null</span>)&#123;<span class="comment">//跳转回do页面查询值,然后再过来的时候就有值了,就不用走这里了</span></span><br><span class="line">      		request.getRequestDispatcher(<span class="string">&quot;do表名.jsp?op=list&quot;</span>).forward(request, response);</span><br><span class="line">      		<span class="keyword">return</span>;<span class="comment">//这个地方不写就报错 必须写</span></span><br><span class="line">      	&#125;</span><br><span class="line">    %&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  	&lt;h1&gt;&lt;a href=<span class="string">&quot;add.jsp&quot;</span>&gt;新增&lt;/a&gt;&lt;/h1&gt;&lt;!-- 直接跳转到新增页面 --&gt;</span><br><span class="line">  	&lt;table border=<span class="string">&quot;1&quot;</span> width=<span class="string">&quot;300px&quot;</span>&gt;</span><br><span class="line">  		&lt;tr&gt;</span><br><span class="line">  			&lt;td&gt;编号&lt;/td&gt;</span><br><span class="line">  			&lt;td&gt;名称&lt;/td&gt;</span><br><span class="line">  			&lt;td&gt;价钱&lt;/td&gt;</span><br><span class="line">  			&lt;td&gt;操作&lt;/td&gt;</span><br><span class="line">  		&lt;/tr&gt;</span><br><span class="line">  		&lt;%<span class="comment">//固定格式</span></span><br><span class="line">  			<span class="keyword">for</span>(表名 p:list)&#123;</span><br><span class="line">  		%&gt;</span><br><span class="line">  		&lt;tr&gt;&lt;!-- 循环固定格式 --&gt;</span><br><span class="line">			&lt;td&gt;&lt;%=p.getpId() %&gt;&lt;/td&gt;</span><br><span class="line">			&lt;td&gt;&lt;%=p.getpName() %&gt;&lt;/td&gt;</span><br><span class="line">			&lt;td&gt;&lt;%=p.getPrice() %&gt;&lt;/td&gt;</span><br><span class="line">			&lt;td&gt;&lt;!-- 这也是固定格式直接跟写就行了  --&gt;</span><br><span class="line">				&lt;a href=<span class="string">&quot;do表名.jsp?op=toupdate&amp;id=&lt;%=p.getpId() %&gt;&quot;</span>&gt;修改&lt;/a&gt;</span><br><span class="line">				&lt;a href=<span class="string">&quot;#&quot;</span> onclick=<span class="string">&quot;del(&lt;%=p.getpId()%&gt;)&quot;</span>&gt;删除&lt;/a&gt;</span><br><span class="line">			&lt;/td&gt;  			</span><br><span class="line">  		&lt;/tr&gt;</span><br><span class="line">  		&lt;% &#125;%&gt;</span><br><span class="line">  		</span><br><span class="line">  	&lt;/table&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="function">function <span class="title">del</span><span class="params">(id)</span></span>&#123;<span class="comment">//这里也是 固定不变</span></span><br><span class="line">		<span class="keyword">if</span>(confirm(<span class="string">&quot;是否删除?&quot;</span>))&#123;</span><br><span class="line">			location.href=<span class="string">&quot;do表名.jsp?use=delete&amp;id=&quot;</span>+id;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改页面</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@page</span> <span class="keyword">import</span>=<span class="string">&quot;entity.表名&quot;</span>%&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*&quot;</span> pageEncoding=<span class="string">&quot;utf-8&quot;</span>%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;title&gt;My JSP <span class="string">&#x27;add.jsp&#x27;</span> starting page&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;pragma&quot;</span> content=<span class="string">&quot;no-cache&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;cache-control&quot;</span> content=<span class="string">&quot;no-cache&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;expires&quot;</span> content=<span class="string">&quot;0&quot;</span>&gt;    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;keywords&quot;</span> content=<span class="string">&quot;keyword1,keyword2,keyword3&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;description&quot;</span> content=<span class="string">&quot;This is my page&quot;</span>&gt;</span><br><span class="line">	&lt;!--</span><br><span class="line">	&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> type=<span class="string">&quot;text/css&quot;</span> href=<span class="string">&quot;styles.css&quot;</span>&gt;</span><br><span class="line">	--&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;%</span><br><span class="line">  <span class="comment">//取到request  用对象接收</span></span><br><span class="line">  	表名 p=(表名)request.getAttribute(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">  %&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  	&lt;!-- 固定语法 --&gt;	</span><br><span class="line">	&lt;form action=<span class="string">&quot;do表名.jsp?op=update&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">		&lt;table&gt;&lt;!-- 这个是放id的也就是主键 value里是值 --&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;id&quot;</span> value=<span class="string">&quot;&lt;%=p.getpId()%&gt;&quot;</span>&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;名称:&lt;/td&gt;&lt;!-- 跟新增页面写的一样  可以直接复制 --&gt;</span><br><span class="line">				&lt;td&gt;&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;列名&quot;</span> value=<span class="string">&quot;&lt;%=p.getpName()%&gt;&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;价钱:&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;列名&quot;</span> value=<span class="string">&quot;&lt;%=p.getPrice()%&gt;&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td colspan=<span class="string">&quot;2&quot;</span>&gt;&lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;提交&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			</span><br><span class="line">		&lt;/table&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>新增页面</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> <span class="keyword">import</span>=<span class="string">&quot;java.util.*&quot;</span> pageEncoding=<span class="string">&quot;utf-8&quot;</span>%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;title&gt;My JSP <span class="string">&#x27;add.jsp&#x27;</span> starting page&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;pragma&quot;</span> content=<span class="string">&quot;no-cache&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;cache-control&quot;</span> content=<span class="string">&quot;no-cache&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;expires&quot;</span> content=<span class="string">&quot;0&quot;</span>&gt;    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;keywords&quot;</span> content=<span class="string">&quot;keyword1,keyword2,keyword3&quot;</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">&quot;description&quot;</span> content=<span class="string">&quot;This is my page&quot;</span>&gt;</span><br><span class="line">	&lt;!--</span><br><span class="line">	&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> type=<span class="string">&quot;text/css&quot;</span> href=<span class="string">&quot;styles.css&quot;</span>&gt;</span><br><span class="line">	--&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;body&gt;&lt;!-- 定死的公式  --&gt;</span><br><span class="line">	&lt;form action=<span class="string">&quot;do表名.jsp?op=add&quot;</span> method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">		&lt;table&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;名称:&lt;/td&gt;&lt;!-- 这一个网页 除了自增列(id 或者主键),其他全部接收 有多少写多少, name就取列名--&gt;</span><br><span class="line">				&lt;td&gt;&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;列名&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;价钱:&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;列名&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			&lt;tr&gt;&lt;!-- 提交按钮,,固定语法 --&gt;</span><br><span class="line">				&lt;td colspan=<span class="string">&quot;2&quot;</span>&gt;&lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;注册&quot;</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			</span><br><span class="line">		&lt;/table&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>姜霖
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://jianglin0428.github.io/2021/08/23/jsp-jdbc%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" title="jsp+jdbc增删改查">https://jianglin0428.github.io/2021/08/23/jsp-jdbc增删改查/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/23/JSP%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="prev" title="JSP数据交互（二）">
+                  <i class="fa fa-chevron-left"></i> JSP数据交互（二）
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+        
+	<div style="text-align:center;color: #ccc;font-size:20px;">
+		---------本文结束---------
+	</div>
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">姜霖</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">110k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:40</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!-- <span id="busuanzi_container_site_uv">
+  本站访问次数：1314520 次<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span> -->
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+ <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
+   <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+   <!-- 动态背景 -->
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="/js/canvas-nest.min.js"></script>
+
+<!-- 代码块复制功能 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+<script type="text/javascript" src="/js/clipboard_use.js"></script>
